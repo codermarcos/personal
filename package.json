@@ -1,0 +1,38 @@
+{
+  "name": "codermarcos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "cross-env NODE_ENV=development webpack serve",
+    "watch": "nodemon -e ts --watch webpack.config.ts --ignore src/ --exec \"npm run start\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/copy-webpack-plugin": "^6.4.0",
+    "@types/html-webpack-plugin": "^3.2.4",
+    "@types/node": "^14.14.31",
+    "@types/webpack": "^4.41.26",
+    "@types/webpack-dev-server": "^3.11.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^4.5.2",
+    "nodemon": "^2.0.7",
+    "pug": "^3.0.2",
+    "pug-loader": "^2.4.0",
+    "ts-loader": "^8.0.17",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.2",
+    "webpack": "^5.24.1",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-watch-files-plugin": "^1.1.0"
+  },
+  "dependencies": {
+    "csx": "^10.0.2",
+    "typestyle": "^2.1.0"
+  }
+}
