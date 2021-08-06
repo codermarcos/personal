@@ -47,13 +47,13 @@ html(lang='pt-BR')
                     dd #{tagValue}
               time(datetime=`${project.date.year}-${project.date.month}`) #{args.monthsOfYear[project.date.month - 1]} #{project.date.year}
 
+      - const itemsPerPage = 3;
       section(class=styles.contentSecundary)
-        ol(class=styles.experiencesList,aria-label=args.experiences)
-          each job in args.jobList
+        ol(class=styles.experiencesList,aria-label=args.experiences,data-label-see-more=args.seeMore)
+          each job, index in args.jobList
             - const roles = Array.from(job.roles.keys())
             
-            li(class=styles.experiencesItem)
-              img(src=job.logo, alt=job.company)
+            li(class=`${styles.experiencesItem} ${index >= itemsPerPage ? 'hidden' : ''}`)
               details
                 summary
                   b #{job.company}
@@ -80,11 +80,13 @@ html(lang='pt-BR')
                           time(datetime=`${end.getFullYear()}-${end.getMonth() + 1}`) #{args.monthsOfYear[end.getMonth() + 1]} #{end.getFullYear()}
                         else
                           | #{end}
-
+              img(src=job.logo, alt=job.company)
+        button(type="button") #{args.seeMore}
 
         ol(class=styles.academicList,aria-label=args.academic)
-          each academic in args.academicList
-            li(class=styles.academicItem)
+          each academic, index in args.academicList
+
+            li(class=`${styles.academicItem} ${index >= itemsPerPage ? 'hidden' : ''}`)
               p 
                 b #{academic.summary.course}
                 br
@@ -98,7 +100,24 @@ html(lang='pt-BR')
                   | Até 
                   time(datetime=`${end.year}-${end.month}`) #{args.monthsOfYear[end.month - 1]} #{end.year}
                 else
-                  | #{end}
-
+                  | #{end}      
+        button(type="button") #{args.seeMore}
+                  
+      section(class=styles.contentProjects)
+        ol(class=styles.projectsList,aria-label=args.projects)
+          each project in args.projectsList
+            li(class=styles.projectItem)
+              details
+                summary
+                  b #{project.summary.name}
+                  | #{project.summary.description}
+                p #{project.details}
+              dl(class=styles.projectCategories)
+                - const tagTypes = Object.keys(project.tags)
+                each tagType in tagTypes
+                  each tagValue in project.tags[tagType]
+                    dt #{tagType}
+                    dd #{tagValue}
+              time(datetime=`${project.date.year}-${project.date.month}`) #{args.monthsOfYear[project.date.month - 1]} #{project.date.year}
       include ./json-ld.pug
     | !{htmlWebpackPlugin.tags.bodyTags}

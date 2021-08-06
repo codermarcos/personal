@@ -1,6 +1,6 @@
 import { style, cssRule, media } from 'typestyle';
-import { NestedCSSProperties } from 'typestyle/lib/types';
-import { border, color, em, padding, percent, px, translateY } from 'csx';
+import { NestedCSSProperties, NestedCSSSelectors } from 'typestyle/lib/types';
+import { border, color, em, padding, percent, px, translate, translateY } from 'csx';
 
 const size = new Proxy<any>({}, {
   get: (_: any, size: any) => 
@@ -19,7 +19,7 @@ cssRule('*, *::after, *::before', {
 
 cssRule('html, body', {
   height: '100vh',
-  width: '100vw',
+  width: '100%',
 });
 
 cssRule('ul, ol', {
@@ -181,6 +181,7 @@ const skillsZone = style({
 
 const contentSkills = style({
   justifyContent: 'flex-end',  
+  marginTop: em(size[8]),
   marginBottom: em(size[8]),
   position: 'relative',
   display: 'flex',
@@ -198,19 +199,22 @@ const contentProjects = style({
   marginBottom: em(size[8]),
 });
 
+const listTitleSpace = size[12];
+
 const fullList: NestedCSSProperties = {  
+  paddingTop: em(listTitleSpace),
   flexDirection: 'column',
   position: 'relative',
   width: percent(100),
-  paddingTop: em(size[12]),
+  cursor: 'pointer',
   display: 'flex',
   $nest: {
     '&::before': {
       content: 'attr(aria-label)',
-      position: 'absolute',
       fontSize: em(size[6]),
-      left: 0,
+      position: 'absolute',
       top: em(size[2]),
+      left: 0,
     },
   },
 };
@@ -268,12 +272,15 @@ const projectCategories = style({
   },
 });
 
+const litsItemHeight = size[32];
+const litsItemSpaceBottom = size[4];
+
 const listItem: NestedCSSProperties = {
   display: 'flex',
   flexWrap: 'wrap',
   border: borderShare,
-  minHeight: em(size[32]),
-  marginBottom: em(size[4]),
+  minHeight: em(litsItemHeight),
+  marginBottom: em(litsItemSpaceBottom),
   borderRadius: borderRadius,
   padding: padding(em(size[4])),
   justifyContent: 'space-between',
@@ -299,7 +306,7 @@ const projectItem = style({
       width: percent(100),
     },
     [`& > time, & > .${projectCategories}`]: {
-      fontSize: em(0.8),
+      fontSize: em(size[4]),
       alignSelf: 'flex-end',
     },
     '& b': {
@@ -323,50 +330,91 @@ const projectItem = style({
 
 const contentSecundary = style({
   display: 'grid',
-  gridGap: em(size[8]),
+  marginTop: em(size[8]),
   marginBottom: em(size[8]),
+  gridColumnGap: em(size[8]),
+  gridTemplateRows: `auto ${em(size[6])}`,
   gridTemplateColumns: '1fr 1fr',
 }, mobile({
   gridTemplateColumns: '1fr',
 }));
 
+const halfLists = em(size[30]);
+
+const experienceImage = em(size[21]);
+
+const hiddenListItem: NestedCSSSelectors = {
+  '&.hidden': {
+    margin: 0,
+    height: 0,
+    padding: 0, 
+    opacity: 0,
+    minHeight: 0,
+    border: 'none',
+    overflow: 'hidden',
+    transform: translate(percent(-15), percent(-15)),
+  },
+};
+
 const experiencesList = style(fullList);
+
 const experiencesItem = style({
   ...listItem,
   flexWrap: 'nowrap',
-  minHeight: em(size[28]),
-  justifyContent: 'flex-start',
+  minHeight: halfLists,
+  alignItems: 'center',
   $nest: {
-    ...listItem.$nest,       
+    ...listItem.$nest,
+    ...hiddenListItem,
     '& > details': {
       width: percent(100),
       display: 'list-item',
       listStyle: 'inside disclosure-closed',
     }, 
+    '& > details > ol': {
+      marginLeft: px(17),
+    }, 
+    '& > details > ol > li': {
+      marginTop: em(size[4]),
+    }, 
+    '& > details[open] ~ img': {
+      alignSelf: 'flex-start',
+    },     
     '& summary': {
-      minHeight: em(size[4]),
       display: 'inline-flex',
       flexDirection: 'column',
+      minHeight: experienceImage,
     },    
+    '& summary > time, & details > ol span': {
+      fontSize: em(size[4]),
+    },
     '& > img': {      
+      maxHeight: experienceImage,
       marginRight: em(size[3]),
-      width: em(size[20]),
+      width: experienceImage,
+      order: -1,
     },
     '& b': {
       marginBottom: em(size[1]),
-      flexWrap: 'wrap',
-      display: 'flex',
     },
   }
 });
 
-const academicList = style(fullList);
+const academicList = style({
+  ...fullList,
+  gridRowStart: 1,
+  gridColumnStart: 2,
+});
+
 const academicItem = style({
+  opacity: 1,
   ...listItem,
-  minHeight: em(size[28]),
+  minHeight: halfLists,
+  transition: '.4s ease-in transform',
   $nest: {
     ...listItem.$nest,
-  }
+    ...hiddenListItem,
+  },
 });
 
 const styles = {

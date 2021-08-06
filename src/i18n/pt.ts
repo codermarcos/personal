@@ -64,6 +64,7 @@ export const pt = (inf: Informations, mixin: Mixins) => {
     args: {
       ...inf.args,
       ...durations,
+      seeMore: 'ver mais',
       projects: 'Projetos',
       academic: 'Formação academica',
       experiences: 'Experiências profissionais',
@@ -162,10 +163,52 @@ export const pt = (inf: Informations, mixin: Mixins) => {
         mixin.jobItem(
           'Dasa',
           new Map([
-            ['Lider Técnico', [new Date(2020, 4), new Date(2021, 1)]]
+            ['Lider Técnico', [new Date(2020, 4), new Date(2021, 1)]],
+            ['Engenheiro de software', [new Date(2019, 11), new Date(2020, 4)]],
+            ['Desenvolvedor frontend', [new Date(2019, 3), new Date(2019, 11)]],
           ]),
           '',
           '/images/companies/dasa.gif',
+        ),
+        mixin.jobItem(
+          'Everis',
+          new Map([
+            ['Desenvolvedor frontend', [new Date(2018, 10), new Date(2019, 3)]],
+          ]),
+          '',
+          '/images/companies/everis.gif',
+        ),
+        mixin.jobItem(
+          'Santander',
+          new Map([
+            ['Desenvolvedor frontend', [new Date(2018, 10), new Date(2019, 3)]],
+          ]),
+          '',
+          '/images/companies/santander.gif',
+        ),
+        mixin.jobItem(
+          'Serasa',
+          new Map([
+            ['Desenvolvedor frontend', [new Date(2018, 5), new Date(2018, 10)]],
+          ]),
+          '',
+          '/images/companies/serasa.gif',
+        ),
+        mixin.jobItem(
+          'Locaweb',
+          new Map([
+            ['Desenvolvedor frontend', [new Date(2017, 10), new Date(2018, 3)]],
+          ]),
+          '',
+          '/images/companies/locaweb.gif',
+        ),
+        mixin.jobItem(
+          'Softclass',
+          new Map([
+            ['Desenvolvedor frontend', [new Date(2016, 7), new Date(2018, 3)]],
+          ]),
+          '',
+          '/images/companies/softclass.gif',
         ),
       ],
       academicList: [
@@ -183,6 +226,42 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           5,
           '',
           2018,
+          12,
+        ),
+        mixin.academicItem(
+          'ETEC',
+          'Comunicação visual',
+          2015,
+          1,
+          '',
+          2017,
+          12,
+        ),
+        mixin.academicItem(
+          'ETEC',
+          'Desenvolvimento de software',
+          2014,
+          1,
+          '',
+          2016,
+          12,
+        ),        
+        mixin.academicItem(
+          'All net',
+          'Inglês',
+          2009,
+          1,
+          '',
+          2012,
+          12,
+        ),
+        mixin.academicItem(
+          'All net',
+          'Montagem e manutenção de micro',
+          2009,
+          1,
+          '',
+          2012,
           12,
         ),
       ],
