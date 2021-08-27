@@ -1,6 +1,6 @@
 import { style, cssRule, media } from 'typestyle';
-import { NestedCSSProperties, NestedCSSSelectors } from 'typestyle/lib/types';
-import { border, color, em, padding, percent, px, translate, translateY } from 'csx';
+import { NestedCSSProperties } from 'typestyle/lib/types';
+import { border, color, em, padding, percent, px, translateY } from 'csx';
 
 const size = new Proxy<any>({}, {
   get: (_: any, size: any) => 
@@ -333,8 +333,8 @@ const contentSecundary = style({
   marginTop: em(size[8]),
   marginBottom: em(size[8]),
   gridColumnGap: em(size[8]),
-  gridTemplateRows: `auto ${em(size[6])}`,
   gridTemplateColumns: '1fr 1fr',
+  gridTemplateRows: `${em(size[4])} auto ${em(size[4])}`,
 }, mobile({
   gridTemplateColumns: '1fr',
 }));
@@ -343,33 +343,27 @@ const halfLists = em(size[30]);
 
 const experienceImage = em(size[21]);
 
-const hiddenListItem: NestedCSSSelectors = {
-  '&.hidden': {
-    margin: 0,
-    height: 0,
-    padding: 0, 
-    opacity: 0,
-    minHeight: 0,
-    border: 'none',
-    overflow: 'hidden',
-    transform: translate(percent(-15), percent(-15)),
-  },
-};
-
-const experiencesList = style(fullList);
+const experiencesList = style({
+  ...fullList,  
+  gridRowStart: 2,
+});
 
 const experiencesItem = style({
   ...listItem,
+  opacity: 1,
   flexWrap: 'nowrap',
   minHeight: halfLists,
   alignItems: 'center',
+  transition: '.4s ease-in transform, .5s ease-out opacity',
   $nest: {
     ...listItem.$nest,
-    ...hiddenListItem,
     '& > details': {
       width: percent(100),
       display: 'list-item',
       listStyle: 'inside disclosure-closed',
+    }, 
+    '&:not(li > details[open])': {
+      backgroundColor: 'red',
     }, 
     '& > details > ol': {
       marginLeft: px(17),
@@ -401,19 +395,34 @@ const experiencesItem = style({
 });
 
 const academicList = style({
-  ...fullList,
-  gridRowStart: 1,
-  gridColumnStart: 2,
+  ...fullList,  
+  gridRowStart: 2,
 });
 
 const academicItem = style({
   opacity: 1,
   ...listItem,
+  gridRowStart: 2,
   minHeight: halfLists,
-  transition: '.4s ease-in transform',
-  $nest: {
-    ...listItem.$nest,
-    ...hiddenListItem,
+  transition: '.4s ease-in transform, .5s ease-out opacity',
+});
+
+const seeMoreButton = style({
+  padding: padding(em(size[5]), 0),
+  backgroundColor: 'transparent',
+  width: percent(100),
+  cursor: 'pointer',
+  border: 'none',
+  $nest: {    
+    [`&[data-list-items=".${experiencesItem}"]`]: {
+      gridColumnStart: 1,
+    },
+    [`&[data-list-items=".${academicItem}"]`]: {
+      gridColumnStart: 2,
+    },    
+    [`&[data-list-items=".${academicItem}"][recent]`]: {
+      gridRowStart: 1,
+    },    
   },
 });
 
@@ -445,6 +454,7 @@ const styles = {
   experiencesItem,
   academicList,
   academicItem,
+  seeMoreButton,
 };
 
 export default styles;

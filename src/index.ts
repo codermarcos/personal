@@ -22,8 +22,38 @@ function categories() {
     );
 }
 
+function readMore() {
+  const data = document.querySelectorAll<HTMLButtonElement>(`.${styles.seeMoreButton}`);
+
+  data
+    .forEach(
+      button => {
+        const items = button.dataset.listItems;
+        
+        if (!items) return;
+
+        button
+          .addEventListener(
+            'click', 
+            () => {              
+              const elements = document.querySelectorAll(`${items}.hidden`);
+
+              if (elements.length === 0) return;
+
+              for (let i = 0; i < 1; i++) {
+                const element = elements.item(i);
+                if (!element) break;
+                element.classList.remove('hidden');                
+              }
+            },
+          );  
+      },
+    );
+}
+
 function onload() {
   categories();
+  readMore();
 }
 
 window.addEventListener('load', onload);

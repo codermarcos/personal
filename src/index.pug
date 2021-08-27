@@ -4,13 +4,13 @@ html(lang='pt-BR')
     title #{args.title}
     link(rel="manifest",href="/manifest.json")
     | !{htmlWebpackPlugin.tags.headTags}
-  body(class=styles.body)
+  body(class=`${styles.body} h-resume`)
     header(class=styles.headerWrapper)
       figure(class=styles.headerPhoto)
         img(src=args.photo, alt=args.photoAlt)
       hgroup(class=styles.headerNameAndJob)
-        h1 #{args.name}
-        h2 #{args.job}
+        h1(class='p-name') #{args.name}
+        h2(class='p-skill') #{args.job}
       nav(class=styles.headerContactsWrapper)
         ul(class=styles.headerContacts)
           - const contactTypes = Object.keys(args.contacts)
@@ -20,15 +20,15 @@ html(lang='pt-BR')
                 figure
                   | !{require(`./images/icons/${t}.pug`)()}
                   figcaption #{args.contacts[t].text}
-      p(class=styles.headerAbout) #{args.aboutMe}
+      p(class=`${styles.headerAbout} p-summary`) #{args.aboutMe}
 
     main(class=styles.contentWrapper)
       section(class=styles.contentSkills)
         include ./graph.pug
         ol(class=styles.skillsZone,aria-label=args.skillZone)
-          li Frontend
-          li Devops
-          li Backend
+          li(class='p-skill') Frontend
+          li(class='p-skill') Devops
+          li(class='p-skill') Backend
 
       section(class=styles.contentProjects)
         ol(class=styles.projectsList,aria-label=args.projects)
@@ -44,16 +44,14 @@ html(lang='pt-BR')
                 each tagType in tagTypes
                   each tagValue in project.tags[tagType]
                     dt #{tagType}
-                    dd #{tagValue}
+                    dd(class=(tagType === 'tecnologia' ? 'p-skill':'')) #{tagValue}
               time(datetime=`${project.date.year}-${project.date.month}`) #{args.monthsOfYear[project.date.month - 1]} #{project.date.year}
 
-      - const itemsPerPage = 3;
       section(class=styles.contentSecundary)
-        ol(class=styles.experiencesList,aria-label=args.experiences,data-label-see-more=args.seeMore)
-          each job, index in args.jobList
+        ol(class=styles.experiencesList,aria-label=args.experiences)        
+          each job in args.jobList
             - const roles = Array.from(job.roles.keys())
-            
-            li(class=`${styles.experiencesItem} ${index >= itemsPerPage ? 'hidden' : ''}`)
+            li(class=`${styles.experiencesItem} p-experience`)
               details
                 summary
                   b #{job.company}
@@ -81,12 +79,11 @@ html(lang='pt-BR')
                         else
                           | #{end}
               img(src=job.logo, alt=job.company)
-        button(type="button") #{args.seeMore}
+        
 
         ol(class=styles.academicList,aria-label=args.academic)
-          each academic, index in args.academicList
-
-            li(class=`${styles.academicItem} ${index >= itemsPerPage ? 'hidden' : ''}`)
+          each academic in args.academicList
+            li(class=`${styles.academicItem} p-education`)
               p 
                 b #{academic.summary.course}
                 br

@@ -73,9 +73,9 @@ export interface Tags {
 }
 
 const mixins = {
-  contact(name: string, text: string, href: string) {
+  contact(name: string, text: string, href: string, microformats: string) {
     return {
-      [name]: { text, href },
+      [name]: { text, href, microformats },
     };
   },
   projectItem(
