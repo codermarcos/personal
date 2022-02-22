@@ -1,0 +1,16 @@
+{
+  "disallowAttributeConcatenation": true,
+  "requireSpaceAfterCodeOperator": true,
+  "disallowDuplicateAttributes": true,
+  "validateAttributeQuoteMarks": true,
+  "requireLowerCaseAttributes": true,
+  "validateTemplateString": true,
+  "validateAttributeSeparator": {
+    "multiLineSeparator": ",\n\t",
+    "separator": ", "
+  },
+  "disallowClassLiterals": true,
+  "requireLowerCaseTags": true,
+  "maximumLineLength": 200,
+  "validateIndentation": 1
+}

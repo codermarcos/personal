@@ -1,120 +1,185 @@
 doctype html
 html(lang='pt-BR')
-  head
-    title #{args.title}
-    link(rel="manifest",href="/manifest.json")
-    | !{htmlWebpackPlugin.tags.headTags}
-  body(class=`${styles.body} h-resume`)
-    header(class=styles.headerWrapper)
-      figure(class=styles.headerPhoto)
-        img(src=args.photo, alt=args.photoAlt)
-      hgroup(class=styles.headerNameAndJob)
-        h1(class='p-name') #{args.name}
-        h2(class='p-skill') #{args.job}
-      nav(class=styles.headerContactsWrapper)
-        ul(class=styles.headerContacts)
-          - const contactTypes = Object.keys(args.contacts)
-          each t in contactTypes
-            li(title=t)
-              a(href=args.contacts[t].href,target="_blank",rel="noopener")
-                figure
-                  | !{require(`./images/icons/${t}.pug`)()}
-                  figcaption #{args.contacts[t].text}
-      p(class=`${styles.headerAbout} p-summary`) #{args.aboutMe}
+	head
+		title #{args.title}
+		link(rel='manifest', href='/manifest.json')
+		| !{htmlWebpackPlugin.tags.headTags}
+	body(class=`${styles.body} h-resume`)
+		header(class=styles.headerWrapper)
+			figure(class=styles.headerPhoto)
+				img(src=args.photo, alt=args.photoAlt)
+			hgroup(class=styles.headerNameAndJob)
+				h1(class='p-name') #{args.name}
+				h2(class='p-skill') #{args.job}
+			nav(class=styles.headerContactsWrapper)
+				ul(class=styles.headerContacts)
+					- const contactTypes = Object.keys(args.contacts)
+					each t in contactTypes
+						li(title=t)
+							a(href=args.contacts[t].href, target='_blank', rel='noopener')
+								figure
+									| !{require(`./images/icons/${t}.pug`)()}
+									figcaption #{args.contacts[t].text}
+			p(class=`${styles.headerAbout} p-summary`) #{args.aboutMe}
 
-    main(class=styles.contentWrapper)
-      section(class=styles.contentSkills)
-        include ./graph.pug
-        ol(class=styles.skillsZone,aria-label=args.skillZone)
-          li(class='p-skill') Frontend
-          li(class='p-skill') Devops
-          li(class='p-skill') Backend
+		main(class=styles.contentWrapper)
+			section(class=styles.contentSkills)
+				include ./graph.pug
+				ol(class=styles.skillsZone, aria-label=args.skillZone)
+					li(class='p-skill') Frontend
+					li(class='p-skill') Devops
+					li(class='p-skill') Backend
 
-      section(class=styles.contentProjects)
-        ol(class=styles.projectsList,aria-label=args.projects)
-          each project in args.projectsList
-            li(class=styles.projectItem)
-              details
-                summary
-                  b #{project.summary.name}
-                  | #{project.summary.description}
-                p #{project.details}
-              dl(class=styles.projectCategories)
-                - const tagTypes = Object.keys(project.tags)
-                each tagType in tagTypes
-                  each tagValue in project.tags[tagType]
-                    dt #{tagType}
-                    dd(class=(tagType === 'tecnologia' ? 'p-skill':'')) #{tagValue}
-              time(datetime=`${project.date.year}-${project.date.month}`) #{args.monthsOfYear[project.date.month - 1]} #{project.date.year}
+			section(class=styles.contentProjects)
+				ol(class=styles.projectsList, aria-label=args.projects)
+					each project in args.projectsList
+						li(class=styles.projectItem)
+							details
+								summary
+									b #{project.summary.name}
+									| #{project.summary.description}
+								p #{project.details}
+							dl(class=styles.projectCategories)
+								- const tagTypes = Object.keys(project.tags)
+								each tagType in tagTypes
+									each tagValue in project.tags[tagType]
+										dt #{tagType}
+										dd(class=(tagType === 'tecnologia' ? 'p-skill':''))
+											| #{tagValue}
+							- const { month, year } = project.date;
+							time(datetime=`${year}-${month}`)
+								| #{args.monthsOfYear[month - 1]} #{year}
 
-      section(class=styles.contentSecundary)
-        ol(class=styles.experiencesList,aria-label=args.experiences)        
-          each job in args.jobList
-            - const roles = Array.from(job.roles.keys())
-            li(class=`${styles.experiencesItem} p-experience`)
-              details
-                summary
-                  b #{job.company}
-                  - const [, endDate] = job.roles.get(roles[0]);
-                  if endDate                                              
-                    - const [startDate] = job.roles.get(roles[roles.length -1]);
-                    - const days = util.calculateDays(startDate, endDate);
+				button(
+					type='button',
+					data-go-to='-250',
+					class=styles.seeMoreButton,
+					data-list-items=`.${styles.projectsList}`
+				)
+					| #{args.seeRecent}
+				button(
+					type='button',
+					data-go-to='250',
+					class=styles.seeMoreButton,
+					data-list-items=`.${styles.projectsList}`
+				)
+					| #{args.seePrevious}
 
-                    time(datetime=`P${days}D`) #{days < 360 ? (days > 30 ? `${Math.ceil(days / 30)} ${args.months}` : `${days} ${args.days}`) : `${Math.ceil(days / 360)} ${args.years}` } 
-                  else 
-                    | #{args.currently}
-                p #{job.details}
-                ol 
-                  each role in roles
-                    - const [start, end] = job.roles.get(role);
-                    li 
-                      b #{role}
-                      
-                      span De 
-                        time(datetime=`${start.getFullYear()}-${start.getMonth() + 1}`) #{args.monthsOfYear[start.getMonth() + 1]} #{start.getFullYear()}                      
-                      span
-                        if end
-                          | Até 
-                          time(datetime=`${end.getFullYear()}-${end.getMonth() + 1}`) #{args.monthsOfYear[end.getMonth() + 1]} #{end.getFullYear()}
-                        else
-                          | #{end}
-              img(src=job.logo, alt=job.company)
-        
+			section(class=styles.contentExperiences)
+				ol(class=styles.experiencesList, aria-label=args.experiences)
+					each job in args.jobList
+						- const roles = Array.from(job.roles.keys())
+						li(class=`${styles.experiencesItem} p-experience`)
+							details
+								summary
+									b #{job.company}
+									- const [, endDate] = job.roles.get(roles[0]);
+									if endDate
+										- const [startDate] = job.roles.get(roles[roles.length -1]);
+										- const days = util.calculateDays(startDate, endDate);
 
-        ol(class=styles.academicList,aria-label=args.academic)
-          each academic in args.academicList
-            li(class=`${styles.academicItem} p-education`)
-              p 
-                b #{academic.summary.course}
-                br
-                | #{academic.summary.school}
-              - const { start, end } = academic;
-              span De 
-                time(datetime=`${start.year}-${start.month}`) #{args.monthsOfYear[start.month - 1]} #{start.year}
-              
-              span
-                if typeof end !== 'string'
-                  | Até 
-                  time(datetime=`${end.year}-${end.month}`) #{args.monthsOfYear[end.month - 1]} #{end.year}
-                else
-                  | #{end}      
-        button(type="button") #{args.seeMore}
-                  
-      section(class=styles.contentProjects)
-        ol(class=styles.projectsList,aria-label=args.projects)
-          each project in args.projectsList
-            li(class=styles.projectItem)
-              details
-                summary
-                  b #{project.summary.name}
-                  | #{project.summary.description}
-                p #{project.details}
-              dl(class=styles.projectCategories)
-                - const tagTypes = Object.keys(project.tags)
-                each tagType in tagTypes
-                  each tagValue in project.tags[tagType]
-                    dt #{tagType}
-                    dd #{tagValue}
-              time(datetime=`${project.date.year}-${project.date.month}`) #{args.monthsOfYear[project.date.month - 1]} #{project.date.year}
-      include ./json-ld.pug
-    | !{htmlWebpackPlugin.tags.bodyTags}
+										time(datetime=`P${days}D`)
+											- const text =
+											- days < 360
+											- ? (
+											-    days > 30
+											-    ? `${Math.ceil(days / 30)} ${args.months}`
+											-    : `${days} ${args.days}`
+											- )
+											- : `${Math.ceil(days / 360)} ${args.years}`;
+											| #{ text }
+									else
+										| #{args.currently}
+								p #{job.details}
+								ol
+									each role in roles
+										- const [start, end] = job.roles.get(role);
+										li
+											b #{role}
+
+											span De 
+												- const month = start.getMonth();
+												- const year = start.getFullYear();
+												time(datetime=`${year}-${month + 1}`)
+													| #{args.monthsOfYear[month + 1]} #{year}
+											span
+												if end
+													| Até 
+													- const month = end.getMonth();
+													- const year = end.getFullYear();
+													time(datetime=`${year}-${month + 1}`)
+														| #{args.monthsOfYear[month + 1]} #{year}
+												else
+													| #{end}
+							img(src=job.logo, alt=job.company)
+
+				button(
+					type='button',
+					data-go-to='-100',
+					class=styles.seeMoreButton,
+					data-list-items=`.${styles.experiencesList}`
+				)
+					| #{args.seeRecent}
+
+				button(
+					type='button',
+					data-go-to='100',
+					class=styles.seeMoreButton,
+					data-list-items=`.${styles.experiencesList}`
+				)
+					| #{args.seePrevious}
+
+			section(class=styles.contentAcademic)
+				ol(class=styles.academicList, aria-label=args.academic)
+					each academic in args.academicList
+						li(class=`${styles.academicItem} p-education`)
+							p
+								b #{academic.summary.course}
+								br
+								| #{academic.summary.school}
+							- const { start, end } = academic;
+							- const { year, month } = start;
+							span De 
+								time(datetime=`${year}-${month}`)
+									| #{args.monthsOfYear[month - 1]} #{year}
+
+							span
+								if typeof end !== 'string'
+									| Até 
+									- const { year, month } = end;
+									time(datetime=`${year}-${month}`)
+										| #{args.monthsOfYear[month - 1]} #{year}
+								else
+									| #{end}
+
+				button(
+					type='button',
+					data-go-to='-100',
+					class=styles.seeMoreButton,
+					data-list-items=`.${styles.academicList}`
+				)
+					| #{args.seeRecent}
+
+				button(
+					type='button',
+					data-go-to='100',
+					class=styles.seeMoreButton,
+					data-list-items=`.${styles.academicList}`
+				)
+					| #{args.seePrevious}
+
+			section(class=styles.contentArticles)
+				ol(class=styles.articlesList, aria-label=args.articlesAndPosts)
+					each articleOrPost in args.articlesAndPostsList
+						li(class=styles.articlesItem)
+							article
+								figure 
+									img(src=articleOrPost.image)
+									figcaption #{articleOrPost.title}
+								- const { month, year } = articleOrPost.date;
+								i #{articleOrPost.platform}
+								time(datetime=`${year}-${month}`)
+									| #{args.monthsOfYear[month - 1]} #{year}
+
+			include ./json-ld.pug
+		| !{htmlWebpackPlugin.tags.bodyTags}

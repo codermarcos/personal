@@ -1,24 +1,31 @@
-import path from 'path';
+import { resolve } from 'path';
 import * as webpack from 'webpack';
 import CopyPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
+const ESLintPlugin = require('eslint-webpack-plugin');
+const PugLintPlugin = require('puglint-webpack-plugin');
 const WatchExternalFilesPlugin = require('webpack-watch-files-plugin').default;
 
 import i18n from './src/i18n';
 import util from './src/util';
 
-const getByLanguage = (lang: keyof typeof i18n): webpack.Configuration => {
+type Language = keyof typeof i18n;
+
+const getByLanguage = (l?: Language): webpack.Configuration => {
+  const isRoot = typeof l === 'undefined';
+  const language: Language = l || 'pt';
   return {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     entry: './src/index.ts',
     output: {
       filename: 'main.js',
-      path: path.resolve(__dirname, 'dist', lang),
+      path: isRoot ? resolve(__dirname, 'dist') : resolve(__dirname, 'dist', language),
     },
     devServer: {
       host: '0.0.0.0',
+      useLocalIp: true,
     },
     module: {
       rules: [
@@ -27,7 +34,7 @@ const getByLanguage = (lang: keyof typeof i18n): webpack.Configuration => {
           use: 'pug-loader',
         },
         {
-          test: /\.tsx?$/,
+          test: /\.ts$/,
           use: 'ts-loader',
           exclude: [
             /node_modules/,
@@ -43,11 +50,20 @@ const getByLanguage = (lang: keyof typeof i18n): webpack.Configuration => {
       new WatchExternalFilesPlugin({
         files: ['./src/**/*.ts',]
       }),
-      new CleanWebpackPlugin(),
+      new CleanWebpackPlugin(),           
       new CopyPlugin({
         patterns: [
-          { from: './src/static', to: './' },
+          { 
+            from: './src/static', 
+            to: './',
+          },
         ],
+      }),
+      new ESLintPlugin({}), 
+      new PugLintPlugin({
+        context: 'src',
+        files: '**/*.pug',
+        config: Object.assign({emitError: true}, require('./.pug-lintrc.json'))
       }),
       new HtmlWebpackPlugin({
         inject: false,
@@ -56,8 +72,8 @@ const getByLanguage = (lang: keyof typeof i18n): webpack.Configuration => {
         get meta() {
           const file = './src/i18n';
           delete require.cache[require.resolve(file)];
-          const { meta } = require(file).default[lang];
-
+          const { meta } = require(file).default[language];
+          
           return {
             ...meta,
             charset: { charset: 'utf-8' },
@@ -68,16 +84,16 @@ const getByLanguage = (lang: keyof typeof i18n): webpack.Configuration => {
           get styles() {
             const file = './src/style';
             delete require.cache[require.resolve(file)];
-
+            
             return require(file).default;
           },
           get args() {
             const file = './src/i18n';
             delete require.cache[require.resolve(file)];
-            delete require.cache[require.resolve(file + '/pt')];
-
-            const { args } = require(file).default[lang];
-
+            delete require.cache[require.resolve(file + '/' + language)];
+            
+            const { args } = require(file).default[language];
+            
             return args;
           },
           util,
@@ -87,4 +103,4 @@ const getByLanguage = (lang: keyof typeof i18n): webpack.Configuration => {
   };
 };
 
-export default [getByLanguage('pt')];
+export default process.env.NODE_ENV === 'development' ? getByLanguage() : [getByLanguage(), getByLanguage('pt')];

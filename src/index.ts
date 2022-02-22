@@ -28,25 +28,54 @@ function readMore() {
   data
     .forEach(
       button => {
-        const items = button.dataset.listItems;
+        const { listItems, goTo } = button.dataset;
         
-        if (!items) return;
+        if (listItems === undefined || goTo === undefined) return;
+
+        const items = button.parentElement?.querySelector<HTMLUListElement>(listItems);
+
+        items
+          ?.addEventListener(
+            'wheel',
+            (e) => {
+              e.preventDefault();
+
+              items?.scrollTo({ top: items.scrollTop + e.deltaY, behavior: 'smooth' });
+            }
+          );
 
         button
           .addEventListener(
             'click', 
-            () => {              
-              const elements = document.querySelectorAll(`${items}.hidden`);
-
-              if (elements.length === 0) return;
-
-              for (let i = 0; i < 1; i++) {
-                const element = elements.item(i);
-                if (!element) break;
-                element.classList.remove('hidden');                
-              }
+            () => {    
+              items?.scrollTo({ top: items.scrollTop + parseInt(goTo), behavior: 'smooth' });
             },
           );  
+      },
+    );
+}
+
+function openItem() {
+  const data = document.querySelectorAll<HTMLLIElement>(`.${styles.experiencesItem}`);
+
+  data
+    .forEach(
+      li => {
+        const summary = li.querySelector('details > summary');
+        if (summary === null) return;
+
+        const handler = (e: Event) => {      
+          e.stopImmediatePropagation();   
+          e.preventDefault();
+          const active = summary.parentElement?.hasAttribute('open');
+          summary.parentElement?.toggleAttribute('open', !active);
+          li.classList.toggle('open', !active);
+        };
+
+        li
+          .addEventListener('click', handler);  
+        summary
+          .addEventListener('click', handler);  
       },
     );
 }
@@ -54,6 +83,7 @@ function readMore() {
 function onload() {
   categories();
   readMore();
+  openItem();
 }
 
 window.addEventListener('load', onload);
