@@ -1,0 +1,117 @@
+# 💡 Personal
+
+This is my **personal website**.
+
+**This project** uses typescript, pug and webpack to bundle a static page and deploying to AWS S3.
+
+> **Table of contents**
+> - [🔍 Requirements](#requirements)
+> - [🔨 Project setup](#project-setup)
+> - [📑 Available Scripts](#️available-scripts)
+>   - [Server for development](#️server-for-development)
+>   - [Build](#️build)
+>   - [Get coverage](#get-coverage)
+>   - [Check linter](#check-linter)
+>   - [Unit tests](#unit-tests)
+> - [⬆️ Deploy locally other environment](#deploy-locally)
+> - [🔥 Destroy environment locally](#destroy-locally)
+> - [📚 Learn more](#learn-more)
+> - [💪 Dev Team](#dev-team)
+
+## <a name="requirements"></a> 🔍 Requirements
+
+| Dependencies                                 | Description               |
+| -------------------------------------------- | ------------------------- |
+| [![node-version]][node-download]             | Javascript Runtime        |
+| [![aws-version]][aws-download]               | AWS CLI               |
+| [![terraform-version]][terraform-download]   | Terraform                 |
+| [![terragrunt-version]][terragrunt-download] | Wrapper for Terraform     |
+
+## <a name="project-setup"></a> 🔨 Project setup
+
+1. To **clone repository** you need to have [git](https://git-scm.com/downloads) installed:
+
+```bash
+git clone
+```
+
+2. Enter repository
+
+```bash
+cd personal
+```
+
+3. To **install dependencies** you need to have [NodeJS](https://nodejs.org/en/) installed:
+
+```bash
+npm install
+```
+
+## <a name="available-scripts"></a> 📑 Available Scripts
+
+In the project directory, you can run:
+
+### <a name="server-for-development"></a> Server for development
+
+Runs the app in the development mode this server compiles and hot-reloads with linter locally:
+
+```bash
+npm start
+```
+
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+
+> You can use on mobile if uses the same network to this replace `localhost` by your ip.
+
+### <a name="build"></a> Build
+
+Builds the app for production to the `build` folder.
+
+```bash
+npm run build
+```
+
+### <a name="check-linter"></a> Check linter
+
+```bash
+npm run lint
+```
+
+## <a name="deploy-locally"></a> ⬆️ Deploy locally other environment
+
+To deploy locally you need run [build](#️build) before proceed.
+
+1. To create the s3 bucket use this, you need terragrunt [terragrunt][terragrunt-download] installed:
+
+```bash
+terragrunt apply --terragrunt-working-dir iac --terragrunt-source .
+```
+
+> To learn more [Terragrunt](https://terragrunt.gruntwork.io/docs/).
+
+## <a name="destroy-locally"></a> 🔥 Destroy environment locally
+
+1. Now destroy s3 bucket with terraform
+
+```bash
+terragrunt destroy --terragrunt-working-dir iac
+```
+
+## <a name="learn-more"></a> Learn More
+
+* [Pug.js](https://pugjs.org/api/getting-started.html)
+* [Terraform](https://learn.hashicorp.com/terraform?utm_source=terraform_io&utm_content=terraform_io_hero)
+* [AWS](https://docs.aws.amazon.com/s3/?id=docs_gateway)
+
+## <a name="dev-team"></a> 💪 Dev Team
+
+This project exists thanks to all these people.
+
+[![Marcos](https://avatars3.githubusercontent.com/u/12430365?s=100)](https://github.com/codermarcos)
+
+[terraform-download]: https://learn.hashicorp.com/tutorials/terraform/install-cli
+[terragrunt-download]: https://terragrunt.gruntwork.io/docs/getting-started/install/
+[node-download]: https://nodejs.org/download/release/v14.14.0/
+[terraform-version]: https://img.shields.io/badge/terraform-latest-blue
+[terragrunt-version]: https://img.shields.io/badge/terragrunt-latest-blue
+[node-version]: https://img.shields.io/badge/node-latest-blue

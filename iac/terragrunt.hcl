@@ -4,10 +4,14 @@ locals {
   project  = local.package.name
   region   = "us-east-1"
 
+
   env_name = get_env("ENV_NAME", "local")
 
   aws_state_bucket_region = get_env("AWS_STATE_BUCKET_REGION", "us-east-1")
-  aws_state_bucket        = "${get_aws_account_id()}-${local.aws_state_bucket_region}-${local.project}-terragrunt"
+
+  id = substr(md5(format("%s%s%s", local.project, local.env_name, local.aws_state_bucket_region)), 0, 10)
+
+  aws_state_bucket        = "${local.id}-${local.aws_state_bucket_region}-${local.project}-terragrunt"
 }
 
 generate "providers" {
@@ -61,6 +65,6 @@ terraform {
 inputs = {
   region = local.region
   env_name = local.env_name
-  dist_dir = abspath(local.dist_dir) 
-  project = "${get_aws_account_id()}-${local.aws_state_bucket_region}-${local.env_name}-${local.project}"
+  dist_dir = abspath(local.dist_dir)
+  project = "${local.id}-${local.aws_state_bucket_region}-${local.env_name}-${local.project}"
 }

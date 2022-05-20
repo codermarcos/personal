@@ -62,6 +62,10 @@ resource "aws_s3_bucket_object" "frontend_object" {
   content_type  = local.mime_type_mappings[concat(regexall("\\.([^\\.]*)$", each.value), [[""]])[0][0]]
 }
 
+output "static_files_folder" {
+  value = var.dist_dir
+}
+
 output "website_domain" {
   value = aws_s3_bucket.frontend_bucket.website_domain
 }

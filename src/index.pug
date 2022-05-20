@@ -97,14 +97,14 @@ html(lang='pt-BR')
 										li
 											b #{role}
 
-											span De 
+											span De
 												- const month = start.getMonth();
 												- const year = start.getFullYear();
 												time(datetime=`${year}-${month + 1}`)
 													| #{args.monthsOfYear[month + 1]} #{year}
 											span
 												if end
-													| Até 
+													| Até
 													- const month = end.getMonth();
 													- const year = end.getFullYear();
 													time(datetime=`${year}-${month + 1}`)
@@ -139,13 +139,13 @@ html(lang='pt-BR')
 								| #{academic.summary.school}
 							- const { start, end } = academic;
 							- const { year, month } = start;
-							span De 
+							span De
 								time(datetime=`${year}-${month}`)
 									| #{args.monthsOfYear[month - 1]} #{year}
 
 							span
 								if typeof end !== 'string'
-									| Até 
+									| Até
 									- const { year, month } = end;
 									time(datetime=`${year}-${month}`)
 										| #{args.monthsOfYear[month - 1]} #{year}
@@ -172,14 +172,15 @@ html(lang='pt-BR')
 				ol(class=styles.articlesList, aria-label=args.articlesAndPosts)
 					each articleOrPost in args.articlesAndPostsList
 						li(class=styles.articlesItem)
-							article
-								figure 
-									img(src=articleOrPost.image)
-									figcaption #{articleOrPost.title}
-								- const { month, year } = articleOrPost.date;
-								i #{articleOrPost.platform}
-								time(datetime=`${year}-${month}`)
-									| #{args.monthsOfYear[month - 1]} #{year}
+							a(href='#')
+								article
+									figure
+										img(src=articleOrPost.image)
+										figcaption #{articleOrPost.title}
+									- const { month, year } = articleOrPost.date;
+									i #{articleOrPost.platform}
+									time(datetime=`${year}-${month}`)
+										| #{args.monthsOfYear[month - 1]} #{year}
 
 			include ./json-ld.pug
 		| !{htmlWebpackPlugin.tags.bodyTags}

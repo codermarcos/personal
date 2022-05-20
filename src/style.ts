@@ -415,8 +415,8 @@ const experiencesItem = style({
     '& span > time': {
       color: color('#000').toHexString(),
       fontSize: em(size(6)),
-    }
-  }
+    },
+  },
 });
 
 const academicList = style({
@@ -447,7 +447,10 @@ const articlesList = style({
 const articlesItem = style({
   width: em(size(65)),
   $nest: {
-    '& > article': {      
+    '& > a': {
+      textDecoration: 'none',
+    },
+    '& > a > article': {
       justifyContent: 'space-between',
       flexWrap: 'wrap',
       display: 'flex',
@@ -456,10 +459,10 @@ const articlesItem = style({
       height: em(size(65)),
       width: percent(100),
     },
-    '& figcaption': {      
+    '& figcaption': {
       fontSize: em(size(4)),
     },
-    '& i, time': {      
+    '& i, time': {
       fontSize: em(size(3)),
     },
   },

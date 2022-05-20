@@ -84,7 +84,6 @@ const mixins = {
     details: string,
     year: number,
     month: number,
-    to: string,
     tags: Tags
   ) {
     return {
@@ -97,7 +96,6 @@ const mixins = {
         year,
         month,
       },
-      to,
       tags,
     };
   },

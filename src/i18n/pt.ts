@@ -1,19 +1,33 @@
 import { Informations, Mixins } from ".";
 
 enum TagType {
+  empresa = 'empresa',
   categoria = 'categoria',
   tecnologia = 'tecnologia',
 }
 
 enum TagCategory {
   estudo = 'estudo',
+  freela = 'freela',
   trabalho = 'trabalho',
+  comunidade = 'comunidade',
+}
+
+enum TagCompany {
+  groove = 'Groove Tech',
+  dasa = 'Dasa',
+  santander = 'Santander',
+  serasa = 'Serasa',
+  locaweb = 'Locaweb',
+  softclass = 'Softclass',
 }
 
 enum TagTecnology {
   python = 'python',
   html = 'html',
+  pug = 'pug',
   css = 'css',
+  svg = 'svg',
   js = 'js',
   vue = 'vue',
   react = 'react',
@@ -101,10 +115,10 @@ export const pt = (inf: Informations, mixin: Mixins) => {
       experiences: 'Experiências profissionais',
       photoAlt: 'Foto de Marcos Gonçalves (codermarcos)',
       aboutMe: 'Sou um engenheiro de software que está em uma capacitação infinita buscando melhorar minha competências com tecnologia para Frontend em projetos pessoais, acadêmicos, e open source que provocam-me alterações químicas chamadas de Paixão. Na minha jornada prezo muito o compartilhamento de tudo que aprendi, desenvolvendo minha sensibilidade, evoluindo não apenas tecnicamente mas também como pessoa.',
-      contacts: {     
+      contacts: {
         ...mixin.contact(
-          'linkedin', 
-          `linkedin.com/in/${inf.args.nick}`, 
+          'linkedin',
+          `linkedin.com/in/${inf.args.nick}`,
           `https://www.linkedin.com/in/${inf.args.nick}`,
           'h-adr',
         ),
@@ -125,13 +139,13 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           inf.args.contacts_raw.phone,
           `https://api.whatsapp.com/send?phone=${inf.args.contacts_raw.phone.replace(/[^0-9]+/g, '')}`,
           'h-adr',
-        ), 
+        ),
         ...mixin.contact(
           'maps',
           `${inf.args.address.city} - ${inf.args.address.state}`,
           inf.args.address.url,
           'h-adr',
-        ), 
+        ),
       },
       skillZone: 'Áreas de conhecimento',
       skillZoneDescription: 'Minhas zonas de conhecimento divididas em um gráfico de pizza 4/8 para Frontend, 1/8 para Devops e 3/8 para Backend',
@@ -145,7 +159,7 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           platform: 'LinkedIn',
           date: {
             year: 2020,
-            month: 7, 
+            month: 7,
           },
         },
         {
@@ -155,35 +169,145 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           platform: 'Medium',
           date: {
             year: 2018,
-            month: 5, 
+            month: 5,
           },
         },
         {
-          image: '/images/articles/medium-2018-5.jpeg',
+          image: '/images/articles/medium-2018-5.jpg',
           link: 'https://medium.com/frontend-quest/arrow-functions-vs-functions-9048ec12b5c6',
           title: 'Arrow functions vs Functions',
           platform: 'Medium',
           date: {
             year: 2018,
-            month: 5, 
+            month: 5,
           },
         },
       ],
       projectsList: [
-        // "personal", 23 Jul 2021
-        // "simple-mask-money", 4 Sep 2017
-        // "resume", 4 May 2021
-        // "dev-dark-theme", 2 Dec 2017
-        // "rust-simple-parser", 26 Oct 2020
-        // "csx", 30 Nov 2020
-        // "vue-cli", 6 Oct 2020
+        mixin.projectItem(
+          'upper-site',
+          'Um template tema escuro para ferramenta de criação de blog hexo',
+          '',
+          2021,
+          7,
+          {
+            [TagType.categoria]: [
+              TagCategory.estudo,
+            ],
+            [TagType.tecnologia]: [
+              TagTecnology.typescript,
+              TagTecnology.svg,
+              TagTecnology.pug,
+              TagTecnology.css,
+            ],
+          },
+        ),
+        mixin.projectItem(
+          'personal',
+          'Projeto desta pagina usando pug typescript css-in-js',
+          '',
+          2021,
+          7,
+          {
+            [TagType.categoria]: [
+              TagCategory.estudo,
+            ],
+            [TagType.tecnologia]: [
+              TagTecnology.typescript,
+              TagTecnology.svg,
+              TagTecnology.pug,
+              TagTecnology.css,
+            ],
+          },
+        ),
+        mixin.projectItem(
+          'simple-mask-money',
+          'Um template tema escuro para ferramenta de criação de blog hexo',
+          '',
+          2017,
+          9,
+          {
+            [TagType.categoria]: [
+              TagCategory.estudo,
+            ],
+            [TagType.tecnologia]: [
+              TagTecnology.rust,
+              TagTecnology.html,
+            ],
+          },
+        ),
+        mixin.projectItem(
+          'jornada-engenheiro-de-software',
+          'Uma trilha de estudos para pessoas que eu mentorava',
+          '',
+          2021,
+          10,
+          {
+            [TagType.categoria]: [
+              TagCategory.trabalho,
+            ],
+            [TagType.tecnologia]: [
+              TagTecnology.javascript,
+              TagTecnology.node,
+              TagTecnology.html,
+              TagTecnology.css,
+            ],
+          },
+        ),
+        mixin.projectItem(
+          'dev-dark-theme',
+          'Um template tema escuro para ferramenta de criação de blog hexo',
+          '',
+          2017,
+          12,
+          {
+            [TagType.categoria]: [
+              TagCategory.estudo,
+            ],
+            [TagType.tecnologia]: [
+              TagTecnology.rust,
+              TagTecnology.html,
+            ],
+          },
+        ),
+        mixin.projectItem(
+          'rust-simple-parser',
+          'Um parser de HTML que fiz para estudar rust',
+          '',
+          2020,
+          10,
+          {
+            [TagType.categoria]: [
+              TagCategory.estudo,
+            ],
+            [TagType.tecnologia]: [
+              TagTecnology.rust,
+              TagTecnology.html,
+            ],
+          },
+        ),
+        mixin.projectItem(
+          'vue-cli',
+          'Uma pequena contribuição para a documentção sobre como usar o vue-js com http-server',
+          '',
+          2020,
+          10,
+          {
+            [TagType.categoria]: [
+              TagCategory.comunidade,
+            ],
+            [TagType.tecnologia]: [
+              TagTecnology.node,
+              TagTecnology.vue,
+            ],
+          },
+        ),
         mixin.projectItem(
           'react-typescript',
-          'Um projeto com React para usar como template de setup para outros projetos.',
+          'Um projeto com React para usar como template de setup para outros projetos',
           '',
           2020,
           9,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -202,7 +326,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2020,
           7,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -221,7 +344,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2020,
           7,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -237,7 +359,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2020,
           1,
-          'freela',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -254,10 +375,9 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2019,
           10,
-          'freela',
           {
             [TagType.categoria]: [
-              TagCategory.estudo,
+              TagCategory.freela,
             ],
             [TagType.tecnologia]: [
               TagTecnology.node,
@@ -271,7 +391,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2019,
           5,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -288,7 +407,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2019,
           4,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -304,7 +422,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2019,
           4,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -322,7 +439,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2019,
           2,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -338,7 +454,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2019,
           2,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -354,7 +469,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2019,
           1,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -370,7 +484,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2018,
           12,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -386,7 +499,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2018,
           9,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -403,10 +515,9 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2018,
           9,
-          'pessoal',
           {
             [TagType.categoria]: [
-              TagCategory.estudo,
+              TagCategory.comunidade,
             ],
             [TagType.tecnologia]: [
               TagTecnology.typescript,
@@ -420,7 +531,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2018,
           6,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -436,10 +546,9 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2018,
           5,
-          'pessoal',
           {
             [TagType.categoria]: [
-              TagCategory.estudo,
+              TagCategory.comunidade,
             ],
             [TagType.tecnologia]: [
               TagTecnology.javascript,
@@ -452,7 +561,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2018,
           5,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -468,7 +576,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2018,
           4,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -485,7 +592,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2018,
           4,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -502,10 +608,9 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2018,
           1,
-          'pessoal',
           {
             [TagType.categoria]: [
-              TagCategory.estudo,
+              TagCategory.comunidade,
             ],
             [TagType.tecnologia]: [
               TagTecnology.node,
@@ -513,15 +618,15 @@ export const pt = (inf: Informations, mixin: Mixins) => {
               TagTecnology.css,
             ],
           },
-        ),       
+        ),
         mixin.projectItem(
           'CLOUDClass',
           'Um sistema verificava o status de sincronização do dados do ERP com o servidor de Backup.',
           '',
           2017,
           2,
-          'Softclass',
           {
+            [TagType.empresa]: [TagCompany.softclass],
             [TagType.categoria]: [
               TagCategory.trabalho,
             ],
@@ -536,8 +641,8 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2017,
           10,
-          'Softclass',
           {
+            [TagType.empresa]: [TagCompany.softclass],
             [TagType.categoria]: [
               TagCategory.trabalho,
             ],
@@ -552,8 +657,8 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2017,
           8,
-          'Softclass',
           {
+            [TagType.empresa]: [TagCompany.softclass],
             [TagType.categoria]: [
               TagCategory.trabalho,
             ],
@@ -570,7 +675,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2017,
           8,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -586,7 +690,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2017,
           7,
-          'pessoal',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -605,8 +708,8 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2017,
           4,
-          'Softclass',
           {
+            [TagType.empresa]: [TagCompany.softclass],
             [TagType.categoria]: [
               TagCategory.trabalho,
             ],
@@ -621,8 +724,8 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2017,
           4,
-          'Softclass',
           {
+            [TagType.empresa]: [TagCompany.softclass],
             [TagType.categoria]: [
               TagCategory.trabalho,
             ],
@@ -637,8 +740,8 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2017,
           4,
-          'Softclass',
           {
+            [TagType.empresa]: [TagCompany.softclass],
             [TagType.categoria]: [
               TagCategory.trabalho,
             ],
@@ -653,8 +756,8 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2017,
           2,
-          'Softclass',
           {
+            [TagType.empresa]: [TagCompany.softclass],
             [TagType.categoria]: [
               TagCategory.trabalho,
             ],
@@ -670,7 +773,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2016,
           10,
-          'faculdade',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -687,7 +789,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2016,
           10,
-          'faculdade',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -703,7 +804,6 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2015,
           10,
-          'curso',
           {
             [TagType.categoria]: [
               TagCategory.estudo,
@@ -809,7 +909,7 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           '',
           2016,
           12,
-        ),        
+        ),
         mixin.academicItem(
           'All net',
           'Inglês',

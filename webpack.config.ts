@@ -13,6 +13,21 @@ import util from './src/util';
 
 type Language = keyof typeof i18n;
 
+class HelloWorldPlugin {
+  apply(compiler: webpack.Compiler ) {
+    compiler.hooks.emit.tap(
+      'InjectCSSWebpackPlugin',
+      (compilation) => {
+        let chunks = Array.from(compilation.chunks);
+
+        console.log(chunks);
+      }
+    );
+  }
+};
+
+module.exports = HelloWorldPlugin;
+
 const getByLanguage = (l?: Language): webpack.Configuration => {
   const isRoot = typeof l === 'undefined';
   const language: Language = l || 'pt';
@@ -50,21 +65,22 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
       new WatchExternalFilesPlugin({
         files: ['./src/**/*.ts',]
       }),
-      new CleanWebpackPlugin(),           
+      new CleanWebpackPlugin(),
       new CopyPlugin({
         patterns: [
-          { 
-            from: './src/static', 
+          {
+            from: './src/static',
             to: './',
           },
         ],
       }),
-      new ESLintPlugin({}), 
+      new ESLintPlugin({}),
       new PugLintPlugin({
         context: 'src',
         files: '**/*.pug',
         config: Object.assign({emitError: true}, require('./.pug-lintrc.json'))
       }),
+      new HelloWorldPlugin(),
       new HtmlWebpackPlugin({
         inject: false,
         minify: true,
@@ -73,7 +89,7 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
           const file = './src/i18n';
           delete require.cache[require.resolve(file)];
           const { meta } = require(file).default[language];
-          
+
           return {
             ...meta,
             charset: { charset: 'utf-8' },
@@ -84,16 +100,16 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
           get styles() {
             const file = './src/style';
             delete require.cache[require.resolve(file)];
-            
+
             return require(file).default;
           },
           get args() {
             const file = './src/i18n';
             delete require.cache[require.resolve(file)];
             delete require.cache[require.resolve(file + '/' + language)];
-            
+
             const { args } = require(file).default[language];
-            
+
             return args;
           },
           util,
