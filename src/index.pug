@@ -3,6 +3,11 @@ html(lang='pt-BR')
 	head
 		title #{args.title}
 		link(rel='manifest', href='/manifest.json')
+		link(rel='icon', type='image/x-icon', href='/favicon/favicon.ico')
+		link(rel='shortcut icon', type='image/x-icon', href='/favicon/favicon.ico')
+		link(rel='apple-touch-icon', sizes='180x180', href='/favicon/apple-touch-icon.png')
+		link(rel='icon', type='image/png', sizes='32x32', href='/favicon/favicon-32x32.png')
+		link(rel='icon', type='image/png', sizes='16x16', href='/favicon/favicon-16x16.png')
 		| !{htmlWebpackPlugin.tags.headTags}
 	body(class=`${styles.body} h-resume`)
 		header(class=styles.headerWrapper)
@@ -182,14 +187,14 @@ html(lang='pt-BR')
 				ol(class=styles.articlesList, aria-label=args.articlesAndPosts)
 					each articleOrPost in args.articlesAndPostsList
 						li(class=styles.articlesItem)
-							a(href='#')
+							a(href=articleOrPost.link)
 								article
 									figure
 										picture
 											- const [image, ext, type] = articleOrPost.image
 											source(type='image/webp', srcset=`${image}.webp`)
 											source(type=type, srcset=`${image}.${ext}`)
-											img(src=`${image}.${ext}`, width='229', style=`width:${styles.articleImageSize}`, alt=articleOrPost.title)
+											img(src=`${image}.${ext}`, width='229', height='229', style=`width:${styles.articleImageSize}`, alt=articleOrPost.title)
 										figcaption #{articleOrPost.title}
 									- const { month, year } = articleOrPost.date;
 									i #{articleOrPost.platform}

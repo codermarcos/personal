@@ -66,7 +66,7 @@ enum TagTecnology {
 }
 
 export const pt = (inf: Informations, mixin: Mixins): any => {
-  const description = 'Sou Marcos Gonçalves ou codermarcos um software engenieer especialista em frontend, aqui tem pouco da minhas experiencias profissionais.';
+  const description = 'Marcos Gonçalves ou codermarcos é um engenheiro software especialista em frontend com forte experiência em devops e backend, aqui tem pouco de sua carreira.';
   const monthsOfYear = [
     'Jan',
     'Fev',
@@ -114,7 +114,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
       academic: 'Formação academica',
       experiences: 'Experiências profissionais',
       photoAlt: 'Foto de Marcos Gonçalves (codermarcos)',
-      aboutMe: 'Sou um engenheiro de software que está em uma capacitação infinita buscando melhorar minha competências com tecnologia para Frontend em projetos pessoais, acadêmicos, e open source que provocam-me alterações químicas chamadas de Paixão. Na minha jornada prezo muito o compartilhamento de tudo que aprendi, desenvolvendo minha sensibilidade, evoluindo não apenas tecnicamente mas também como pessoa.',
+      aboutMe: 'Sou um engenheiro de software que está em uma jornada ✨ sem fim em busca de conhecimento. Durante essa jornada prezo muito 🔀 A troca de experiencias, ❤️ Atuar com oque amo (tecnologia), 🔗 A criação de conexões que iram além do trabalho. Já atuei com produto digital, startup, banco, consultoria e agencias sempre mantive a mão na massa. Nessas atuações minhas principais atribuições estavam relacionadas a desenvolvimento frontend porem nos meus últimos anos de carreira tive a oportunidade de evoluir em backend e devops.',
       contacts: {
         ...mixin.contact(
           'linkedin',

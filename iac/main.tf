@@ -18,6 +18,7 @@ locals {
     json = "application/json",
     js   = "text/javascript",
     xml  = "application/xml",
+    ico  = "image/x-icon",
     txt  = "text/plain",
     html = "text/html",
     webp = "image/webp",
@@ -52,7 +53,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   default_cache_behavior {
     cache_policy_id  = data.aws_cloudfront_cache_policy.cache.id
-    
+
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = var.project
