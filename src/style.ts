@@ -1,6 +1,6 @@
 import { style, cssRule, media } from 'typestyle';
 import { NestedCSSProperties } from 'typestyle/lib/types';
-import { border, color, em, padding, percent, px, rgba, translateY } from 'csx';
+import { border, calc, color, em, margin, padding, percent, px, rgba, translateY, viewWidth } from 'csx';
 
 const size = (n: number): number => parseFloat(Number(parseInt(n.toFixed(0)) * 0.22).toFixed(2));
 
@@ -21,7 +21,9 @@ cssRule('ul, ol', {
   listStyle: 'none',
 });
 
-const mobile = (properties: NestedCSSProperties) => media({ maxWidth: px(480) }, properties);
+const mobileSM = (properties: NestedCSSProperties) => media({ maxWidth: px(320) }, properties);
+
+const mobileMD = (properties: NestedCSSProperties) => media({ maxWidth: px(480) }, properties);
 
 // const tablet = (properties: NestedCSSProperties) => media({ minWidth: px(480), maxWidth: px(780) }, properties);
 
@@ -35,10 +37,25 @@ const headerWrapper = style({
   gridColumn: '2 / 3',
   gridTemplateColumns: `${headerPhotoSizeDesktop} auto`,
   gridTemplateRows: `${em(size(24))} ${em(size(24))} ${em(size(5))} auto`,
-}, mobile({
+}, mobileMD({
   columnGap: em(size(2)),
   gridTemplateColumns: `${headerPhotoSizeMobile} auto`,
   gridTemplateRows: `${em(size(5))} ${em(size(5))} ${em(size(2))} ${em(size(28))} ${em(size(2))} auto`,
+}), mobileSM({
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column',
+  $nest: {
+    '& > figure': {
+      margin: margin(em(size(10)), 0, 0),
+    },
+    '& > hgroup': {
+      margin: margin(em(size(5)), 0),
+    },
+    '& > nav': {
+      margin: margin(0, 0, em(size(10))),
+    },
+  },
 }));
 
 const headerPhoto = style({
@@ -48,14 +65,21 @@ const headerPhoto = style({
   $nest: {
     '& img': {
       width: percent(100),
+      height: percent(100),
     },
   },
-}, mobile({
+}, mobileMD({
   gridRow: '1 / 5',
   alignSelf: 'center',
   $nest: {
     '& figure': {
       marginBottom: px(10),
+    },
+  },
+}), mobileSM({
+  $nest: {
+    '& img': {
+      width: calc(`${viewWidth(100)} - ${em(size(24))}`),
     },
   },
 }));
@@ -64,7 +88,7 @@ const headerAbout = style({
   textAlign: 'justify',
   gridColumn: '1 / 3',
   gridRow: '4 / 4',
-}, mobile({
+}, mobileMD({
   gridRow: '6 / 6',
 }));
 
@@ -77,7 +101,7 @@ const headerNameAndJob = style({
       fontSize: em(size(6)),
     },
   }
-}, mobile({
+}, mobileMD({
   alignSelf: 'center',
   gridRow: '1 / 3',
   $nest: {
@@ -109,7 +133,7 @@ const headerContacts = style({
       marginRight: em(size(2)),
     },
   },
-}, mobile({
+}, mobileMD({
   gridTemplateColumns: '1fr',
   $nest: {
     '& li': {
@@ -129,7 +153,7 @@ const headerContactsWrapper = style({
       alignItems: 'center',
     },
   },
-}, mobile({
+}, mobileMD({
   gridRow: '4 / 4',
   gridColumn: '2 / 3',
   fontSize: em(size(3)),
@@ -150,8 +174,8 @@ const halfContent: NestedCSSProperties = {
   gridTemplateRows: `${em(size(4))} auto ${em(size(4))}`,
 };
 
-const contentExperiences = style(halfContent, mobile({ gridColumn: '1 / 3' }));
-const contentAcademic = style(halfContent, mobile({ gridColumn: '1 / 3' }));
+const contentExperiences = style(halfContent, mobileMD({ gridColumn: '1 / 3' }));
+const contentAcademic = style(halfContent, mobileMD({ gridColumn: '1 / 3' }));
 
 const contentWrapper = style({
   display: 'grid',
@@ -164,7 +188,7 @@ const contentWrapper = style({
       gridColumn: '1 / 3',
     }
   }
-}, mobile({
+}, mobileMD({
   gridTemplateColumns: '1fr',
 }));
 
@@ -191,7 +215,7 @@ const skillsZone = style({
       left: 0,
     },
   },
-}, mobile({
+}, mobileMD({
   $nest: {
     '&::before': {
       transform: translateY(0),
@@ -214,7 +238,7 @@ const contentSkills = style({
       width: contentSkillsGraphSize,
     },
   },
-}, mobile({
+}, mobileMD({
   paddingTop: em(size(10)),
 }));
 
@@ -343,7 +367,7 @@ const projectItem = style({
       marginRight: em(1.2),
     },
   },
-}, mobile({
+}, mobileMD({
   $nest: {
     '& summary': {
       display: 'flex',
@@ -457,7 +481,11 @@ const articlesList = style({
   display: 'flex',
   overflowX: 'auto',
   justifyContent: 'space-between',
-});
+}, mobileMD({
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  marginBottom: em(size(12)),
+}));
 
 const articleImageSize = em(size(65));
 
@@ -491,7 +519,7 @@ const styles = {
     display: 'grid',
     gridTemplateRows: '25px min-content 20px auto',
     gridTemplateColumns: 'auto minmax(680px, 720px) auto',
-  }, mobile({
+  }, mobileMD({
     gridTemplateColumns: 'auto 360px auto',
   })),
   headerWrapper,

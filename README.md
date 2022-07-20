@@ -10,10 +10,8 @@ This is my **personal website**.
 > - [📑 Available Scripts](#️available-scripts)
 >   - [Server for development](#️server-for-development)
 >   - [Build](#️build)
->   - [Get coverage](#get-coverage)
 >   - [Check linter](#check-linter)
->   - [Unit tests](#unit-tests)
-> - [⬆️ Deploy locally other environment](#deploy-locally)
+> - [⬆️ Deploy environment locally](#deploy-locally)
 > - [🔥 Destroy environment locally](#destroy-locally)
 > - [📚 Learn more](#learn-more)
 > - [💪 Dev Team](#dev-team)
@@ -23,7 +21,6 @@ This is my **personal website**.
 | Dependencies                                 | Description               |
 | -------------------------------------------- | ------------------------- |
 | [![node-version]][node-download]             | Javascript Runtime        |
-| [![aws-version]][aws-download]               | AWS CLI               |
 | [![terraform-version]][terraform-download]   | Terraform                 |
 | [![terragrunt-version]][terragrunt-download] | Wrapper for Terraform     |
 
@@ -65,7 +62,7 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 ### <a name="build"></a> Build
 
-Builds the app for production to the `build` folder.
+Builds the app for production to the `dist` folder.
 
 ```bash
 npm run build
@@ -77,7 +74,7 @@ npm run build
 npm run lint
 ```
 
-## <a name="deploy-locally"></a> ⬆️ Deploy locally other environment
+## <a name="deploy-locally"></a> ⬆️ Deploy environment locally
 
 To deploy locally you need run [build](#️build) before proceed.
 

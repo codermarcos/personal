@@ -1,18 +1,17 @@
-- const style = require(`./styles`).rules
 doctype html
 html(lang='pt-BR')
 	head
 		title #{args.title}
 		link(rel='manifest', href='/manifest.json')
 		| !{htmlWebpackPlugin.tags.headTags}
-	body(class=`${styles.body} h-resume ${style.grid}`)
+	body(class=`${styles.body} h-resume`)
 		header(class=styles.headerWrapper)
 			figure(class=styles.headerPhoto)
 				picture
 					source(type='image/webp', srcset=`${args.photo.file}.webp`)
 					source(type=args.photo.type, srcset=`${args.photo.file}.${args.photo.ext}`)
 
-					img(src=`${args.photo.file}.${args.photo.ext}`, width='169', style=`width: ${styles.headerPhotoSizeDesktop};height:${styles.headerPhotoSizeDesktop}`, alt=args.photoAlt)
+					img(src=`${args.photo.file}.${args.photo.ext}`, width='169', height='169', alt=args.photoAlt)
 			hgroup(class=styles.headerNameAndJob)
 				h1(class='p-name') #{args.name}
 				h2(class='p-skill') #{args.job}

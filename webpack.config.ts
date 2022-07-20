@@ -1,5 +1,3 @@
-/// <reference path="./src/typings.d.ts"/>
-
 import * as webpack from 'webpack';
 
 import { resolve } from 'path';
@@ -9,9 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WatchExternalFilesPlugin from 'webpack-watch-files-plugin';
 import ImageminWebpWebpackPlugin from 'imagemin-webp-webpack-plugin';
 
-import { JSCSSPlugin } from 'jscss/plugin';
-
-// const PugLintPlugin = require('puglint-webpack-plugin');
+const PugLintPlugin = require('puglint-webpack-plugin');
 
 import i18n from './src/i18n';
 import util from './src/util';
@@ -21,13 +17,15 @@ type Language = keyof typeof i18n;
 const getByLanguage = (l?: Language): webpack.Configuration => {
   const isRoot = typeof l === 'undefined';
   const language: Language = l || 'pt';
+
+  const distPath = isRoot ? resolve(__dirname, 'dist') : resolve(__dirname, 'dist', language);
   return {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-    entry: ['./src/index.ts', './src/styles.ts'],
+    entry: './src/index.ts',
     output: {
       clean: true,
+      path: distPath,
       filename: 'main.js',
-      path: isRoot ? resolve(__dirname, 'dist') : resolve(__dirname, 'dist', language),
     },
     devServer: {
       host: '0.0.0.0',
@@ -59,18 +57,17 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
         patterns: [
           {
             from: resolve(__dirname, './src', 'static'),
-            to: resolve(__dirname, './'),
+            to: resolve(__dirname, distPath),
           },
         ],
       }),
       new ImageminWebpWebpackPlugin(),
       new ESLintPlugin({}),
-      // new PugLintPlugin({
-      //   context: 'src',
-      //   files: '**/*.pug',
-      //   config: Object.assign({emitError: true}, require('./.pug-lintrc.json'))
-      // }),
-      new JSCSSPlugin({ file: './src/styles.ts' }),
+      new PugLintPlugin({
+        context: 'src',
+        files: '**/*.pug',
+        config: Object.assign({emitError: true}, require('./.pug-lintrc.json'))
+      }),
       new HtmlWebpackPlugin({
         inject: false,
         minify: true,
