@@ -1,7 +1,7 @@
-import styles from './style';
+
 
 function categories() {
-  const data = document.querySelectorAll(`.${styles.projectCategories} dd`);
+  const data = document.querySelectorAll(`dd.p-skill`);
 
   data
     .forEach(
@@ -23,7 +23,7 @@ function categories() {
 }
 
 function readMore() {
-  const data = document.querySelectorAll<HTMLButtonElement>(`.${styles.seeMoreButton}`);
+  const data = document.querySelectorAll<HTMLButtonElement>('button[data-list-items]');
 
   data
     .forEach(
@@ -57,7 +57,7 @@ function readMore() {
 }
 
 function openItem() {
-  const data = document.querySelectorAll<HTMLLIElement>(`.${styles.experiencesItem}`);
+  const data = document.querySelectorAll<HTMLLIElement>('.p-experience');
 
   data
     .forEach(
@@ -81,10 +81,10 @@ function openItem() {
     );
 }
 
-function onload() {
+function onloaded() {
   categories();
   readMore();
   openItem();
 }
 
-window.addEventListener('load', onload);
+window.addEventListener('load', onloaded);
