@@ -25,16 +25,19 @@ const mobile = (properties: NestedCSSProperties) => media({ maxWidth: px(480) },
 
 // const tablet = (properties: NestedCSSProperties) => media({ minWidth: px(480), maxWidth: px(780) }, properties);
 
+const headerPhotoSizeDesktop = em(size(48));
+const headerPhotoSizeMobile = em(size(24));
+
 const headerWrapper = style({
   display: 'grid',
   columnGap: em(size(8)),
   gridRow: '2 / 3',
   gridColumn: '2 / 3',
-  gridTemplateColumns: `${em(size(48))} auto`,
+  gridTemplateColumns: `${headerPhotoSizeDesktop} auto`,
   gridTemplateRows: `${em(size(24))} ${em(size(24))} ${em(size(5))} auto`,
 }, mobile({
   columnGap: em(size(2)),
-  gridTemplateColumns: `${em(size(24))} auto`,
+  gridTemplateColumns: `${headerPhotoSizeMobile} auto`,
   gridTemplateRows: `${em(size(5))} ${em(size(5))} ${em(size(2))} ${em(size(28))} ${em(size(2))} auto`,
 }));
 
@@ -87,6 +90,8 @@ const headerNameAndJob = style({
   }
 }));
 
+const headerContactsSize = em(size(6));
+
 const headerContacts = style({
   display: 'grid',
   gridGap: em(size(4)),
@@ -99,7 +104,7 @@ const headerContacts = style({
       textDecoration: 'underline',
     },
     '& svg': {
-      width: em(size(6)),
+      width: headerContactsSize,
       fill: color('#000000').toHexString(),
       marginRight: em(size(2)),
     },
@@ -185,11 +190,6 @@ const skillsZone = style({
       top: percent(50),
       left: 0,
     },
-    '& svg': {
-      fill: '#000000',
-      width: em(size(7)),
-      marginRight: em(size(5)),
-    },
   },
 }, mobile({
   $nest: {
@@ -201,6 +201,8 @@ const skillsZone = style({
   },
 }));
 
+const contentSkillsGraphSize = em(size(85));
+
 const contentSkills = style({
   justifyContent: 'flex-end',
   marginBottom: em(size(8)),
@@ -209,7 +211,7 @@ const contentSkills = style({
   display: 'flex',
   $nest: {
     '& > svg': {
-      width: em(size(85)),
+      width: contentSkillsGraphSize,
     },
   },
 }, mobile({
@@ -358,7 +360,7 @@ const projectItem = style({
   },
 }));
 
-const experienceImage = em(size(21));
+const experienceImageSize = em(size(21));
 
 const experiencesList = style({
   ...fullList,
@@ -387,21 +389,21 @@ const experiencesItem = style({
       flexWrap: 'wrap',
       display: 'flex',
     },
-    '& > details[open] ~ img': {
+    '& > details[open] ~ picture': {
       alignSelf: 'flex-start',
     },
     '& summary': {
       display: 'inline-flex',
       flexDirection: 'column',
-      minHeight: experienceImage,
+      minHeight: experienceImageSize,
     },
     '& summary > time': {
       fontSize: em(size(4)),
     },
-    '& > img': {
-      maxHeight: experienceImage,
+    '& > picture': {
+      maxHeight: experienceImageSize,
       marginRight: em(size(3)),
-      width: experienceImage,
+      width: experienceImageSize,
       order: -1,
     },
     '& b': {
@@ -428,6 +430,18 @@ const academicItem = style({
   ...listItem,
   opacity: 1,
   transition: '.4s ease-in transform, .5s ease-out opacity',
+  $nest: {
+    ...listItem.$nest,
+    '& > span': {
+      color: rgba(0, 0, 0, 0.5).toString(),
+      alignSelf: 'flex-end',
+      fontSize: em(size(3)),
+    },
+    '& span > time': {
+      color: color('#000').toHexString(),
+      fontSize: em(size(6)),
+    },
+  }
 });
 
 const seeMoreButton = style({
@@ -441,11 +455,15 @@ const contentArticles = style();
 
 const articlesList = style({
   display: 'flex',
+  overflowX: 'auto',
   justifyContent: 'space-between',
 });
 
+const articleImageSize = em(size(65));
+
 const articlesItem = style({
-  width: em(size(65)),
+  width: articleImageSize,
+  marginRight: em(size(4)),
   $nest: {
     '& > a': {
       textDecoration: 'none',
@@ -456,7 +474,7 @@ const articlesItem = style({
       display: 'flex',
     },
     '& img': {
-      height: em(size(65)),
+      height: articleImageSize,
       width: percent(100),
     },
     '& figcaption': {
@@ -501,6 +519,12 @@ const styles = {
   contentArticles,
   articlesList,
   articlesItem,
+  experienceImageSize,
+  headerContactsSize,
+  headerPhotoSizeDesktop,
+  headerPhotoSizeMobile,
+  contentSkillsGraphSize,
+  articleImageSize,
 };
 
 export default styles;

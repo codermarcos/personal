@@ -49,7 +49,11 @@ const informations = {
   },
   args: {
     title: 'Marcos Gonçalves | codermarcos',
-    photo: '/images/profile.jpg',
+    photo: {
+      file: '/images/profile',
+      type: 'image/jpeg',
+      ext: 'jpg',
+    },
     name: 'Marcos Gonçalves De Carvalho',
     site: 'http://codermarcos.zone/',
     job: 'Engenheiro de software',
@@ -71,6 +75,8 @@ const informations = {
 export interface Tags {
   [key: string]: Array<string>
 }
+
+type TupleDate = [year: number, month: number];
 
 const mixins = {
   contact(name: string, text: string, href: string, microformats: string) {
@@ -101,9 +107,9 @@ const mixins = {
   },
   jobItem(
     company: string,
-    roles: Map<string, [Date, Date] | [Date]>,
+    roles: Map<string, [TupleDate, TupleDate] | [TupleDate]>,
     details: string,
-    logo?: string,
+    logo?: [string, string, string],
   ) {
     return {
       company,

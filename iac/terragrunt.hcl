@@ -2,6 +2,7 @@ locals {
   package  = jsondecode(file("../package.json"))
   dist_dir = local.package.bundle
   project  = local.package.name
+  domain   = "mr.codermarcos.zone"
   region   = "us-east-1"
 
 
@@ -64,6 +65,7 @@ terraform {
 
 inputs = {
   region = local.region
+  domain = local.domain
   env_name = local.env_name
   dist_dir = abspath(local.dist_dir)
   project = "${local.id}-${local.aws_state_bucket_region}-${local.env_name}-${local.project}"

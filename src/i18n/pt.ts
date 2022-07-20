@@ -65,7 +65,7 @@ enum TagTecnology {
   gcp = 'gcp',
 }
 
-export const pt = (inf: Informations, mixin: Mixins) => {
+export const pt = (inf: Informations, mixin: Mixins): any => {
   const description = 'Sou Marcos Gonçalves ou codermarcos um software engenieer especialista em frontend, aqui tem pouco da minhas experiencias profissionais.';
   const monthsOfYear = [
     'Jan',
@@ -153,7 +153,7 @@ export const pt = (inf: Informations, mixin: Mixins) => {
       monthsOfYear,
       articlesAndPostsList: [
         {
-          image: '/images/articles/linkedin-2020-7.png',
+          image: ['/images/articles/linkedin-2020-7-outras-realidades-nos-navegadores', 'png', 'image/png'],
           link: 'https://www.linkedin.com/pulse/outras-realidades-nos-navegadores-marcos-gon%C3%A7alves-de-carvalho-junior/',
           title: 'Outras realidades nos Navegadores',
           platform: 'LinkedIn',
@@ -163,7 +163,7 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           },
         },
         {
-          image: '/images/articles/medium-2018-5.png',
+          image: ['/images/articles/medium-2018-5-o-que-e-proxy-no-javascript', 'png', 'image/png'],
           link: 'https://medium.com/frontend-quest/o-que-%C3%A9-proxy-no-javascript-b95be3d78109',
           title: 'O que é Proxy no Javascript?',
           platform: 'Medium',
@@ -173,7 +173,7 @@ export const pt = (inf: Informations, mixin: Mixins) => {
           },
         },
         {
-          image: '/images/articles/medium-2018-5.jpg',
+          image: ['/images/articles/medium-2018-5-arrow-functions-vs-functions', 'jpg', 'image/png'],
           link: 'https://medium.com/frontend-quest/arrow-functions-vs-functions-9048ec12b5c6',
           title: 'Arrow functions vs Functions',
           platform: 'Medium',
@@ -819,60 +819,60 @@ export const pt = (inf: Informations, mixin: Mixins) => {
         mixin.jobItem(
           'Groove Tech',
           new Map([
-            ['Lider de Capitulo', [new Date(2021, 1)]]
+            ['Lider de Capitulo', [[2021, 2]]]
           ]),
           '',
-          '/images/companies/groove.gif',
+          ['/images/companies/groove', 'gif', 'image/gif'],
         ),
         mixin.jobItem(
           'Dasa',
           new Map([
-            ['Lider Técnico', [new Date(2020, 4), new Date(2021, 1)]],
-            ['Engenheiro de software', [new Date(2019, 11), new Date(2020, 4)]],
-            ['Desenvolvedor frontend', [new Date(2019, 3), new Date(2019, 11)]],
+            ['Lider Técnico', [[2020, 5], [2021, 2]]],
+            ['Engenheiro de software', [[2019, 11], [2020, 5]]],
+            ['Desenvolvedor frontend', [[2019, 2], [2019, 11]]],
           ]),
           '',
-          '/images/companies/dasa.gif',
+          ['/images/companies/dasa', 'gif', 'image/gif'],
         ),
         mixin.jobItem(
           'Everis',
           new Map([
-            ['Desenvolvedor frontend', [new Date(2018, 10), new Date(2019, 3)]],
+            ['Desenvolvedor frontend', [[2018, 10], [2019, 3]]],
           ]),
           '',
-          '/images/companies/everis.gif',
+          ['/images/companies/everis', 'gif', 'image/gif'],
         ),
         mixin.jobItem(
           'Santander',
           new Map([
-            ['Desenvolvedor frontend', [new Date(2018, 10), new Date(2019, 3)]],
+            ['Desenvolvedor frontend', [[2018, 10], [2019, 3]]],
           ]),
           '',
-          '/images/companies/santander.gif',
+          ['/images/companies/santander', 'gif', 'image/gif'],
         ),
         mixin.jobItem(
           'Serasa',
           new Map([
-            ['Desenvolvedor frontend', [new Date(2018, 5), new Date(2018, 10)]],
+            ['Desenvolvedor frontend', [[2018, 5], [2018, 10]]],
           ]),
           '',
-          '/images/companies/serasa.gif',
+          ['/images/companies/serasa', 'gif', 'image/gif'],
         ),
         mixin.jobItem(
           'Locaweb',
           new Map([
-            ['Desenvolvedor frontend', [new Date(2017, 10), new Date(2018, 3)]],
+            ['Desenvolvedor frontend', [[2017, 10], [2018, 5]]],
           ]),
           '',
-          '/images/companies/locaweb.gif',
+          ['/images/companies/locaweb', 'gif', 'image/gif'],
         ),
         mixin.jobItem(
           'Softclass',
           new Map([
-            ['Desenvolvedor frontend', [new Date(2016, 7), new Date(2018, 3)]],
+            ['Desenvolvedor frontend', [[2016, 7], [2017, 10]]],
           ]),
           '',
-          '/images/companies/softclass.gif',
+          ['/images/companies/softclass', 'gif', 'image/gif'],
         ),
       ],
       academicList: [

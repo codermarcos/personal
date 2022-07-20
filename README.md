@@ -94,7 +94,7 @@ terragrunt apply --terragrunt-working-dir iac --terragrunt-source .
 1. Now destroy s3 bucket with terraform
 
 ```bash
-terragrunt destroy --terragrunt-working-dir iac
+terragrunt destroy --terragrunt-working-dir iac --terragrunt-source .
 ```
 
 ## <a name="learn-more"></a> Learn More

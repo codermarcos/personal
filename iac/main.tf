@@ -1,11 +1,16 @@
 variable "project" {
   description = "Name of the project"
-  type = string
+  type        = string
+}
+
+variable "domain" {
+  description = "Site domain"
+  type        = string
 }
 
 variable "dist_dir" {
   description = "Dist folder to deploy"
-  type = string
+  type        = string
 }
 
 locals {
@@ -15,6 +20,7 @@ locals {
     xml  = "application/xml",
     txt  = "text/plain",
     html = "text/html",
+    webp = "image/webp",
     jpg  = "image/jpeg",
     gif  = "image/gif",
     png  = "image/png",
@@ -22,10 +28,70 @@ locals {
   }
 }
 
+data "aws_acm_certificate" "issued" {
+  domain   = "mr.codermarcos.zone"
+  statuses = ["ISSUED"]
+}
+
+data "aws_cloudfront_cache_policy" "cache" {
+  name = "CachingOptimized"
+}
+
+resource "aws_cloudfront_distribution" "s3_distribution" {
+  origin {
+    domain_name = aws_s3_bucket.frontend_bucket.bucket_domain_name
+    origin_id   = var.project
+  }
+
+  aliases = [var.domain]
+
+  enabled             = true
+  is_ipv6_enabled     = true
+  comment             = "Frontend app"
+  default_root_object = "index.html"
+
+  default_cache_behavior {
+    cache_policy_id  = data.aws_cloudfront_cache_policy.cache.id
+    
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = var.project
+    compress         = true
+
+    max_ttl     = 31536000
+    default_ttl = 86400
+    min_ttl     = 1
+
+    forwarded_values {
+      query_string = false
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+      locations        = []
+    }
+  }
+
+  viewer_certificate {
+    acm_certificate_arn            = data.aws_acm_certificate.issued.arn
+    minimum_protocol_version       = "TLSv1.2_2021"
+    ssl_support_method             = "sni-only"
+    cloudfront_default_certificate = false
+  }
+}
+
 resource "aws_s3_bucket" "frontend_bucket" {
-  acl    = "public-read"
+  acl           = "public-read"
   force_destroy = true
-  bucket = var.project
+  bucket        = var.project
 
   website {
     index_document = "index.html"
@@ -53,9 +119,9 @@ EOF
 
 resource "aws_s3_bucket_object" "frontend_object" {
   for_each = fileset(var.dist_dir, "**")
-	key      = each.value
-	source   = "${var.dist_dir}/${each.value}"
-	bucket   = aws_s3_bucket.frontend_bucket.bucket
+  key      = each.value
+  source   = "${var.dist_dir}/${each.value}"
+  bucket   = aws_s3_bucket.frontend_bucket.bucket
 
   force_destroy = true
   etag          = filemd5("${var.dist_dir}/${each.value}")
@@ -64,6 +130,10 @@ resource "aws_s3_bucket_object" "frontend_object" {
 
 output "static_files_folder" {
   value = var.dist_dir
+}
+
+output "cloudfront_endpoint" {
+  value = aws_cloudfront_distribution.s3_distribution.domain_name
 }
 
 output "website_domain" {

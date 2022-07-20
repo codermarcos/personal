@@ -8,7 +8,7 @@ function categories() {
       dd => {
         const dt = dd.previousElementSibling;
         if (!dt) return;
-        
+
         const evEnter = 'mouseenter';
         const evLeave = 'mouseleave';
         const activated = () => dt.classList.add('active');
@@ -17,7 +17,7 @@ function categories() {
         dt.addEventListener(evEnter, activated);
         dt.addEventListener(evLeave, deactivate);
         dd.addEventListener(evEnter, activated);
-        dd.addEventListener(evLeave, deactivate);     
+        dd.addEventListener(evLeave, deactivate);
       },
     );
 }
@@ -29,7 +29,7 @@ function readMore() {
     .forEach(
       button => {
         const { listItems, goTo } = button.dataset;
-        
+
         if (listItems === undefined || goTo === undefined) return;
 
         const items = button.parentElement?.querySelector<HTMLUListElement>(listItems);
@@ -41,16 +41,17 @@ function readMore() {
               e.preventDefault();
 
               items?.scrollTo({ top: items.scrollTop + e.deltaY, behavior: 'smooth' });
-            }
+            },
+            { passive: true },
           );
 
         button
           .addEventListener(
-            'click', 
-            () => {    
+            'click',
+            () => {
               items?.scrollTo({ top: items.scrollTop + parseInt(goTo), behavior: 'smooth' });
             },
-          );  
+          );
       },
     );
 }
@@ -64,8 +65,8 @@ function openItem() {
         const summary = li.querySelector('details > summary');
         if (summary === null) return;
 
-        const handler = (e: Event) => {      
-          e.stopImmediatePropagation();   
+        const handler = (e: Event) => {
+          e.stopImmediatePropagation();
           e.preventDefault();
           const active = summary.parentElement?.hasAttribute('open');
           summary.parentElement?.toggleAttribute('open', !active);
@@ -73,9 +74,9 @@ function openItem() {
         };
 
         li
-          .addEventListener('click', handler);  
+          .addEventListener('click', handler);
         summary
-          .addEventListener('click', handler);  
+          .addEventListener('click', handler);
       },
     );
 }

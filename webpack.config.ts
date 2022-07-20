@@ -1,46 +1,36 @@
-import { resolve } from 'path';
-import * as webpack from 'webpack';
-import CopyPlugin from 'copy-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+/// <reference path="./src/typings.d.ts"/>
 
-const ESLintPlugin = require('eslint-webpack-plugin');
-const PugLintPlugin = require('puglint-webpack-plugin');
-const WatchExternalFilesPlugin = require('webpack-watch-files-plugin').default;
+import * as webpack from 'webpack';
+
+import { resolve } from 'path';
+import CopyPlugin from 'copy-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import WatchExternalFilesPlugin from 'webpack-watch-files-plugin';
+import ImageminWebpWebpackPlugin from 'imagemin-webp-webpack-plugin';
+
+import { JSCSSPlugin } from 'jscss/plugin';
+
+// const PugLintPlugin = require('puglint-webpack-plugin');
 
 import i18n from './src/i18n';
 import util from './src/util';
 
 type Language = keyof typeof i18n;
 
-class HelloWorldPlugin {
-  apply(compiler: webpack.Compiler ) {
-    compiler.hooks.emit.tap(
-      'InjectCSSWebpackPlugin',
-      (compilation) => {
-        let chunks = Array.from(compilation.chunks);
-
-        console.log(chunks);
-      }
-    );
-  }
-};
-
-module.exports = HelloWorldPlugin;
-
 const getByLanguage = (l?: Language): webpack.Configuration => {
   const isRoot = typeof l === 'undefined';
   const language: Language = l || 'pt';
   return {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-    entry: './src/index.ts',
+    entry: ['./src/index.ts', './src/styles.ts'],
     output: {
+      clean: true,
       filename: 'main.js',
       path: isRoot ? resolve(__dirname, 'dist') : resolve(__dirname, 'dist', language),
     },
     devServer: {
       host: '0.0.0.0',
-      useLocalIp: true,
     },
     module: {
       rules: [
@@ -65,22 +55,22 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
       new WatchExternalFilesPlugin({
         files: ['./src/**/*.ts',]
       }),
-      new CleanWebpackPlugin(),
       new CopyPlugin({
         patterns: [
           {
-            from: './src/static',
-            to: './',
+            from: resolve(__dirname, './src', 'static'),
+            to: resolve(__dirname, './'),
           },
         ],
       }),
+      new ImageminWebpWebpackPlugin(),
       new ESLintPlugin({}),
-      new PugLintPlugin({
-        context: 'src',
-        files: '**/*.pug',
-        config: Object.assign({emitError: true}, require('./.pug-lintrc.json'))
-      }),
-      new HelloWorldPlugin(),
+      // new PugLintPlugin({
+      //   context: 'src',
+      //   files: '**/*.pug',
+      //   config: Object.assign({emitError: true}, require('./.pug-lintrc.json'))
+      // }),
+      new JSCSSPlugin({ file: './src/styles.ts' }),
       new HtmlWebpackPlugin({
         inject: false,
         minify: true,
