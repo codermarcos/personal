@@ -9,10 +9,10 @@ script(type="application/ld+json").
       "postalCode": "#{args.address.cep}",
       "streetAddress": "#{args.address.street}"
     },
-    "colleague": [],    
+    "colleague": [],
     "disambiguatingDescription": "#{args.aboutMe}",
     "email": "mailto:#{args.contacts_raw.email}",
-    "image": "#{args.photo}",
+    "image": "#{args.photo.file}.#{args.photo.ext}",
     "jobTitle": "#{args.job}",
     "name": "#{args.name}",
     "telephone": "#{args.contacts_raw.phone}",

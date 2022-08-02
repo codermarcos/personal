@@ -16,7 +16,7 @@ const informations = {
     },
     'og:title': {
       property: 'og:title',
-      content: 'Marcos Gonçalves De Carvalho | codermarcos'
+      content: 'Marcos Gonçalves | codermarcos'
     },
     'og:site_name': {
       property: 'og:site_name',
