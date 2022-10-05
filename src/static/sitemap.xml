@@ -5,27 +5,27 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://codermarcos.zone/</loc>
+    <loc>https://mr.codermarcos.zone/</loc>
     <changefreq>monthly</changefreq>
     <lastmod>2022-07-20T05:30:52+00:00</lastmod>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://codermarcos.zone/images/profile.jpg</image:loc>
+      <image:loc>https://mr.codermarcos.zone/images/profile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://codermarcos.zone/images/profile.webp</image:loc>
+      <image:loc>https://mr.codermarcos.zone/images/profile.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://codermarcos.zone/pt</loc>
+    <loc>https://mr.codermarcos.zone/pt</loc>
     <changefreq>monthly</changefreq>
     <lastmod>2022-07-20T05:30:52+00:00</lastmod>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://codermarcos.zone/images/pt/profile.jpg</image:loc>
+      <image:loc>https://mr.codermarcos.zone/images/pt/profile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://codermarcos.zone/images/pt/profile.webp</image:loc>
+      <image:loc>https://mr.codermarcos.zone/images/pt/profile.webp</image:loc>
     </image:image>
   </url>
 </urlset>

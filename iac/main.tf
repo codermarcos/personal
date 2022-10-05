@@ -3,8 +3,13 @@ variable "project" {
   type        = string
 }
 
-variable "domain" {
+variable "root_domain" {
   description = "Site domain"
+  type        = string
+}
+
+variable "sub_domain" {
+  description = "Site sub domain"
   type        = string
 }
 
@@ -30,12 +35,12 @@ locals {
 }
 
 data "aws_acm_certificate" "issued" {
-  domain   = "mr.codermarcos.zone"
+  domain   = "codermarcos.zone"
   statuses = ["ISSUED"]
 }
 
 data "aws_cloudfront_cache_policy" "cache" {
-  name = "CachingOptimized"
+  name = "Managed-CachingOptimized"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -44,10 +49,14 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     origin_id   = var.project
   }
 
-  aliases = [var.domain]
+  aliases = [
+    var.root_domain,
+    var.sub_domain,
+  ]
 
   enabled             = true
   is_ipv6_enabled     = true
+  http_version        = "http2and3"
   comment             = "Frontend app"
   default_root_object = "index.html"
 
@@ -62,14 +71,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     max_ttl     = 31536000
     default_ttl = 86400
     min_ttl     = 1
-
-    forwarded_values {
-      query_string = false
-
-      cookies {
-        forward = "none"
-      }
-    }
 
     viewer_protocol_policy = "redirect-to-https"
   }

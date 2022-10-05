@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "CommonJS",
-    "outDir": "./dist",
+    "outDir": "./distOut",
     "strict": true,
     "noImplicitAny": false,
     "noUnusedLocals": true,

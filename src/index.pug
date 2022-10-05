@@ -200,6 +200,6 @@ html(lang='pt-BR')
 									i #{articleOrPost.platform}
 									time(datetime=`${year}-${month}`)
 										| #{args.monthsOfYear[month - 1]} #{year}
-
-			include ./json-ld.pug
+		script(type='application/ld+json').
+			!{require('./json-ld')(args)}
 		| !{htmlWebpackPlugin.tags.bodyTags}

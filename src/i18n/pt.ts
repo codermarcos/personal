@@ -4,6 +4,7 @@ enum TagType {
   empresa = 'empresa',
   categoria = 'categoria',
   tecnologia = 'tecnologia',
+  nuvem = 'nuvem',
 }
 
 enum TagCategory {
@@ -60,6 +61,9 @@ enum TagTecnology {
   grpc = 'grpc',
   docker = 'docker',
   k8s = 'k8s',
+}
+
+enum TagCloud {
   azure = 'azure',
   aws = 'aws',
   gcp = 'gcp',
@@ -184,6 +188,46 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
         },
       ],
       projectsList: [
+        mixin.projectItem(
+          'empire',
+          'Monorepo que contem boa parte dos frontends da empresa.',
+          '',
+          2021,
+          7,
+          {
+            [TagType.categoria]: [
+              TagCategory.trabalho,
+            ],
+            [TagType.tecnologia]: [
+              TagTecnology.typescript,
+              TagTecnology.next,
+              TagTecnology.css,
+            ],
+            [TagType.nuvem]: [
+              TagCloud.aws,
+            ],
+          },
+        ),
+        mixin.projectItem(
+          'actions',
+          'Monorepo que contem boa parte dos frontends da Loft.',
+          '',
+          2021,
+          7,
+          {
+            [TagType.categoria]: [
+              TagCategory.estudo,
+            ],
+            [TagType.tecnologia]: [
+              TagTecnology.typescript,
+              TagTecnology.next,
+              TagTecnology.css,
+            ],
+            [TagType.nuvem]: [
+              TagCloud.aws,
+            ],
+          },
+        ),
         mixin.projectItem(
           'upper-site',
           'Um template tema escuro para ferramenta de criação de blog hexo',

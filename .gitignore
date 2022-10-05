@@ -23,4 +23,5 @@ terraform.rc
 /node_modules
 
 /dist
+/distOut
 

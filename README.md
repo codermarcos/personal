@@ -81,7 +81,7 @@ To deploy locally you need run [build](#️build) before proceed.
 1. To create the s3 bucket use this, you need terragrunt [terragrunt][terragrunt-download] installed:
 
 ```bash
-terragrunt apply --terragrunt-working-dir iac --terragrunt-source .
+terragrunt apply --terragrunt-working-dir iac --terragrunt-source . -target="aws_acm_certificate.issued"
 ```
 
 > To learn more [Terragrunt](https://terragrunt.gruntwork.io/docs/).

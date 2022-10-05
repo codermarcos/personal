@@ -1,9 +1,10 @@
 locals {
-  package  = jsondecode(file("../package.json"))
-  dist_dir = local.package.bundle
-  project  = local.package.name
-  domain   = "mr.codermarcos.zone"
-  region   = "us-east-1"
+  package     = jsondecode(file("../package.json"))
+  dist_dir    = local.package.bundle
+  project     = local.package.name
+  sub_domain  = "mr.codermarcos.zone"
+  root_domain = "codermarcos.zone"
+  region      = "us-east-1"
 
 
   env_name = get_env("ENV_NAME", "local")
@@ -23,7 +24,7 @@ terraform {
   required_providers {
     aws = {
       source = "hashicorp/aws"
-      version = "~> 3"
+      version = "~> 4.30"
     }
     null = {}
     local = {}
@@ -64,9 +65,10 @@ terraform {
 }
 
 inputs = {
-  region = local.region
-  domain = local.domain
-  env_name = local.env_name
-  dist_dir = abspath(local.dist_dir)
-  project = "${local.id}-${local.aws_state_bucket_region}-${local.env_name}-${local.project}"
+  region      = local.region
+  sub_domain  = local.sub_domain
+  root_domain = local.root_domain
+  env_name    = local.env_name
+  dist_dir    = abspath(local.dist_dir)
+  project     = "${local.id}-${local.aws_state_bucket_region}-${local.env_name}-${local.project}"
 }
