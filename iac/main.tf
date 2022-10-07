@@ -39,8 +39,20 @@ data "aws_acm_certificate" "issued" {
   statuses = ["ISSUED"]
 }
 
-data "aws_cloudfront_cache_policy" "cache" {
+data "aws_cloudfront_cache_policy" "cache_default" {
   name = "Managed-CachingOptimized"
+}
+
+resource "aws_cloudfront_response_headers_policy" "cache_browser" {
+  name = "Browser-Cache"
+
+  custom_headers_config {
+    items {
+      header   = "Cache-Control"
+      override = true
+      value    = "public, max-age=604800"
+    }
+  }
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -61,15 +73,17 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_root_object = "index.html"
 
   default_cache_behavior {
-    cache_policy_id  = data.aws_cloudfront_cache_policy.cache.id
+    cache_policy_id = data.aws_cloudfront_cache_policy.cache_default.id
+
+		response_headers_policy_id = aws_cloudfront_response_headers_policy.cache_browser.id
 
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = var.project
     compress         = true
 
+    default_ttl = 86400 * 15
     max_ttl     = 31536000
-    default_ttl = 86400
     min_ttl     = 1
 
     viewer_protocol_policy = "redirect-to-https"
@@ -81,6 +95,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       locations        = []
     }
   }
+
 
   viewer_certificate {
     acm_certificate_arn            = data.aws_acm_certificate.issued.arn

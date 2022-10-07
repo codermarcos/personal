@@ -1,7 +1,7 @@
 import './style';
 
 function categories() {
-  const data = document.querySelectorAll(`dd.p-skill`);
+  const data = document.querySelectorAll('dd');
 
   data
     .forEach(
@@ -27,23 +27,24 @@ function readMore() {
 
   data
     .forEach(
-      button => {
+      (button, idx) => {
         const { listItems, goTo } = button.dataset;
 
         if (listItems === undefined || goTo === undefined) return;
 
         const items = button.parentElement?.querySelector<HTMLUListElement>(listItems);
 
-        items
-          ?.addEventListener(
-            'wheel',
-            (e) => {
-              e.preventDefault();
+				if (idx % 2 !== 0)
+					items
+						?.addEventListener(
+							'wheel',
+							(e) => {
+								e.preventDefault();
 
-              items?.scrollTo({ top: items.scrollTop + e.deltaY, behavior: 'smooth' });
-            },
-            { passive: true },
-          );
+								items?.scrollTo({ top: items.scrollTop + (e.deltaY  > 0 ? 150 : -200), behavior: 'smooth' });
+							},
+							{ passive: false },
+						);
 
         button
           .addEventListener(

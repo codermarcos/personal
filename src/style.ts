@@ -275,6 +275,7 @@ const borderShare = border({ style: 'solid', color: '#000', width: 1 });
 const projectsList = style({
   ...fullList,
   gridRowStart: 2,
+  maxHeight: em(litsItemHeight * 5),
 });
 
 const paddingTopDown = size(2);
@@ -283,6 +284,7 @@ const paddingSides = size(3);
 const sharedCategory: NestedCSSProperties = {
   paddingBottom: em(paddingTopDown),
   paddingTop: em(paddingTopDown),
+	maxHeight: em(size(10)),
   border: borderShare,
 };
 
@@ -342,9 +344,6 @@ const listItem: NestedCSSProperties = {
       fontSize: em(0.8),
       alignSelf: 'flex-end',
     },
-    '&:not(.open)': {
-      minHeight: em(litsItemHeight),
-    },
     '& p': {
       width: percent(100),
     },
@@ -355,10 +354,23 @@ const projectItem = style({
   ...listItem,
   $nest: {
     ...listItem.$nest,
+    '& summary': {
+      display: 'flex',
+			alignItems: 'center',
+			listStyle: 'none',
+			justifyContent: 'space-between',
+			height: em(size(10)),
+    },
     '& > details': {
       width: percent(100),
     },
-    [`& > time, & > .${projectCategories}`]: {
+    '& > details[open] b::before': {
+			content: '" ▼"',
+    },
+    '& > details:not([open]) b::before': {
+			content: '" ►"',
+    },
+    [`& > details > time, & > .${projectCategories}`]: {
       fontSize: em(size(4)),
       alignSelf: 'flex-end',
     },
@@ -413,6 +425,9 @@ const experiencesItem = style({
       flexWrap: 'wrap',
       display: 'flex',
     },
+    '&:not(.open)': {
+      minHeight: em(litsItemHeight),
+    },
     '& > details[open] ~ picture': {
       alignSelf: 'flex-start',
     },
@@ -461,6 +476,9 @@ const academicItem = style({
       alignSelf: 'flex-end',
       fontSize: em(size(3)),
     },
+    '&:not(.open)': {
+      minHeight: em(litsItemHeight),
+    },
     '& span > time': {
       color: color('#000').toHexString(),
       fontSize: em(size(6)),
@@ -508,7 +526,7 @@ const articlesItem = style({
     '& figcaption': {
       fontSize: em(size(4)),
     },
-    '& i, time': {
+    '& i, & time': {
       fontSize: em(size(3)),
     },
   },
