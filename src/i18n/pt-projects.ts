@@ -252,7 +252,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'upper-site',
-		'Um template tema escuro para ferramenta de criação de blog hexo.',
+		'Um site conceitual que criei para uma empresa da qual participei.',
 		'',
 		2021,
 		7,
@@ -271,6 +271,7 @@ const projects = (mixin: Mixins): Array<any> => [
 			],
 			[TagType.servico]: [
 				TagCloudTool.cloudfront,
+				TagCloudTool.acm,
 				TagCloudTool.s3,
 			],
 		},
@@ -288,6 +289,7 @@ const projects = (mixin: Mixins): Array<any> => [
 			[TagType.tecnologia]: [
 				TagTecnology.typescript,
 				TagTecnology.terraform,
+				TagTecnology.webpack,
 				TagTecnology.svg,
 				TagTecnology.pug,
 				TagTecnology.css,
@@ -297,6 +299,7 @@ const projects = (mixin: Mixins): Array<any> => [
 			],
 			[TagType.servico]: [
 				TagCloudTool.cloudfront,
+				TagCloudTool.acm,
 				TagCloudTool.s3,
 			],
 		},
@@ -415,6 +418,33 @@ const projects = (mixin: Mixins): Array<any> => [
 			],
 			[TagType.tecnologia]: [
 				TagTecnology.rust,
+			],
+		},
+	),
+	mixin.projectItem(
+		'stratus-spa',
+		'Frontend de uma aplicação que tinha como objetivo encontrar oportunidades de economia na nuvem.',
+		'',
+		2020,
+		2,
+		{
+			[TagType.categoria]: [
+				TagCategory.estudo,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.typescript,
+				TagTecnology.react,
+				TagTecnology.grpc,
+				TagTecnology.protobuf,
+				TagTecnology.redux,
+				TagTecnology.redux_sagas,
+			],
+			[TagType.nuvem]: [
+				TagCloud.gcp,
+			],
+			[TagType.servico]: [
+				TagCloudTool.cloudstorage,
+				TagCloudTool.cloudcdn,
 			],
 		},
 	),
@@ -686,6 +716,10 @@ const projects = (mixin: Mixins): Array<any> => [
 			[TagType.tecnologia]: [
 				TagTecnology.typescript,
 				TagTecnology.angular,
+				TagTecnology.protractor,
+				TagTecnology.jasmine,
+				TagTecnology.karma,
+				TagTecnology.sass,
 				TagTecnology.jenkins,
 				TagTecnology.docker,
 				TagTecnology.k8s,
@@ -860,7 +894,7 @@ const projects = (mixin: Mixins): Array<any> => [
 				TagCategory.estudo,
 			],
 			[TagType.tecnologia]: [
-				TagTecnology.rust,
+				TagTecnology.node,
 				TagTecnology.html,
 			],
 		},
@@ -877,7 +911,7 @@ const projects = (mixin: Mixins): Array<any> => [
 				TagCategory.trabalho,
 			],
 			[TagType.tecnologia]: [
-				TagTecnology.delphi,
+				TagTecnology.c_sharp,
 			],
 		},
 	),
@@ -894,6 +928,10 @@ const projects = (mixin: Mixins): Array<any> => [
 			],
 			[TagType.tecnologia]: [
 				TagTecnology.angular,
+				TagTecnology.protractor,
+				TagTecnology.jasmine,
+				TagTecnology.karma,
+				TagTecnology.sass,
 			],
 		},
 	),
@@ -949,6 +987,41 @@ const projects = (mixin: Mixins): Array<any> => [
 		},
 	),
 	mixin.projectItem(
+		'dispute-click-frontend',
+		'Frontend de aplicação web para disputa de cupons de desconto.',
+		'',
+		2017,
+		8,
+		{
+			[TagType.empresa]: [TagCompany.softclass],
+			[TagType.categoria]: [
+				TagCategory.trabalho,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.angular,
+				TagTecnology.sass,
+			],
+		},
+	),
+	mixin.projectItem(
+		'dispute-click-backend',
+		'Backend de aplicação web para disputa de cupons de desconto.',
+		'',
+		2017,
+		4,
+		{
+			[TagType.empresa]: [TagCompany.softclass],
+			[TagType.categoria]: [
+				TagCategory.trabalho,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.node,
+				TagTecnology.loopback,
+				TagTecnology.postgress,
+			],
+		},
+	),
+	mixin.projectItem(
 		'ERPStatus Frontend',
 		'Aplicação web que exibia o status de sincronização dos dados do ERP com o servidor de Backup.',
 		'',
@@ -961,6 +1034,8 @@ const projects = (mixin: Mixins): Array<any> => [
 			],
 			[TagType.tecnologia]: [
 				TagTecnology.angularjs,
+				TagTecnology.sass,
+				TagTecnology.grunt,
 			],
 		},
 	),

@@ -45,7 +45,19 @@ const informations = {
     'og:image': {
       property: 'og:image',
       content: 'https://avatars.githubusercontent.com/u/12430365?s=460&u=12d4a3464b5a736061dbd0ccca8f57f6d08902d7&v=4'
-    }
+    },
+		author: {
+			name: 'author',
+			content: 'codermarcos, coder.marcos@gmail.com'
+		},
+		keywords: {
+			name: 'keywords',
+			content: 'codermarcos, Marcos Gonçalves De Carvalho, Frontend, Backend, Devops, Programador, Desenvolvedor, Engenheiro'
+		},
+		robots: {
+			name: 'robots',
+			content: 'index, follow',
+		},
   },
   args: {
     title: 'Marcos Gonçalves | codermarcos',

@@ -30,6 +30,8 @@ export enum TagCompany {
 }
 
 export enum TagCloudTool {
+	cloudstorage = 'cloud storage',
+	cloudcdn = 'cloud cdn',
 	cloudfront = 'cloudfront',
 	s3 = 's3',
 	aks = 'aks',
@@ -37,6 +39,7 @@ export enum TagCloudTool {
 	api_gateway = 'api gateway',
 	rds = 'rds',
 	dynamodb = 'dynamodb',
+	acm = 'acm',
 	vpc = 'vpc',
 	iam = 'iam',
 }
@@ -85,7 +88,13 @@ export enum TagTecnology {
   postgress = 'postgress',
   entity = 'entity',
   websockets = 'websockets',
+  webpack = 'webpack',
+  karma = 'karma',
+  jasmine = 'jasmine',
+  protractor = 'protractor',
+  grunt = 'grunt',
   graphql = 'graphql',
+  protobuf = 'protobuf',
   jenkins = 'jenkins',
   nuxt = 'nuxt',
   nest = 'nest',
