@@ -64,7 +64,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			job: 'Engenheiro de software',
 			contacts_raw,
 			address,
-			langauge: 'pt-BR',
+			language: 'pt-BR',
 			seeRecent: 'ver recentes',
 			seePrevious: 'ver anteriores',
 			articlesAndPosts: 'Artigos e posts',
@@ -144,9 +144,17 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			projectsList: projects(mixin),
 			jobList: [
 				mixin.jobItem(
+				'Arena',
+					new Map([
+						['Engenheiro de software', [[2023, 3]]]
+					]),
+					'',
+					['/images/companies/loft', 'gif', 'image/gif'],
+				),
+				mixin.jobItem(
 					'Loft',
 					new Map([
-						['Engenheiro de software', [[2022, 4]]]
+						['Engenheiro de software', [[2022, 4], [2023, 3]]]
 					]),
 					'',
 					['/images/companies/loft', 'gif', 'image/gif'],

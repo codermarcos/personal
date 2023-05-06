@@ -1,5 +1,3 @@
-import './style';
-
 function categories() {
 	const data = document.querySelectorAll('dd');
 

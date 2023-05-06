@@ -1,6 +1,6 @@
 import * as webpack from 'webpack';
 
-import { join, resolve } from 'path';
+import { resolve } from 'path';
 import CopyPlugin from 'copy-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -11,7 +11,8 @@ const PugLintPlugin = require('puglint-webpack-plugin');
 
 import i18n from './src/i18n';
 import util from './src/util';
-import ExtractCss from './extract-css';
+
+import pkg from './package.json';
 
 type Language = keyof typeof i18n;
 
@@ -19,15 +20,17 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
   const isRoot = typeof l === 'undefined';
   const language: Language = l || 'pt';
 
-  const distPath = 'dist';
+  const distPath = pkg.bundle;
   const outDir = isRoot ? resolve(__dirname, distPath) : resolve(__dirname, distPath, language);
   return {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-    entry: './src/index.ts',
+    entry: {
+			main: './src/index.ts',
+			style: './src/style.ts',
+		},
     output: {
-      clean: true,
       path: outDir,
-      filename: 'main.js',
+      filename: '[name].js',
     },
     devServer: {
       host: '0.0.0.0',
@@ -104,7 +107,6 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
           util,
         },
       }),
-      new ExtractCss(resolve(join(distPath, 'index.html'))),
     ],
   };
 };

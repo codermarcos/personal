@@ -5,7 +5,9 @@
   "bundle": "./dist",
   "scripts": {
     "lint": "pug-lint \"./src/index.pug\"",
+    "prebuild": "rimraf ./dist",
     "build": "cross-env NODE_ENV=production webpack",
+    "postbuild": "ts-node ./extract-css.ts",
     "start": "cross-env NODE_ENV=development webpack serve",
     "watch": "nodemon -e ts --watch webpack.config.ts --ignore src/ --exec \"npm run start\""
   },
@@ -29,11 +31,12 @@
     "html-webpack-plugin": "^5.5.0",
     "imagemin-webp-webpack-plugin": "^3.3.6",
     "nodemon": "^2.0.7",
-    "pug": "^3.0.2",
+    "pug": "^2.0.2",
     "pug-lint": "^2.6.0",
     "pug-loader": "^2.4.0",
     "puglint-webpack-plugin": "^1.0.3",
     "puppeteer": "^18.0.5",
+    "rimraf": "^5.0.0",
     "ts-loader": "^9.3.1",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4",

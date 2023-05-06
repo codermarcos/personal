@@ -64,7 +64,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 			nick: 'codermarcos',
 			contacts_raw,
 			address,
-			langauge: 'en-US',
+			language: 'en-US',
 			seeRecent: 'see recents',
 			seePrevious: 'see previous',
 			articlesAndPosts: 'Articles and posts',
@@ -144,9 +144,17 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 			projectsList: projects(mixin),
 			jobList: [
 				mixin.jobItem(
+				'Arena',
+					new Map([
+						['Software engnieer', [[2023, 3]]]
+					]),
+					'',
+					['/images/companies/arena', 'gif', 'image/gif'],
+				),
+				mixin.jobItem(
 					'Loft',
 					new Map([
-						['Software engnieer', [[2022, 4]]]
+						['Software engnieer', [[2022, 4], [2023, 3]]]
 					]),
 					'',
 					['/images/companies/loft', 'gif', 'image/gif'],

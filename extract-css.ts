@@ -2,42 +2,40 @@ import { writeFileSync } from 'fs';
 
 import puppeteer from 'puppeteer';
 
-class ExtractCss {
-	private path: string;
+import { resolve } from 'path';
 
-	constructor(path: string) {
-		this.path = path;
-	}
+import pkg from './package.json';
 
-  apply(compiler) {
-		if (process.env.NODE_ENV === 'development') return;
+async function main(lang = 'pt') {
+	console.log(`START css extraction to ${lang}!`);
 
-    compiler.hooks.done.tapPromise(
-      'Extract css plugin',
-      async () => {
-        const browser = await puppeteer.launch({
-          headless: 'chrome',
-          args: [
-            '--no-first-run',
-            '--disable-extensions',
-            '--disable-default-apps',
-            '--no-default-browser-check',
-          ],
-        });
+	const langPath = `${lang === 'pt' ? '' : lang + '/'}index.html`;
 
-        const page = await browser.newPage();
+	const path = resolve(pkg.bundle, langPath);
 
-        await page.goto(this.path);
+	const browser = await puppeteer.launch({
+		headless: 'chrome',
+		args: [
+			'--no-first-run',
+			'--disable-extensions',
+			'--disable-default-apps',
+			'--no-default-browser-check',
+		],
+	});
 
-        await page.waitForSelector('html')
-        const value = await page.content();
+	const page = await browser.newPage();
 
-        writeFileSync(this.path, value);
+	await page.goto(path);
 
-        await browser.close();
-      }
-    );
-  }
+	await page.waitForSelector('html')
+
+	const value = await page.content();
+
+	await browser.close();
+
+	writeFileSync(path, value.replace('<script defer="defer" src="style.js"></script>', ''));
+
+	console.log(`END css extraction to ${lang}!`);
 }
 
-export default ExtractCss;
+Promise.all([main(), main('en')]);

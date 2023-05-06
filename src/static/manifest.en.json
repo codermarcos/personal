@@ -1,0 +1,23 @@
+{
+  "author": "codermarcos",
+  "short_name": "codermarcos",
+  "name": "Marcos Gonçalves De Carvalho | codermarcos",
+  "start_url": "/?source=pwa",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#3367D6",
+  "description": "Marcos Gonçalves or codermarcos is a software engineer specialized in frontend development with strong experience in DevOps and backend. Here is a glimpse of his career."
+}

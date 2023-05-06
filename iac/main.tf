@@ -87,6 +87,11 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     min_ttl     = 1
 
     viewer_protocol_policy = "redirect-to-https"
+
+		function_association {
+			event_type = "viewer-request"
+			function_arn = "arn:aws:cloudfront::688263480485:function/RedirectToIndex"
+		}
   }
 
   restrictions {
