@@ -4,6 +4,26 @@ import { border, calc, color, em, margin, padding, percent, px, rgba, translateY
 
 const size = (n: number): number => parseFloat(Number(parseInt(n.toFixed(0)) * 0.22).toFixed(2));
 
+const scrollStyle = () => ({
+	'&::-webkit-scrollbar': {
+		width: em(size(2)),
+		height: em(size(2)),
+		borderRadius: borderRadius,
+	},
+
+	'&::-webkit-scrollbar-track': {
+		boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
+		borderRadius: borderRadius,
+	},
+
+	'&::-webkit-scrollbar-thumb': {
+		backgroundColor: 'darkgrey',
+		outline: '1px solid slategrey',
+		borderRadius: borderRadius,
+	},
+})
+
+
 cssRule('*, *::after, *::before', {
   boxSizing: 'border-box',
   fontSize: percent(100),
@@ -17,6 +37,10 @@ cssRule('html, body', {
   width: '100%',
 });
 
+cssRule('body', {
+	$nest: { ...scrollStyle() },
+})
+
 cssRule('ul, ol', {
   listStyle: 'none',
 });
@@ -29,6 +53,8 @@ const mobileMD = (properties: NestedCSSProperties) => media({ maxWidth: px(480) 
 
 const headerPhotoSizeDesktop = em(size(48));
 const headerPhotoSizeMobile = em(size(24));
+
+const borderRadius = em(size(2));
 
 const headerWrapper = style({
   display: 'grid',
@@ -256,10 +282,11 @@ const fullList: NestedCSSProperties = {
   maxHeight: em(size(125)),
   flexDirection: 'column',
   width: percent(100),
-  overflow: 'hidden',
+  overflow: 'auto',
   cursor: 'pointer',
   display: 'flex',
   $nest: {
+		...scrollStyle(),
     '&::before': {
       content: 'attr(aria-label)',
       fontSize: em(size(6)),
@@ -288,12 +315,13 @@ const sharedCategory: NestedCSSProperties = {
   border: borderShare,
 };
 
-const borderRadius = em(size(2));
-
 const projectCategories = style({
   display: 'flex',
   marginTop: em(0.8),
+	overflow: 'auto',
+	paddingBottom: em(size(2)),
   $nest: {
+		...scrollStyle(),
     '& dt': {
       ...sharedCategory,
       maxWidth: 0,
@@ -312,6 +340,7 @@ const projectCategories = style({
         '&.active': {
           maxWidth: percent(100),
           paddingRight: em(paddingSides),
+					overflow: 'initial',
         },
       },
     },

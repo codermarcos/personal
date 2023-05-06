@@ -10,6 +10,8 @@ class ExtractCss {
 	}
 
   apply(compiler) {
+		if (process.env.NODE_ENV === 'development') return;
+
     compiler.hooks.done.tapPromise(
       'Extract css plugin',
       async () => {

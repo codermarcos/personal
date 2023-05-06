@@ -2,7 +2,7 @@
   "disallowAttributeConcatenation": true,
   "requireSpaceAfterCodeOperator": true,
   "disallowDuplicateAttributes": true,
-  "validateAttributeQuoteMarks": true,
+  "validateAttributeQuoteMarks": "'",
   "requireLowerCaseAttributes": true,
   "validateTemplateString": true,
   "validateAttributeSeparator": {

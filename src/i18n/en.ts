@@ -1,41 +1,40 @@
 import { Informations, Mixins } from '.';
-import projects from './pt-projects';
+import projects from './en-projects';
 
-
-export const pt = (inf: Informations, mixin: Mixins): any => {
-	const description = 'Marcos Gonçalves ou codermarcos é um engenheiro software especialista em frontend com forte experiência em devops e backend, aqui tem pouco de sua carreira.';
+export const en = (inf: Informations, mixin: Mixins): any => {
+	const description = 'Marcos Gonçalves or codermarcos is a software engineer specialized in frontend with strong experience in devops and backend. Here is a brief overview of his career.';
 	const monthsOfYear = [
 		'Jan',
-		'Fev',
+		'Feb',
 		'Mar',
-		'Abr',
-		'Mai',
+		'Apr',
+		'May',
 		'Jun',
 		'Jul',
-		'Ago',
-		'Set',
-		'Out',
+		'Aug',
+		'Sep',
+		'Oct',
 		'Nov',
-		'Dez',
+		'Dec',
 	];
 
 	const durations = {
-		days: 'dias',
-		years: 'anos',
-		months: 'meses',
-	}
+		days: 'days',
+		years: 'years',
+		months: 'months',
+	};
 
 	const	contacts_raw = {
-		email: 'coder.marcos@gmail.com',
-		phone: '55 11 9 7135-3293',
+		email: 'codermarcos.au@gmail.com',
+		phone: '61 0405 332 133',
 	};
 
 	const address = {
-		url: 'https://goo.gl/maps/ywxZKJTAh6d33wSY8',
-		cep: '09406330',
-		street: 'Rua Iraja',
-		city: 'Ribeirão pires',
-		state: 'SP',
+		url: 'https://goo.gl/maps/wSyQ7535MxF5MASx5',
+		cep: '2038',
+		street: '17 Parramatta',
+		city: 'Sydney',
+		state: 'NSW',
 	};
 
 	return {
@@ -47,7 +46,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			},
 			'og:locale': {
 				property: 'og:locale',
-				content: 'pt_BR'
+				content: 'en_US'
 			},
 			'og:description': {
 				property: 'og:description',
@@ -55,24 +54,25 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			},
 			keywords: {
 				name: 'keywords',
-				content: 'codermarcos, Marcos Gonçalves De Carvalho, Frontend, Backend, Devops, Programador, Desenvolvedor, Engenheiro'
+				content: 'codermarcos, Marcos Gonçalves De Carvalho, Frontend, Backend, Devops, Programmer, Developer, Engnieer'
 			},
 		},
 		args: {
 			...inf.args,
 			...durations,
-			job: 'Engenheiro de software',
+			job: 'Software engnieer',
+			nick: 'codermarcos',
 			contacts_raw,
 			address,
-			langauge: 'pt-BR',
-			seeRecent: 'ver recentes',
-			seePrevious: 'ver anteriores',
-			articlesAndPosts: 'Artigos e posts',
-			projects: 'Projetos',
-			academic: 'Formação academica',
-			experiences: 'Experiências profissionais',
-			photoAlt: 'Foto de Marcos Gonçalves (codermarcos)',
-			aboutMe: 'Sou um engenheiro de software que está em uma jornada ✨ sem fim em busca de conhecimento. Durante essa jornada prezo muito 🔀 A troca de experiencias, ❤️ Atuar com oque amo (tecnologia), 🔗 A criação de conexões que iram além do trabalho. Já atuei com produto digital, startup, banco, consultoria e agencias sempre mantive a mão na massa. Nessas atuações minhas principais atribuições estavam relacionadas a desenvolvimento frontend porem nos meus últimos anos de carreira tive a oportunidade de evoluir em backend e devops.',
+			langauge: 'en-US',
+			seeRecent: 'see recents',
+			seePrevious: 'see previous',
+			articlesAndPosts: 'Articles and posts',
+			projects: 'Projects',
+			academic: 'Education',
+			experiences: 'Experiences',
+			photoAlt: 'Photo Marcos Gonçalves (codermarcos)',
+			aboutMe: 'I am a software engineer who is on an ✨ endless journey in search of knowledge. During this journey, I value greatly 🔀 The exchange of experiences ❤️ Working with what I love (technology) 🔗 Creating connections that go beyond work. I have worked with digital products, startups, banks, consulting firms, and agencies, and have always kept my hands dirty. In these roles, my main responsibilities were mostly focused on frontend development, but I also have good experience with backend and DevOps',
 			contacts: {
 				...mixin.contact(
 					'linkedin',
@@ -93,9 +93,9 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 					'h-adr',
 				),
 				...mixin.contact(
-					'whatsapp',
+					'phone',
 					contacts_raw.phone,
-					`https://api.whatsapp.com/send?phone=${contacts_raw.phone.replace(/[^0-9]+/g, '')}`,
+					`telto:${contacts_raw.phone.replace(/[^0-9]+/g, '')}`,
 					'h-adr',
 				),
 				...mixin.contact(
@@ -105,9 +105,9 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 					'h-adr',
 				),
 			},
-			skillZone: 'Áreas de conhecimento',
-			skillZoneDescription: 'Minhas zonas de conhecimento divididas em um gráfico de pizza 4/8 para Frontend, 1/8 para Devops e 3/8 para Backend',
-			currently: 'Atualmente',
+			skillZone: 'Branches of learning',
+			skillZoneDescription: 'My brnaches of learning splited into pizza chart 4/8 to Frontend, 1/8 to Devops and 3/8 to Backend',
+			currently: 'Currently',
 			monthsOfYear,
 			articlesAndPostsList: [
 				{
@@ -146,7 +146,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Loft',
 					new Map([
-						['Engenheiro de software', [[2022, 4]]]
+						['Software engnieer', [[2022, 4]]]
 					]),
 					'',
 					['/images/companies/loft', 'gif', 'image/gif'],
@@ -155,7 +155,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Vitta',
 					new Map([
-						['Desenvolvedor de back end', [[2021, 2], [2022, 4]]],
+						['Back end developer', [[2021, 2], [2022, 4]]],
 					]),
 					'',
 					['/images/companies/groove', 'gif', 'image/gif'],
@@ -163,7 +163,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Infracommerce',
 					new Map([
-						['Engenheiro DevOps', [[2021, 11], [2022, 2]]],
+						['DevOps engnieer', [[2021, 11], [2022, 2]]],
 					]),
 					'',
 					['/images/companies/groove', 'gif', 'image/gif'],
@@ -171,7 +171,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'NEOJETS',
 					new Map([
-						['Engenheiro de software', [[2021, 6], [2021, 10]]],
+						['Software engnieer', [[2021, 6], [2021, 10]]],
 					]),
 					'',
 					['/images/companies/groove', 'gif', 'image/gif'],
@@ -179,7 +179,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'B2W Digital',
 					new Map([
-						['Engenheiro de software', [[2021, 5], [2021, 9]]],
+						['Software engnieer', [[2021, 5], [2021, 9]]],
 					]),
 					'',
 					['/images/companies/groove', 'gif', 'image/gif'],
@@ -187,8 +187,8 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Groove Tech',
 					new Map([
-						['Lider de capitulo', [[2021, 2], [2022, 7]]],
-						['Lider técnico', [[2020, 5], [2021, 2]]],
+						['Chapter leader', [[2021, 2], [2022, 7]]],
+						['Technical leader', [[2020, 5], [2021, 2]]],
 					]),
 					'',
 					['/images/companies/groove', 'gif', 'image/gif'],
@@ -197,9 +197,9 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Dasa',
 					new Map([
-						['Lider técnico', [[2020, 5], [2021, 2]]],
-						['Engenheiro de software', [[2019, 11], [2020, 5]]],
-						['Desenvolvedor front end', [[2019, 2], [2019, 11]]],
+						['Technical leader', [[2020, 5], [2021, 2]]],
+						['Software engnieer', [[2019, 11], [2020, 5]]],
+						['Front end developer', [[2019, 2], [2019, 11]]],
 					]),
 					'',
 					['/images/companies/dasa', 'gif', 'image/gif'],
@@ -208,7 +208,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Santander',
 					new Map([
-						['Desenvolvedor front-end', [[2018, 10], [2019, 3]]],
+						['Front-end developer', [[2018, 10], [2019, 3]]],
 					]),
 					'',
 					['/images/companies/santander', 'gif', 'image/gif'],
@@ -216,7 +216,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Everis',
 					new Map([
-						['Desenvolvedor front-end', [[2018, 10], [2019, 3]]],
+						['Front-end developer', [[2018, 10], [2019, 3]]],
 					]),
 					'',
 					['/images/companies/everis', 'gif', 'image/gif'],
@@ -225,7 +225,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Serasa',
 					new Map([
-						['Desenvolvedor web front end', [[2018, 5], [2018, 10]]],
+						['Web developer front end', [[2018, 5], [2018, 10]]],
 					]),
 					'',
 					['/images/companies/serasa', 'gif', 'image/gif'],
@@ -233,7 +233,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Capitani',
 					new Map([
-						['Desenvolvedor web front end', [[2018, 5], [2018, 10]]],
+						['Web developer front end', [[2018, 5], [2018, 10]]],
 					]),
 					'',
 					['/images/companies/serasa', 'gif', 'image/gif'],
@@ -242,7 +242,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Locaweb',
 					new Map([
-						['Desenvolvedor frontend', [[2017, 10], [2018, 5]]],
+						['Frontend developer', [[2017, 10], [2018, 5]]],
 					]),
 					'',
 					['/images/companies/locaweb', 'gif', 'image/gif'],
@@ -251,7 +251,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Softclass',
 					new Map([
-						['Desenvolvedor de software', [[2016, 7], [2017, 10]]],
+						['Software developer', [[2016, 7], [2017, 10]]],
 					]),
 					'',
 					['/images/companies/softclass', 'gif', 'image/gif'],
@@ -260,7 +260,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			academicList: [
 				mixin.academicItem(
 					'Metodista',
-					'Analise desenvolvimento de sistemas',
+					'Analisys and development of systems',
 					2021,
 					2,
 					'Trancado'
@@ -276,7 +276,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				),
 				mixin.academicItem(
 					'ETEC',
-					'Comunicação visual',
+					'Visual communication',
 					2015,
 					1,
 					'',
@@ -285,7 +285,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				),
 				mixin.academicItem(
 					'ETEC',
-					'Desenvolvimento de software',
+					'Software development',
 					2014,
 					1,
 					'',
@@ -294,7 +294,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				),
 				mixin.academicItem(
 					'All net',
-					'Inglês',
+					'English',
 					2009,
 					1,
 					'',
@@ -303,7 +303,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				),
 				mixin.academicItem(
 					'All net',
-					'Montagem e manutenção de micro',
+					'Hardware maintenance',
 					2009,
 					1,
 					'',

@@ -109,4 +109,4 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
   };
 };
 
-export default process.env.NODE_ENV === 'development' ? getByLanguage() : [getByLanguage(), getByLanguage('pt')];
+export default process.env.NODE_ENV === 'development' ? getByLanguage('en') : [getByLanguage(), getByLanguage('en')];

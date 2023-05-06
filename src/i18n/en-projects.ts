@@ -4,7 +4,7 @@ import { Mixins } from '.';
 const projects = (mixin: Mixins): Array<any> => [
 	mixin.projectItem(
 		'backend-vende-mais',
-		'Um BFF para o App do vendedor que consumia a API do Salesforce.',
+		'A BFF (Backend for Frontend) for the seller\'s app that consumed the Salesforce API.',
 		'',
 		2021,
 		8,
@@ -27,7 +27,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'aplicativo-vende-mais',
-		'Um App usando React Native feito para os vendedores que atuavam vendendo seguros nas ruas.',
+		'An app built using React Native for the salespeople who sold insurance on the streets.',
 		'',
 		2021,
 		8,
@@ -49,7 +49,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'frozen',
-		'Aplicativo progressivo (PWA) usado pela cocierge nos laboratórios da empresa.',
+		'A Progressive Web Application (PWA) used by the concierge in the company\'s laboratories.',
 		'',
 		2020,
 		2,
@@ -72,7 +72,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'automation-ui-orelhao',
-		'Automação feita em cypress usando BDD com geração de relátórios automatizada.',
+		'Automation implemented in Cypress using BDD (Behavior-Driven Development) with automated report generation.',
 		'',
 		2020,
 		5,
@@ -91,7 +91,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'band-aid',
-		'BFF (Backend for frontend) usado nos call centers da empresa verificando informações de exames, preços e convênios.',
+		'A BFF (Backend for Frontend) used in the company\'s call centers to verify information about exams, prices, and insurance providers.',
 		'',
 		2020,
 		5,
@@ -118,7 +118,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'orelhao',
-		'Aplicação web usada por operadores da empresa que atuam no call center verificando informações de exames, preços e convênios.',
+		'A web application used by operators in the company\'s call center to verify information about exams, prices, and insurance providers.',
 		'',
 		2020,
 		5,
@@ -145,7 +145,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'argocd-infracommerce',
-		'Implementação de um ArgoCD multicluster usando terraform com Helm.',
+		'Implementation of a multi-cluster ArgoCD using Terraform with Helm.',
 		'',
 		2022,
 		2,
@@ -169,7 +169,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'jellyfish-webhook',
-		'Atuação na integração do Datadog com o Jellyfish para métricas de Failure Rate e MTTR.',
+		'Involvement in the integration of Datadog with Jellyfish for Failure Rate and MTTR metrics.',
 		'',
 		2022,
 		9,
@@ -194,7 +194,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'empire',
-		'Monorepo que contem boa parte dos frontends na empresa e ferramentas para auxiliar no desenvolvimento.',
+		'A monorepo that contains a significant portion of the company\'s front-end applications and tools to assist in development.',
 		'',
 		2022,
 		4,
@@ -227,7 +227,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'actions',
-		'Implementacao de workflows reutilizaveis no Github actions para serem usados por toda empresa.',
+		'Implementation of reusable workflows in GitHub Actions to be used across the entire company.',
 		'',
 		2022,
 		8,
@@ -252,7 +252,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'upper-site',
-		'Um site conceitual que criei para uma empresa que fundei junto ao meu socio.',
+		'A conceptual website that I created for a company I co-founded with my partner.',
 		'',
 		2021,
 		7,
@@ -278,7 +278,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'personal',
-		'Projeto desta pagina usando pug typescript css-in-js.',
+		'Project for this page using Pug, TypeScript, CSS-in-JS.',
 		'',
 		2021,
 		7,
@@ -306,7 +306,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'simple-mask-money',
-		'Um pacote que criei de mascara para input do tipo moeda',
+		'A npm package I created for input masking of currency type',
 		'',
 		2017,
 		9,
@@ -322,7 +322,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'jornada-engenheiro-de-software',
-		'Uma trilha de estudos para meus mentorados.',
+		'A study roadmap for my mentees.',
 		'',
 		2021,
 		10,
@@ -340,7 +340,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'rust-simple-parser',
-		'Um parser de HTML que fiz para estudar rust.',
+		'A HTML parser that I developed to study Rust.',
 		'',
 		2020,
 		10,
@@ -356,7 +356,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'vue-cli',
-		'Uma pequena contribuição para a documentção sobre como usar o vue-js com http-server.',
+		'A small contribution to the documentation on how to use Vue.js with http-server.',
 		'',
 		2020,
 		10,
@@ -372,7 +372,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'react-typescript',
-		'Um projeto com React para usar como template de setup para outros projetos.',
+		'A React project to be used as a setup template for other projects.',
 		'',
 		2020,
 		9,
@@ -390,7 +390,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'rust-live-md',
-		'Meu segundo projeto em rust implementando um editor de markdown usando uma api websockets.',
+		'My second project in Rust, implementing a Markdown editor using a WebSocket API.',
 		'',
 		2020,
 		7,
@@ -408,7 +408,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'rust-sorting-algorithms',
-		'Meu primeiro projeto usando rust implementando alguns algoritimos de ordenação.',
+		'My first project using Rust, implementing various sorting algorithms.',
 		'',
 		2020,
 		7,
@@ -423,7 +423,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'stratus-spa',
-		'Frontend de uma aplicação que tinha como objetivo encontrar oportunidades de economia na nuvem.',
+		'The frontend of an application that aimed to find cost-saving opportunities in the cloud.',
 		'',
 		2020,
 		2,
@@ -450,7 +450,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'micro-frontends',
-		'Pequena pock sobre micro frontends.',
+		'A short pocket guide on micro frontends.',
 		'',
 		2020,
 		1,
@@ -466,7 +466,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'sexy-boy',
-		'Um site adulto para streamming de video.',
+		'An adult website for video streaming.',
 		'',
 		2019,
 		10,
@@ -482,7 +482,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'pock-graphql-middleware',
-		'Uma prova de conceito para testar o quanto eficiente seria usar GraphQL como BFF.',
+		'A proof of concept to test the efficiency of using GraphQL as a Backend for Frontend (BFF) approach.',
 		'',
 		2019,
 		5,
@@ -498,7 +498,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'jogo-da-velha-js',
-		'Um pacote com o script para impletação de um jogo da velha.',
+		'A package containing the script for implementing a Tic-Tac-Toe game.',
 		'',
 		2019,
 		4,
@@ -513,7 +513,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'jogo-da-velha-api',
-		'Uma api para jogar jogo da velha usando um pacote que criei, junto com web sockets.',
+		'An API for playing Tic-Tac-Toe using a package I created, along with WebSockets.',
 		'',
 		2019,
 		4,
@@ -530,7 +530,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'bifrost',
-		'BFF (Backend for frontend) usado nos totens de auto atendimento dos laboratórios da empresa.',
+		'A BFF (Backend for Frontend) used in the self-service kiosks of the company\'s laboratories',
 		'',
 		2019,
 		3,
@@ -556,7 +556,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'apollo-11',
-		'Aplicativo progressivo (PWA) usado nos totens de auto atendimento nos laboratórios da empresa.',
+		'A Progressive Web Application (PWA) used on self-service kiosks in the company\'s laboratories.',
 		'',
 		2019,
 		2,
@@ -579,7 +579,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'manifest-app-web',
-		'Site que criei para controlar passageiros em um avião durante o salto, controle de equipamentos etc..',
+		'API for a website that I created to manage passengers during a skydiving jump, equipment control, and more.',
 		'',
 		2019,
 		2,
@@ -594,7 +594,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'manifest-app-api',
-		'Api para um site que criei para controlar passageiros em um avião durante o salto, controle de equipamentos etc..',
+		'API for a website that I created to manage passengers during a skydiving jump, equipment control, and more.',
 		'',
 		2019,
 		2,
@@ -609,7 +609,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'menu-porn-crawler-api',
-		'Api para um site para indexar videos adultos de todos os sites.',
+		'API for a website to index adult videos from all websites.',
 		'',
 		2019,
 		1,
@@ -624,7 +624,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'altimetro-br',
-		'Código de um altimetro que criei para coletar dados durante um salto de paraquedas.',
+		'The code for an altimeter that I created to collect data during a parachute jump.',
 		'',
 		2018,
 		12,
@@ -639,7 +639,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'pokeapp',
-		'Aplicação para consumir API do pokemon',
+		'An application to consume the Pokemon API',
 		'',
 		2018,
 		9,
@@ -655,7 +655,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'queue-code',
-		'Backend que armazenava o código que é retirado no toten quando o cliente vai até uma agência.',
+		'A backend that stores the code retrieved from the kiosk when the customer visits a branch.',
 		'',
 		2018,
 		11,
@@ -678,7 +678,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'queue-code',
-		'Backend que armazenava o código que é retirado no toten quando o cliente vai até uma agência.',
+		'A backend that stores the code obtained from a totem when a customer visits a branch.',
 		'',
 		2018,
 		11,
@@ -701,7 +701,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'serasa-consumidor',
-		'Projeto do site do serasa consumidor onde o cliente consegue entrar e verificar seu score.',
+		'The project for the Serasa Consumidor website where customers can log in and check their credit score.',
 		'',
 		2018,
 		5,
@@ -734,7 +734,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'lwsite',
-		'Criador de hot sites feito muito similar com o wix.',
+		'A creator of sites built with a design and functionality similar to Wix.',
 		'',
 		2017,
 		10,
@@ -756,7 +756,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'locastyle',
-		'Design system da locaweb usado nos frontends da locaweb.',
+		'Locaweb\'s design system used in Locaweb\'s front-end applications.',
 		'',
 		2017,
 		11,
@@ -775,7 +775,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'angular-cli',
-		'Contribuição para documentação incluindo alguns detalhes para facilitar o entendimento.',
+		'"Contribution to the documentation, including additional details to enhance understanding.".',
 		'',
 		2018,
 		9,
@@ -791,7 +791,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'fake-api-web',
-		'Aplicação que disponibilizava uma forma de mockar APIs baseado em contratos, gerando dados fakes ou randomicos.',
+		'An application that provided a way to mock APIs based on contracts, generating fake or random data.',
 		'',
 		2018,
 		6,
@@ -806,7 +806,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'beer-js-sp',
-		'Um evento que acontece pelo mundo que tentei organizar aqui no brasil.',
+		'An event that takes place worldwide that I attempted to organize in Brazil.',
 		'',
 		2018,
 		5,
@@ -821,7 +821,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'notes',
-		'Uma trilha de estudos que iniciei criado por mim mesmo.',
+		'A self-created study track that I initiated.',
 		'',
 		2018,
 		5,
@@ -836,7 +836,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'fake-api',
-		'Backend para Fake-Api aplicação que disponibilizava uma forma de mockar APIs baseado em contratos.',
+		'A backend for Fake-Api, an application that provided a way to mock APIs based on contracts.',
 		'',
 		2018,
 		4,
@@ -852,10 +852,10 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'sync-project-extensions',
-		'Extensão para o vscode que seria como um gerenciador extensões necessarias para determinado projeto.',
+		'An extension for VS Code that acts as a manager for the required extensions for a specific project.',
 		'',
 		2018,
-		4,
+		1,
 		{
 			[TagType.categoria]: [
 				TagCategory.estudo,
@@ -868,7 +868,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'hexo',
-		'Contribuição para o site do Hexo.JS incluindo meu template otimizado para SEO.',
+		'Contribution to the Hexo.JS website, including my SEO-optimized template.',
 		'',
 		2018,
 		1,
@@ -885,7 +885,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'dev-dark-theme',
-		'Um template tema escuro para ferramenta de criação de blog hexo.',
+		'A dark-themed template for the Hexo blog creation tool.',
 		'',
 		2017,
 		12,
@@ -900,24 +900,8 @@ const projects = (mixin: Mixins): Array<any> => [
 		},
 	),
 	mixin.projectItem(
-		'CLOUDClass',
-		'Um sistema verificava o status de sincronização do dados do ERP com o servidor de Backup.',
-		'',
-		2017,
-		2,
-		{
-			[TagType.empresa]: [TagCompany.softclass],
-			[TagType.categoria]: [
-				TagCategory.trabalho,
-			],
-			[TagType.tecnologia]: [
-				TagTecnology.c_sharp,
-			],
-		},
-	),
-	mixin.projectItem(
-		'PDV ',
-		'Um aplicação web que atuava como ponto de vendas do sistema ERPClass.',
+		'PDV',
+		'A web application that was used as a point of sale for the ERPClass system.',
 		'',
 		2017,
 		10,
@@ -937,7 +921,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'PDVApi',
-		'Uma Api para uma aplicação web que atuava como ponto de vendas do sistema ERPClass.',
+		'An API for a web application that was used as a point of sale for the ERPClass system.',
 		'',
 		2017,
 		8,
@@ -955,7 +939,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'meappisa-api',
-		'Backend para o MeAppisa App para notificar quando seus projetos precisem atualizar as dependencias.',
+		'A backend for the MeAppisa app to notify when your projects need to update their dependencies.',
 		'',
 		2017,
 		8,
@@ -970,7 +954,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'meappisa-app',
-		'Aplicativo para notificar quando um projeto precisa-se atualizar as dependencias.',
+		'An application to notify when a project needs to update its dependencies.',
 		'',
 		2017,
 		7,
@@ -988,7 +972,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'dispute-click-frontend',
-		'Frontend de aplicação web para disputa de cupons de desconto.',
+		'A web application frontend for discount coupon competitions.',
 		'',
 		2017,
 		8,
@@ -1005,7 +989,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'dispute-click-backend',
-		'Backend de aplicação web para disputa de cupons de desconto.',
+		'A web application backend for discount coupon competitions.',
 		'',
 		2017,
 		4,
@@ -1023,7 +1007,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'ERPStatus Frontend',
-		'Aplicação web que exibia o status de sincronização dos dados do ERP com os servidores e o ciclo de vida dos Backups.',
+		'A web application that displayed the synchronization status of the data between the ERP and the servers, as well as the backup lifecycle.',
 		'',
 		2017,
 		4,
@@ -1041,7 +1025,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'ERPStatus Api',
-		'Api que salvava o status de sincronização dos dados do ERP com os servidores e o ciclo de vida dos Backups.',
+		'An API that stored the synchronization status of the data between the ERP and the servers, as well as the backup lifecycle.',
 		'',
 		2017,
 		4,
@@ -1057,7 +1041,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'ERPStatus Client',
-		'Um client que monitorava na maquina o status de sincronização dos dados do ERP com os servidore e o ciclo de vida dos Backup.',
+		'A client monitored on the machine the synchronization status of the data between the ERP and the servers, as well as the backup lifecycle.',
 		'',
 		2017,
 		4,
@@ -1073,7 +1057,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'ERPClass',
-		'Um sistema ERP controlava estoque e emitia nota.',
+		'A ERP system managed inventory and issued invoices.',
 		'',
 		2017,
 		2,
@@ -1090,7 +1074,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'gym-door',
-		'Uma aplicação para controlar entrada na academia.',
+		'An application that I created as a freelancer to control access to a gym in my neighborhood. It printed a card on a specific printer and released the turnstile or not, via barcode on the printed card.',
 		'',
 		2016,
 		10,
@@ -1106,7 +1090,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'encryptor',
-		'Uma implementação de uma criptorafia assimetrica que criei.',
+		'Code of an asymmetric cryptography that I created for university.',
 		'',
 		2016,
 		10,
@@ -1121,7 +1105,7 @@ const projects = (mixin: Mixins): Array<any> => [
 	),
 	mixin.projectItem(
 		'easy travel',
-		'Meu primeiro grande projeto foi um TCC para facilitar uma viagem.',
+		'My first major project was my college final project, in which I developed an application to plan a trip.',
 		'',
 		2015,
 		10,

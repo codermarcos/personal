@@ -1,4 +1,5 @@
 import { pt } from './pt';
+import { en } from './en';
 
 const informations = {
   meta: {
@@ -50,10 +51,6 @@ const informations = {
 			name: 'author',
 			content: 'codermarcos, coder.marcos@gmail.com'
 		},
-		keywords: {
-			name: 'keywords',
-			content: 'codermarcos, Marcos Gonçalves De Carvalho, Frontend, Backend, Devops, Programador, Desenvolvedor, Engenheiro'
-		},
 		robots: {
 			name: 'robots',
 			content: 'index, follow',
@@ -67,20 +64,8 @@ const informations = {
       ext: 'jpg',
     },
     name: 'Marcos Gonçalves De Carvalho',
+		nick: 'codermarcos',
     site: 'http://codermarcos.zone/',
-    job: 'Engenheiro de software',
-    nick: 'codermarcos',
-    contacts_raw: {
-      email: 'coder.marcos@gmail.com',
-      phone: '55 11 9 7135-3293',
-    },
-    address: {
-      url: 'https://goo.gl/maps/Ggk528AKMLuznEJ27',
-      cep: '09750700',
-      street: 'Praça Samuel Sabatini',
-      city: 'são bernardo do campo',
-      state: 'SP',
-    },
   },
 };
 
@@ -158,6 +143,7 @@ const mixins = {
 
 const langs = {
   pt: pt(informations, mixins),
+  en: en(informations, mixins),
 };
 
 export type Informations = typeof informations;
