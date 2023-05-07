@@ -82,27 +82,32 @@ function openItem() {
 
 function setupPrint() {
 	const allDetails = document.body.querySelectorAll('details');
+	const categories = document.querySelectorAll('dl');
 
 	window.addEventListener('beforeprint', () => {
-		for (let i = 0; i < allDetails.length; i++) {
-			if (allDetails[i].open) {
-				allDetails[i].dataset.open = '1';
+		allDetails.forEach((details) => {
+			if (details.open) {
+				details.dataset.open = '1';
 			}
 			else {
-				allDetails[i].setAttribute('open', '');
+				details.setAttribute('open', '');
 			}
-		}
+		});
+
+		categories.forEach((category) => category.classList.add('print'));
 	});
 
 	window.addEventListener('afterprint', () => {
-		for (let i = 0; i < allDetails.length; i++) {
-			if (allDetails[i].dataset.open) {
-				allDetails[i].dataset.open = '';
+		allDetails.forEach((details) => {
+			if (details.open) {
+				details.dataset.open = '';
 			}
 			else {
-				allDetails[i].removeAttribute('open');
+				details.removeAttribute('open');
 			}
-		}
+		});
+
+		categories.forEach((category) => category.classList.remove('print'));
 	});
 }
 

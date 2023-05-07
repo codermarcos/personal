@@ -43,6 +43,14 @@ data "aws_cloudfront_cache_policy" "cache_default" {
   name = "Managed-CachingOptimized"
 }
 
+resource "aws_cloudfront_function" "test" {
+  name    = "redirects-to-index"
+  runtime = "cloudfront-js-1.0"
+  comment = "Redirect to index when omit index html"
+  publish = true
+  code    = file("${path.module}/function.js")
+}
+
 resource "aws_cloudfront_response_headers_policy" "cache_browser" {
   name = "Browser-Cache"
 
