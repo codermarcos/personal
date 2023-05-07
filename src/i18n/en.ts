@@ -166,7 +166,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 						['Back end developer', [[2021, 2], [2022, 4]]],
 					]),
 					'',
-					['/images/companies/groove', 'gif', 'image/gif'],
+					['/images/companies/vitta', 'gif', 'image/gif'],
 				),
 				mixin.jobItem(
 					'Infracommerce',
@@ -174,7 +174,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 						['DevOps engnieer', [[2021, 11], [2022, 2]]],
 					]),
 					'',
-					['/images/companies/groove', 'gif', 'image/gif'],
+					['/images/companies/infracommerce', 'gif', 'image/gif'],
 				),
 				mixin.jobItem(
 					'NEOJETS',
@@ -182,7 +182,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 						['Software engnieer', [[2021, 6], [2021, 10]]],
 					]),
 					'',
-					['/images/companies/groove', 'gif', 'image/gif'],
+					['/images/companies/neojets', 'gif', 'image/gif'],
 				),
 				mixin.jobItem(
 					'B2W Digital',
@@ -190,7 +190,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 						['Software engnieer', [[2021, 5], [2021, 9]]],
 					]),
 					'',
-					['/images/companies/groove', 'gif', 'image/gif'],
+					['/images/companies/b2w', 'gif', 'image/gif'],
 				),
 				mixin.jobItem(
 					'Groove Tech',
@@ -244,7 +244,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 						['Web developer front end', [[2018, 5], [2018, 10]]],
 					]),
 					'',
-					['/images/companies/serasa', 'gif', 'image/gif'],
+					['/images/companies/capitani', 'gif', 'image/gif'],
 				),
 
 				mixin.jobItem(

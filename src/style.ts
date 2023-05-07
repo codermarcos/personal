@@ -353,6 +353,7 @@ const projectCategories = style({
       borderTopRightRadius: borderRadius,
       borderBottomRightRadius: borderRadius,
       borderLeft: 'none',
+			whiteSpace: 'nowrap',
     },
   },
 });
