@@ -27,7 +27,7 @@ async function main(lang = 'pt') {
 
 	await page.goto(path);
 
-	await page.waitForSelector('html')
+	await page.waitForSelector('style')
 
 	const value = await page.content();
 

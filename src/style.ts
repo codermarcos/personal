@@ -1,6 +1,6 @@
 import { style, cssRule, media } from 'typestyle';
 import { NestedCSSProperties } from 'typestyle/lib/types';
-import { border, calc, color, em, margin, padding, percent, px, rgba, translateY, viewWidth } from 'csx';
+import { border, calc, color, em, margin, padding, percent, px, translateY, viewWidth } from 'csx';
 
 const size = (n: number): number => parseFloat(Number(parseInt(n.toFixed(0)) * 0.22).toFixed(2));
 
@@ -501,7 +501,7 @@ const experiencesItem = style({
 			marginBottom: em(size(1)),
 		},
 		'& details > ol span': {
-			color: rgba(0, 0, 0, 0.5).toString(),
+			color: color('#505050').toHexString(),
 			fontSize: em(size(3)),
 		},
 		'& span > time': {
@@ -523,7 +523,7 @@ const academicItem = style({
 	$nest: {
 		...listItem.$nest,
 		'& > span': {
-			color: rgba(0, 0, 0, 0.5).toString(),
+			color: color('#505050').toHexString(),
 			alignSelf: 'flex-end',
 			fontSize: em(size(3)),
 		},

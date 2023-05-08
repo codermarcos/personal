@@ -13,8 +13,8 @@ html(lang=args.language)
 		header(class=styles.headerWrapper)
 			figure(class=styles.headerPhoto)
 				picture
-					source(type='image/webp', srcset=`${args.photo.file}.webp`)
-					source(type=args.photo.type, srcset=`${args.photo.file}.${args.photo.ext}`)
+					source(type='image/webp', srcset=`${args.photo.file}.webp`, width='169', height='169')
+					source(type=args.photo.type, srcset=`${args.photo.file}.${args.photo.ext}`, width='169', height='169')
 
 					img(src=`${args.photo.file}.${args.photo.ext}`, loading='lazy', width='169', height='169', alt=args.photoAlt)
 			hgroup(class=styles.headerNameAndJob)
@@ -56,7 +56,6 @@ html(lang=args.language)
 										dt #{tagType}
 										dd(class=(tagType === 'tecnologia' ? 'p-skill':''))
 											| #{tagValue}
-
 
 				button(
 					type='button',
@@ -121,8 +120,8 @@ html(lang=args.language)
 													| #{end}
 							picture
 								- const [image, ext, type] = job.logo
-								source(type='image/webp', srcset=`${image}.webp`)
-								source(type=type, srcset=`${image}.${ext}`)
+								source(type='image/webp', srcset=`${image}.webp`, width='74', heigth='74', style=`width:${styles.experienceImageSize};max-height:${styles.experienceImageSize}`)
+								source(type=type, srcset=`${image}.${ext}`, width='74', heigth='74', style=`width:${styles.experienceImageSize};max-height:${styles.experienceImageSize}`)
 								img(src=`${image}.${ext}`, loading='lazy', width='74', heigth='74', style=`width:${styles.experienceImageSize};max-height:${styles.experienceImageSize}`, alt=job.company)
 
 				button(
@@ -191,8 +190,8 @@ html(lang=args.language)
 									figure
 										picture
 											- const [image, ext, type] = articleOrPost.image
-											source(type='image/webp', srcset=`${image}.webp`)
-											source(type=type, srcset=`${image}.${ext}`)
+											source(type='image/webp', srcset=`${image}.webp`, width='229', height='229', style=`width:${styles.articleImageSize}`)
+											source(type=type, srcset=`${image}.${ext}`, width='229', height='229', style=`width:${styles.articleImageSize}`)
 											img(src=`${image}.${ext}`, loading='lazy', width='229', height='229', style=`width:${styles.articleImageSize}`, alt=articleOrPost.title)
 										figcaption #{articleOrPost.title}
 									- const { month, year } = articleOrPost.date;

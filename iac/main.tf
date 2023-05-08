@@ -43,24 +43,12 @@ data "aws_cloudfront_cache_policy" "cache_default" {
   name = "Managed-CachingOptimized"
 }
 
-resource "aws_cloudfront_function" "test" {
+resource "aws_cloudfront_function" "redirects" {
   name    = "redirects-to-index"
   runtime = "cloudfront-js-1.0"
   comment = "Redirect to index when omit index html"
   publish = true
-  code    = file("${path.module}/function.js")
-}
-
-resource "aws_cloudfront_response_headers_policy" "cache_browser" {
-  name = "Browser-Cache"
-
-  custom_headers_config {
-    items {
-      header   = "Cache-Control"
-      override = true
-      value    = "public, max-age=604800"
-    }
-  }
+  code    = file("${path.module}/functions.js")
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -83,8 +71,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_cache_behavior {
     cache_policy_id = data.aws_cloudfront_cache_policy.cache_default.id
 
-		response_headers_policy_id = aws_cloudfront_response_headers_policy.cache_browser.id
-
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = var.project
@@ -98,7 +84,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
 		function_association {
 			event_type = "viewer-request"
-			function_arn = "arn:aws:cloudfront::688263480485:function/RedirectToIndex"
+			function_arn = aws_cloudfront_function.redirects.arn
 		}
   }
 
