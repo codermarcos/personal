@@ -109,11 +109,6 @@ resource "aws_s3_bucket" "frontend_bucket" {
   force_destroy = true
   bucket        = var.project
 
-  website {
-    index_document = "index.html"
-    error_document = "index.html"
-  }
-
   policy = <<EOF
 {
   "Id": "bucket_policy_site",
@@ -131,6 +126,18 @@ resource "aws_s3_bucket" "frontend_bucket" {
   ]
 }
 EOF
+}
+
+resource "aws_s3_bucket_website_configuration" "website" {
+  bucket = aws_s3_bucket.frontend_bucket.id
+
+  index_document {
+    suffix = "index.html"
+  }
+
+  error_document {
+    key = "index.html"
+  }
 }
 
 resource "aws_s3_object" "frontend_object" {
@@ -153,9 +160,9 @@ output "cloudfront_endpoint" {
 }
 
 output "website_domain" {
-  value = aws_s3_bucket.frontend_bucket.website_domain
+  value = aws_s3_bucket_website_configuration.website.website_domain
 }
 
 output "website_endpoint" {
-  value = aws_s3_bucket.frontend_bucket.website_endpoint
+  value = aws_s3_bucket_website_configuration.website.website_endpoint
 }
