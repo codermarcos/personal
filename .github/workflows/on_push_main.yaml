@@ -53,28 +53,31 @@ jobs:
         uses: the-commons-project/terragrunt-github-actions@master
         with:
           tf_actions_comment: false
-          tf_actions_version: ${{ env.TF_VERSION }}
-          tg_actions_version: ${{ env.TG_VERSION }}
-          tf_actions_working_dir: ${{ env.TF_WORKING_DIR }}
           tf_actions_subcommand: init
+          tf_actions_version: ${{ env.TF_VERSION }}
+          tf_actions_working_dir: ${{ env.TF_WORKING_DIR }}
+          tg_actions_version: ${{ env.TG_VERSION }}
+          tg_actions_source: .
           args: --terragrunt-non-interactive
 
       - name: Plan deploy
         uses: the-commons-project/terragrunt-github-actions@master
         with:
           tf_actions_comment: true
-          tf_actions_version: ${{ env.TF_VERSION }}
-          tg_actions_version: ${{ env.TG_VERSION }}
-          tf_actions_working_dir: ${{ env.TF_WORKING_DIR }}
           tf_actions_subcommand: plan
+          tf_actions_version: ${{ env.TF_VERSION }}
+          tf_actions_working_dir: ${{ env.TF_WORKING_DIR }}
+          tg_actions_version: ${{ env.TG_VERSION }}
+          tg_actions_source: .
           args: -out=tfplan --terragrunt-non-interactive
 
       - name: Apply deploy
         uses: the-commons-project/terragrunt-github-actions@master
         with:
           tf_actions_comment: false
-          tf_actions_version: ${{ env.TF_VERSION }}
-          tg_actions_version: ${{ env.TG_VERSION }}
-          tf_actions_working_dir: ${{ env.TF_WORKING_DIR }}
           tf_actions_subcommand: apply
+          tf_actions_version: ${{ env.TF_VERSION }}
+          tf_actions_working_dir: ${{ env.TF_WORKING_DIR }}
+          tg_actions_version: ${{ env.TG_VERSION }}
+          tg_actions_source: .
           args: --terragrunt-non-interactive tfplan
