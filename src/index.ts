@@ -1,7 +1,5 @@
-function categories() {
-	const data = document.querySelectorAll('dd');
-
-	data
+function categoriesShowTitle(categories: NodeListOf<HTMLDListElement>) {
+	categories
 		.forEach(
 			dd => {
 				const dt = dd.previousElementSibling;
@@ -20,10 +18,8 @@ function categories() {
 		);
 }
 
-function readMore() {
-	const data = document.querySelectorAll<HTMLButtonElement>('button[data-list-items]');
-
-	data
+function readMore(buttons: NodeListOf<HTMLButtonElement>) {
+	buttons
 		.forEach(
 			(button, idx) => {
 				const { listItems, goTo } = button.dataset;
@@ -55,10 +51,8 @@ function readMore() {
 		);
 }
 
-function openItem() {
-	const data = document.querySelectorAll<HTMLLIElement>('.p-experience');
-
-	data
+function openExperiences(experiences: NodeListOf<HTMLLIElement>) {
+	experiences
 		.forEach(
 			li => {
 				const summary = li.querySelector('details > summary');
@@ -80,42 +74,33 @@ function openItem() {
 		);
 }
 
-function setupPrint() {
-	const allDetails = document.body.querySelectorAll('details');
-	const categories = document.querySelectorAll('dl');
+function setupPrint(allDetails: NodeListOf<HTMLDetailsElement>,) {
 
 	window.addEventListener('beforeprint', () => {
-		allDetails.forEach((details) => {
-			if (details.open) {
-				details.dataset.open = '1';
-			}
-			else {
-				details.setAttribute('open', '');
-			}
-		});
+		document.body.classList.add('print');
 
-		categories.forEach((category) => category.classList.add('print'));
+		allDetails.forEach((details) => {
+			details.setAttribute('open', '');
+		});
 	});
 
 	window.addEventListener('afterprint', () => {
 		allDetails.forEach((details) => {
-			if (details.open) {
-				details.dataset.open = '';
-			}
-			else {
-				details.removeAttribute('open');
-			}
+			details.removeAttribute('open');
 		});
-
-		categories.forEach((category) => category.classList.remove('print'));
 	});
 }
 
 function onloaded() {
-	categories();
-	readMore();
-	openItem();
-	setupPrint();
+	const readMoreButtons = document.querySelectorAll<HTMLButtonElement>('button[data-list-items]');
+	const experiences = document.querySelectorAll<HTMLLIElement>('.p-experience');
+	const categoriesValue = document.querySelectorAll<HTMLDListElement>('dd');
+	const allDetails = document.body.querySelectorAll('details');
+
+	categoriesShowTitle(categoriesValue);
+	readMore(readMoreButtons);
+	openExperiences(experiences);
+	setupPrint(allDetails);
 }
 
 window.addEventListener('load', onloaded);
