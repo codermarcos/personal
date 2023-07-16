@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import * as webpack from 'webpack';
 
 import { resolve } from 'path';
@@ -13,6 +14,8 @@ import i18n from './src/i18n';
 import util from './src/util';
 
 import pkg from './package.json';
+
+import puglint from './.pug-lintrc.json';
 
 type Language = keyof typeof i18n;
 
@@ -71,7 +74,7 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
       new PugLintPlugin({
         context: 'src',
         files: '**/*.pug',
-        config: Object.assign({emitError: true}, require('./.pug-lintrc.json'))
+        config: Object.assign({emitError: true}, puglint)
       }),
       new HtmlWebpackPlugin({
         inject: false,
