@@ -133,7 +133,7 @@ resource "aws_s3_bucket" "frontend_bucket" {
 EOF
 }
 
-resource "aws_s3_bucket_object" "frontend_object" {
+resource "aws_s3_object" "frontend_object" {
   for_each = fileset(var.dist_dir, "**")
   key      = each.value
   source   = "${var.dist_dir}/${each.value}"
