@@ -55,6 +55,10 @@ const informations = {
 			name: 'robots',
 			content: 'index, follow',
 		},
+		'theme-color': {
+			name: 'theme-color',
+			content: '#666666'
+		}
   },
   args: {
     title: 'Marcos Gonçalves | codermarcos',

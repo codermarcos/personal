@@ -2,6 +2,8 @@ doctype html
 html(lang=args.language)
 	head
 		title #{args.title}
+		meta(charset='UTF-8')
+		meta(http-equiv='Content-Type', content='text/html', charset='UTF-8')
 		link(rel='manifest', href=`/manifest.${args.language.split('-').shift()}.json`)
 		link(rel='icon', type='image/x-icon', href='/favicon/favicon.ico')
 		link(rel='shortcut icon', type='image/x-icon', href='/favicon/favicon.ico')
@@ -27,19 +29,19 @@ html(lang=args.language)
 						li(title=t)
 							a(href=args.contacts[t].href, target='_blank', rel='noopener')
 								figure
-									| !{require(`./images/icons/${t}.pug`)({ styles: styles })}
+									| !{require(`./images/icons/${t}.pug`)({ styles })}
 									figcaption #{args.contacts[t].text}
 			p(class=`${styles.headerAbout} p-summary`) #{args.aboutMe}
 
 		main(class=styles.contentWrapper)
 			section(class=styles.contentSkills)
-				include ./graph.pug
+				| !{require('./graph.pug')({ args, util, styles })}
 				ol(class=styles.skillsZone, aria-label=args.skillZone)
 					li(class='p-skill') Frontend
 					li(class='p-skill') Devops
 					li(class='p-skill') Backend
 
-			section(class=styles.contentProjects)
+			section(id='list-projects', class=styles.contentProjects)
 				ol(class=styles.projectsList, aria-label=args.projects)
 					each project in args.projectsList
 						li(class=styles.projectItem)
@@ -72,7 +74,7 @@ html(lang=args.language)
 				)
 					| #{args.seePrevious}
 
-			section(class=styles.contentExperiences)
+			section(id='list-experiences', class=styles.contentExperiences)
 				ol(class=styles.experiencesList, aria-label=args.experiences)
 					each job in args.jobList
 						- const roles = Array.from(job.roles.keys())
@@ -140,7 +142,7 @@ html(lang=args.language)
 				)
 					| #{args.seePrevious}
 
-			section(class=styles.contentAcademic)
+			section(id='list-courses', class=styles.contentAcademic)
 				ol(class=styles.academicList, aria-label=args.academic)
 					each academic in args.academicList
 						li(class=`${styles.academicItem} p-education`)
