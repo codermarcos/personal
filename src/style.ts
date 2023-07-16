@@ -23,7 +23,6 @@ const scrollStyle = () => ({
 	},
 })
 
-
 cssRule('*, *::after, *::before', {
 	boxSizing: 'border-box',
 	fontSize: percent(100),
@@ -50,8 +49,6 @@ const mobileSM = (properties: NestedCSSProperties) => media({ maxWidth: px(320) 
 const mobileMD = (properties: NestedCSSProperties) => media({ maxWidth: px(480) }, properties);
 
 const print = (properties: NestedCSSProperties) => media({ type: 'print' }, properties);
-
-// const tablet = (properties: NestedCSSProperties) => media({ minWidth: px(480), maxWidth: px(780) }, properties);
 
 const headerPhotoSizeDesktop = em(size(48));
 const headerPhotoSizeMobile = em(size(24));
@@ -564,6 +561,9 @@ const articlesList = style({
 	display: 'flex',
 	overflowX: 'auto',
 	justifyContent: 'space-between',
+	$nest: {
+		...scrollStyle(),
+	},
 }, mobileMD({
 	flexWrap: 'wrap',
 	justifyContent: 'center',
