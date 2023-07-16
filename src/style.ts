@@ -49,6 +49,8 @@ const mobileSM = (properties: NestedCSSProperties) => media({ maxWidth: px(320) 
 
 const mobileMD = (properties: NestedCSSProperties) => media({ maxWidth: px(480) }, properties);
 
+const print = (properties: NestedCSSProperties) => media({ type: 'print' }, properties);
+
 // const tablet = (properties: NestedCSSProperties) => media({ minWidth: px(480), maxWidth: px(780) }, properties);
 
 const headerPhotoSizeDesktop = em(size(48));
@@ -223,7 +225,7 @@ const graphPeace = style({
 });
 
 const graphPeaceStroke = style({
-	fill: '#000000',
+	stroke: '#000000',
 });
 
 const skillsZone = style({
@@ -276,7 +278,9 @@ const contentProjects = style({
 	gridRowGap: em(litsItemSpaceBottom),
 	paddingTop: em(listTitleSpace),
 	gridTemplateRows: `${em(size(4))} auto ${em(size(4))}`,
-});
+}, print({
+	gridTemplateRows: 'auto',
+}));
 
 const fullList: NestedCSSProperties = {
 	maxHeight: em(size(125)),
@@ -299,11 +303,18 @@ const fullList: NestedCSSProperties = {
 
 const borderShare = border({ style: 'solid', color: '#000', width: 1 });
 
+const printLists: NestedCSSProperties = {
+	overflow: 'hidden',
+	minHeight: calc(`${percent(100)} + ${em(size(4))}`),
+	maxHeight: percent(1000),
+	padding: padding(em(size(4)), 0),
+};
+
 const projectsList = style({
 	...fullList,
 	gridRowStart: 2,
 	maxHeight: em(litsItemHeight * 5),
-});
+}, print(printLists));
 
 const paddingTopDown = size(2);
 const paddingSides = size(3);
@@ -322,27 +333,6 @@ const projectCategories = style({
 	paddingBottom: em(size(2)),
 	$nest: {
 		...scrollStyle(),
-		'&.print': {
-			flexWrap: 'wrap',
-			$nest: {
-				'& dt': {
-					display: 'none',
-				},
-				'& dd': {
-					border: borderShare,
-					maxWidth: percent(100),
-					padding: em(paddingSides),
-					borderRadius: borderRadius,
-					marginBottom: em(size(4)),
-					$nest: {
-						'&:last-child': {
-							marginBottom: 0,
-						},
-					},
-				},
-			},
-		},
-
 		'& dt': {
 			...sharedCategory,
 			maxWidth: 0,
@@ -377,7 +367,26 @@ const projectCategories = style({
 			whiteSpace: 'nowrap',
 		},
 	},
-});
+}, print({
+	flexWrap: 'wrap',
+	$nest: {
+		'& dt': {
+			display: 'none',
+		},
+		'& dd': {
+			border: borderShare,
+			maxWidth: percent(100),
+			padding: em(paddingSides),
+			borderRadius: borderRadius,
+			marginBottom: em(size(4)),
+			$nest: {
+				'&:last-child': {
+					marginBottom: 0,
+				},
+			},
+		},
+	},
+}));
 
 const listItem: NestedCSSProperties = {
 	display: 'flex',
@@ -403,6 +412,7 @@ const listItem: NestedCSSProperties = {
 
 const projectItem = style({
 	...listItem,
+	pageBreakInside: 'avoid',
 	$nest: {
 		...listItem.$nest,
 		'& summary': {
@@ -452,10 +462,11 @@ const experienceImageSize = em(size(21));
 const experiencesList = style({
 	...fullList,
 	gridRowStart: 2,
-});
+}, print(printLists));
 
 const experiencesItem = style({
 	...listItem,
+	pageBreakInside: 'avoid',
 	opacity: 1,
 	flexWrap: 'nowrap',
 	alignItems: 'center',
@@ -514,10 +525,11 @@ const experiencesItem = style({
 const academicList = style({
 	...fullList,
 	gridRowStart: 2,
-});
+}, print(printLists));
 
 const academicItem = style({
 	...listItem,
+	pageBreakInside: 'avoid',
 	opacity: 1,
 	transition: '.4s ease-in transform, .5s ease-out opacity',
 	$nest: {
@@ -542,7 +554,9 @@ const seeMoreButton = style({
 	width: percent(100),
 	cursor: 'pointer',
 	border: 'none',
-});
+}, print({
+	display: 'none',
+}));
 
 const contentArticles = style();
 
