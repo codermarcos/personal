@@ -2,7 +2,7 @@ import { Informations, Mixins } from '.';
 import projects from './en-projects';
 
 export const en = (inf: Informations, mixin: Mixins): any => {
-	const description = 'Marcos Gonçalves or codermarcos is a software engineer specialized in frontend with strong experience in devops and backend. Here is a brief overview of his career.';
+	const description = 'Marcos Gonçalves or codermarcos is a software engineer who loves challenges and solving problems. Here is a brief overview of his career.';
 	const monthsOfYear = [
 		'Jan',
 		'Feb',
@@ -72,7 +72,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 			academic: 'Education',
 			experiences: 'Experiences',
 			photoAlt: 'Photo Marcos Gonçalves (codermarcos)',
-			aboutMe: 'I am a software engineer who is on an ✨ endless journey in search of knowledge. During this journey, I value greatly 🔀 The exchange of experiences ❤️ Working with what I love (technology) 🔗 Creating connections that go beyond work. I have worked with digital products, startups, banks, consulting firms, and agencies, and have always kept my hands dirty. In these roles, my main responsibilities were mostly focused on frontend development, but I also have good experience with backend and DevOps',
+			aboutMe: 'I am a software engineer who is on an ✨ endless journey in search of knowledge. During this journey, I value greatly 🔀 The exchange of experiences ❤️ Working with what I love (technology) 🔗 Creating connections that go beyond work. I have worked with digital products, startups, banks, consulting firms, and agencies, and have always kept my hands dirty. In my previous roles, I encountered various challenges that allowed me to develop both my soft and hard skills. Here, there are a few projects on which I\'e worked.',
 			contacts: {
 				...mixin.contact(
 					'linkedin',
@@ -106,7 +106,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 				),
 			},
 			skillZone: 'Branches of learning',
-			skillZoneDescription: 'My brnaches of learning splited into pizza chart 4/8 to Frontend, 1/8 to Devops and 3/8 to Backend',
+			skillZoneDescription: 'My branches of learning splited into pizza chart 4/8 to Frontend, 1/8 to Devops and 3/8 to Backend',
 			currently: 'Currently',
 			monthsOfYear,
 			articlesAndPostsList: [

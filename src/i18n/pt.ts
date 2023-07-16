@@ -3,7 +3,7 @@ import projects from './pt-projects';
 
 
 export const pt = (inf: Informations, mixin: Mixins): any => {
-	const description = 'Marcos Gonçalves ou codermarcos é um engenheiro software especialista em frontend com forte experiência em devops e backend, aqui tem pouco de sua carreira.';
+	const description = 'Marcos Gonçalves ou codermarcos é um engenheiro software que ama desafios e resolver problemas, aqui tem pouco de sua carreira.';
 	const monthsOfYear = [
 		'Jan',
 		'Fev',
@@ -72,7 +72,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			academic: 'Formação academica',
 			experiences: 'Experiências profissionais',
 			photoAlt: 'Foto de Marcos Gonçalves (codermarcos)',
-			aboutMe: 'Sou um engenheiro de software que está em uma jornada ✨ sem fim em busca de conhecimento. Durante essa jornada prezo muito 🔀 A troca de experiencias, ❤️ Atuar com oque amo (tecnologia), 🔗 A criação de conexões que iram além do trabalho. Já atuei com produto digital, startup, banco, consultoria e agencias sempre mantive a mão na massa. Nessas atuações minhas principais atribuições estavam relacionadas a desenvolvimento frontend porem nos meus últimos anos de carreira tive a oportunidade de evoluir em backend e devops.',
+			aboutMe: 'Sou um engenheiro de software que está em uma jornada ✨ sem fim em busca de conhecimento. Durante essa jornada prezo muito 🔀 A troca de experiencias, ❤️ Atuar com oque amo (tecnologia), 🔗 A criação de conexões que iram além do trabalho. Já atuei com produto digital, startup, banco, consultoria e agencias sempre mantive a mão na massa. Nessas atuações passei por diversos desafios, onde consegui evoluir minhas soft e hard skills. Aqui tem alguns projetos que trabalhei.',
 			contacts: {
 				...mixin.contact(
 					'linkedin',

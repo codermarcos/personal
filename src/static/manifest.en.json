@@ -3,7 +3,7 @@
   "short_name": "codermarcos",
   "name": "Marcos Gonçalves De Carvalho | codermarcos",
   "start_url": "/?source=pwa",
-  "background_color": "#3367D6",
+  "background_color": "#666666",
   "display": "standalone",
   "scope": "/",
   "icons": [
@@ -18,6 +18,6 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#3367D6",
-  "description": "Marcos Gonçalves or codermarcos is a software engineer specialized in frontend development with strong experience in DevOps and backend. Here is a glimpse of his career."
+  "theme_color": "#666666",
+  "description": "Marcos Gonçalves or codermarcos is a software engineer who loves challenges and solving problems. Here is a brief overview of his career."
 }
