@@ -61,11 +61,11 @@ const headerWrapper = style({
 	gridRow: '2 / 3',
 	gridColumn: '2 / 3',
 	gridTemplateColumns: `${headerPhotoSizeDesktop} auto`,
-	gridTemplateRows: `${em(size(24))} ${em(size(24))} ${em(size(5))} auto`,
+	gridTemplateRows: `${em(size(16))} ${em(size(32))} ${em(size(5))} auto`,
 }, mobileMD({
 	columnGap: em(size(2)),
 	gridTemplateColumns: `${headerPhotoSizeMobile} auto`,
-	gridTemplateRows: `${em(size(5))} ${em(size(5))} ${em(size(2))} ${em(size(28))} ${em(size(2))} auto`,
+	gridTemplateRows: `${em(size(5))} ${em(size(5))} ${em(size(2))} ${em(size(32))} ${em(size(2))} auto`,
 }), mobileSM({
 	display: 'flex',
 	alignItems: 'center',
@@ -143,11 +143,14 @@ const headerContactsSize = em(size(6));
 
 const headerContacts = style({
 	display: 'grid',
-	gridGap: em(size(4)),
+	gridGap: em(size(2)),
+	height: percent(100),
 	gridTemplateColumns: '1fr 1fr',
 	$nest: {
 		'& a': {
+			display: 'block',
 			textDecoration: 'none',
+			padding: padding(em(size(2)), 0),
 		},
 		'& a:hover': {
 			textDecoration: 'underline',
@@ -160,11 +163,7 @@ const headerContacts = style({
 	},
 }, mobileMD({
 	gridTemplateColumns: '1fr',
-	$nest: {
-		'& li': {
-			height: em(size(4)),
-		},
-	},
+	gridGap: 0,
 }));
 
 const headerContactsWrapper = style({
