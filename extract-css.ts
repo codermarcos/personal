@@ -25,9 +25,9 @@ async function main(lang = 'pt') {
 
 	const page = await browser.newPage();
 
-	await page.goto(path);
+	await page.goto(`file://${path}`);
 
-	await page.waitForSelector('style')
+	await page.waitForSelector('style');
 
 	const value = await page.content();
 
