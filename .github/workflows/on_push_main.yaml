@@ -9,11 +9,10 @@ on:
       - .github/workflows/on_push_main.yaml
 
 env:
-  NODE_ENV: production
   AWS_REGION: us-east-1
+  NODE_ENV: production
   TF_VERSION: latest
-  TG_VERSION: v0.31.8
-  TF_WORKING_DIR: iac
+  TG_VERSION: 0.31.8
 
 jobs:
   default:
@@ -49,35 +48,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: Init deploy
-        uses: the-commons-project/terragrunt-github-actions@master
+      - name: Deploy
+        uses: gruntwork-io/terragrunt-action@v1
         with:
-          tf_actions_comment: false
-          tf_actions_subcommand: init
-          tf_actions_version: ${{ env.TF_VERSION }}
-          tf_actions_working_dir: ${{ env.TF_WORKING_DIR }}
-          tg_actions_version: ${{ env.TG_VERSION }}
-          tg_actions_source: .
-          args: --terragrunt-non-interactive
-
-      - name: Plan deploy
-        uses: the-commons-project/terragrunt-github-actions@master
-        with:
-          tf_actions_comment: true
-          tf_actions_subcommand: plan
-          tf_actions_version: ${{ env.TF_VERSION }}
-          tf_actions_working_dir: ${{ env.TF_WORKING_DIR }}
-          tg_actions_version: ${{ env.TG_VERSION }}
-          tg_actions_source: .
-          args: -out=tfplan --terragrunt-non-interactive
-
-      - name: Apply deploy
-        uses: the-commons-project/terragrunt-github-actions@master
-        with:
-          tf_actions_comment: false
-          tf_actions_subcommand: apply
-          tf_actions_version: ${{ env.TF_VERSION }}
-          tf_actions_working_dir: ${{ env.TF_WORKING_DIR }}
-          tg_actions_version: ${{ env.TG_VERSION }}
-          tg_actions_source: .
-          args: --terragrunt-non-interactive tfplan
+          tf_version: ${{ env.TF_VERSION }}
+          tg_version: ${{ env.TG_VERSION }}
+          tg_command: apply --terragrunt-non-interactive --terragrunt-working-dir iac --terragrunt-source .
