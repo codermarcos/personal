@@ -46,5 +46,5 @@
     "start": "cross-env NODE_ENV=development webpack serve",
     "watch": "nodemon -e ts --watch webpack.config.ts --ignore src/ --exec \"npm run start\""
   },
-  "version": "1.0.0"
+  "version": "0.0.0"
 }
