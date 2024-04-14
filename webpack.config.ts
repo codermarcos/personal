@@ -3,19 +3,15 @@ import * as webpack from 'webpack';
 
 import { resolve } from 'path';
 import CopyPlugin from 'copy-webpack-plugin';
-import ESLintPlugin from 'eslint-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WatchExternalFilesPlugin from 'webpack-watch-files-plugin';
 import ImageminWebpWebpackPlugin from 'imagemin-webp-webpack-plugin';
 
-const PugLintPlugin = require('puglint-webpack-plugin');
 
 import i18n from './src/i18n';
 import util from './src/util';
 
 import pkg from './package.json';
-
-import puglint from './.pug-lintrc.json';
 
 type Language = keyof typeof i18n;
 
@@ -70,15 +66,8 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
         ],
       }),
       new ImageminWebpWebpackPlugin(),
-      new ESLintPlugin({}),
-      new PugLintPlugin({
-        context: 'src',
-        files: '**/*.pug',
-        config: Object.assign({emitError: true}, puglint)
-      }),
       new HtmlWebpackPlugin({
         inject: false,
-        minify: true,
         template: './src/index.pug',
         get meta() {
           const file = './src/i18n';
