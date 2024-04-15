@@ -15,10 +15,6 @@ const informations = {
       name: 'twitter:creator',
       content: '@codermarcos'
     },
-    'og:title': {
-      property: 'og:title',
-      content: 'Marcos Gonçalves | codermarcos'
-    },
     'og:site_name': {
       property: 'og:site_name',
       content: 'codermarcos'
@@ -61,7 +57,6 @@ const informations = {
 		}
   },
   args: {
-    title: 'Marcos Gonçalves | codermarcos',
     photo: {
       file: '/images/profile',
       type: 'image/jpeg',

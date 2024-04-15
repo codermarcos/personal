@@ -1,7 +1,164 @@
-import { TagCategory, TagCloud, TagCloudTool, TagCompany, TagTecnology, TagType } from './en-tags';
+import { TagCategory, TagCloud, TagCloudTool, TagCompany, TagTecnology, TagType } from './pt-tags';
 import { Mixins } from '.';
 
 const projects = (mixin: Mixins): Array<any> => [
+	mixin.projectItem(
+		'gulpjs/interpret',
+		'Pequena contribuição para biblioteca que é usada pelo webpack para dar suporte a nova versão do swc.',
+		'',
+		2024,
+		4,
+		{
+			[TagType.categoria]: [
+				TagCategory.comunidade,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.javascript
+			],
+		},
+	),
+	mixin.projectItem(
+		'node-pg-migrate',
+		'Pequena contribuição para biblioteca do node que é usada para fazer migrações de banco de dados.',
+		'',
+		2024,
+		4,
+		{
+			[TagType.categoria]: [
+				TagCategory.comunidade,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.javascript
+			],
+		},
+	),
+	mixin.projectItem(
+		'git-ai',
+		'Um pacote que estou criando para gerar mensagens de commit e pull requests baseado em diff e tarefas do jira.',
+		'',
+		2024,
+		3,
+		{
+			[TagType.categoria]: [
+				TagCategory.comunidade,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.rust
+			],
+		},
+	),
+	mixin.projectItem(
+		'rust-key-logger',
+		'Um projeto para estudar as apis de baixo nivel de cada sistema operacional.',
+		'',
+		2024,
+		2,
+		{
+			[TagType.categoria]: [
+				TagCategory.estudo,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.rust
+			],
+		},
+	),
+	mixin.projectItem(
+		'arena-commerce-ai',
+		'Um chat que usa a API da open AI para responder perguntas relacionadas aos produtos da pagina.',
+		'',
+		2023,
+		12,
+		{
+			[TagType.empresa]: [
+				TagCompany.arena,
+			],
+			[TagType.categoria]: [
+				TagCategory.trabalho,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.typescript,
+				TagTecnology.websockets,
+				TagTecnology.vite,
+				TagTecnology.preact,
+			],
+		},
+	),
+	mixin.projectItem(
+		'arena-dashboard',
+		'Migração de um dashboard para criação de blogs e chats de uma versão legada do react para Next.JS.',
+		'',
+		2023,
+		3,
+		{
+			[TagType.empresa]: [
+				TagCompany.arena,
+			],
+			[TagType.categoria]: [
+				TagCategory.trabalho,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.typescript,
+				TagTecnology.react,
+				TagTecnology.redux,
+				TagTecnology.next,
+				TagTecnology.react_query,
+				TagTecnology.css,
+				TagTecnology.jest,
+			],
+		},
+	),
+	mixin.projectItem(
+		'model-book-frontend',
+		'Aplicação para armazenar foto de modelos.',
+		'',
+		2023,
+		6,
+		{
+			[TagType.categoria]: [
+				TagCategory.freela,
+			],
+			[TagType.nuvem]: [
+				TagCloud.aws
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.typescript,
+				TagTecnology.cdk,
+  			TagTecnology.lambda,
+  			TagTecnology.api_gateway,
+  			TagTecnology.cloudfront,
+  			TagTecnology.cognito,
+  			TagTecnology.sqs,
+  			TagTecnology.sns,
+  			TagTecnology.s3,
+			],
+		},
+	),
+	mixin.projectItem(
+		'model-book-backend',
+		'Aplicação backend serveless de baixo custo para armazenar foto de modelos com upload diretamente do navegador.',
+		'',
+		2023,
+		6,
+		{
+			[TagType.categoria]: [
+				TagCategory.freela,
+			],
+			[TagType.nuvem]: [
+				TagCloud.aws
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.typescript,
+				TagTecnology.cdk,
+  			TagTecnology.lambda,
+  			TagTecnology.api_gateway,
+  			TagTecnology.cloudfront,
+  			TagTecnology.cognito,
+  			TagTecnology.sqs,
+  			TagTecnology.sns,
+  			TagTecnology.s3,
+			],
+		},
+	),
 	mixin.projectItem(
 		'backend-vende-mais',
 		'Um BFF para o App do vendedor que consumia a API do Salesforce.',
@@ -207,6 +364,7 @@ const projects = (mixin: Mixins): Array<any> => [
 			],
 			[TagType.tecnologia]: [
 				TagTecnology.typescript,
+				TagTecnology.react_query,
 				TagTecnology.next,
 				TagTecnology.jest,
 				TagTecnology.docker,

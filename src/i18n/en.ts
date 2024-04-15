@@ -25,16 +25,16 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 	};
 
 	const	contacts_raw = {
-		email: 'codermarcos.au@gmail.com',
-		phone: '61 0405 332 133',
+		email: 'codermarcos@gmail.com',
+		phone: '11971353293',
 	};
 
 	const address = {
-		url: 'https://goo.gl/maps/wSyQ7535MxF5MASx5',
-		cep: '2038',
-		street: '17 Parramatta',
-		city: 'Sydney',
-		state: 'NSW',
+		url: 'https://goo.gl/maps/ywxZKJTAh6d33wSY8',
+		cep: '09406330',
+		street: 'Rua Iraja',
+		city: 'Ribeirão pires',
+		state: 'SP',
 	};
 
 	return {
@@ -43,6 +43,10 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 			'description': {
 				name: 'description',
 				content: description,
+			},
+			'og:title': {
+				property: 'og:title',
+				content: 'codermarcos - Experiences of Marcos Gonçalves De Carvalho'
 			},
 			'og:locale': {
 				property: 'og:locale',
@@ -60,6 +64,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 		args: {
 			...inf.args,
 			...durations,
+			title: 'codermarcos - Site oficial de Marcos Gonçalves De Carvalho',
 			job: 'Software engnieer',
 			nick: 'codermarcos',
 			contacts_raw,
@@ -72,7 +77,15 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 			academic: 'Education',
 			experiences: 'Experiences',
 			photoAlt: 'Photo Marcos Gonçalves (codermarcos)',
-			aboutMe: 'I am a software engineer who is on an ✨ endless journey in search of knowledge. During this journey, I value greatly 🔀 The exchange of experiences ❤️ Working with what I love (technology) 🔗 Creating connections that go beyond work. I have worked with digital products, startups, banks, consulting firms, and agencies, and have always kept my hands dirty. In my previous roles, I encountered various challenges that allowed me to develop both my soft and hard skills. Here, there are a few projects on which I\'e worked.',
+			aboutMe: 'I am a <strong>software engineer</strong> passionate about technology, always seeking new knowledge and challenges. \
+			With extensive experience in software development, I am driven by the desire to learn and share knowledge. These are my main motivations: \
+			Knowledge Sharing 🔀 I value collaboration and sharing insights with colleagues and industry professionals. \
+			Passion for Technology ❤️ Motivated by innovation and the positive impact technology can bring to people and organizations. \
+			Professional Connections 🔗 I aim to build lasting and meaningful relationships that go beyond the workplace. \
+			Some of my areas of expertise are <strong>Cloud Computing</strong>: Specialized in <strong>AWS</strong>, with experience in <strong>Infrastructure as Code (IaC)</strong> tools such as <strong>Terraform, Pulumi, AWS CloudFormation,</strong> and <strong>AWS CDK</strong>. \
+			<strong>Backend Development</strong>: Deep knowledge of <strong>Node.js</strong>, with experience in <strong>Python</strong> and a strong passion for <strong>Rust</strong>. \
+			<strong>Frontend Development</strong>: Experienced with frameworks and libraries like <strong>React, Preact, Angular, AngularJS</strong>, and <strong>Vue</strong>. \
+			I am always looking for opportunities to learn, grow, and contribute to innovative projects and dynamic teams.',
 			contacts: {
 				...mixin.contact(
 					'linkedin',
@@ -110,6 +123,16 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 			currently: 'Currently',
 			monthsOfYear,
 			articlesAndPostsList: [
+				{
+					image: ['/images/articles/dev-to-2024-3-what-is-a-good-message-and-size-for-a-commit', 'jpg', 'image/jpg'],
+					link: 'https://dev.to/codermarcos/what-is-a-good-message-and-size-for-a-commit-2edd',
+					title: 'What is a good message and size for a commit?',
+					platform: 'Dev.to',
+					date: {
+						year: 2024,
+						month: 3,
+					},
+				},
 				{
 					image: ['/images/articles/linkedin-2020-7-outras-realidades-nos-navegadores', 'png', 'image/png'],
 					link: 'https://www.linkedin.com/pulse/outras-realidades-nos-navegadores-marcos-gon%C3%A7alves-de-carvalho-junior/',
@@ -267,11 +290,18 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 			],
 			academicList: [
 				mixin.academicItem(
+					'Ananhaguera',
+					'Data science',
+					2024,
+					2,
+					'In progress'
+				),
+				mixin.academicItem(
 					'Metodista',
 					'Analisys and development of systems',
 					2021,
 					2,
-					'Trancado'
+					'Unfinished'
 				),
 				mixin.academicItem(
 					'Udacity',

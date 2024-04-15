@@ -45,6 +45,10 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 				name: 'description',
 				content: description,
 			},
+			'og:title': {
+				property: 'og:title',
+				content: 'codermarcos - Experiências de Marcos Gonçalves De Carvalho'
+			},
 			'og:locale': {
 				property: 'og:locale',
 				content: 'pt_BR'
@@ -61,6 +65,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 		args: {
 			...inf.args,
 			...durations,
+			title: 'codermarcos - Experiências de Marcos Gonçalves De Carvalho',
 			job: 'Engenheiro de software',
 			contacts_raw,
 			address,
@@ -72,7 +77,15 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			academic: 'Formação academica',
 			experiences: 'Experiências profissionais',
 			photoAlt: 'Foto de Marcos Gonçalves (codermarcos)',
-			aboutMe: 'Sou um engenheiro de software que está em uma jornada ✨ sem fim em busca de conhecimento. Durante essa jornada prezo muito 🔀 A troca de experiencias, ❤️ Atuar com oque amo (tecnologia), 🔗 A criação de conexões que iram além do trabalho. Já atuei com produto digital, startup, banco, consultoria e agencias sempre mantive a mão na massa. Nessas atuações passei por diversos desafios, onde consegui evoluir minhas soft e hard skills. Aqui tem alguns projetos que trabalhei.',
+			aboutMe: 'Sou um <strong>engenheiro de software</strong> apaixonado por tecnologia, sempre em busca de novos conhecimentos e desafios. \
+			Com ampla experiência em desenvolvimento de software, aprender e compartilhar conhecimentos. Minhas maiores motivações são: \
+			🔀 Troca de experiências valorizo a colaboração e o compartilhamento de conhecimentos com colegas e profissionais da área. \
+			❤️ Paixão pela tecnologia motivado pela inovação e pelo impacto positivo que a tecnologia pode trazer às pessoas e às organizações. \
+			🔗 Conexões profissionais busco criar relações duradouras e significativas que transcendam o ambiente de trabalho. \
+			Minhas principais áreas de interesse e competências são <strong>Cloud Computing</strong>: Especializado em <strong>AWS</strong>, com experiência em ferramentas de <strong>Infrastructure as Code (IaC)</strong> como <strong>Terraform, Pulumi, AWS CloudFormation</strong> e <strong>AWS CDK</strong>. \
+			<strong>Backend Development</strong>: Profundo conhecimento em <strong>Node.js</strong>, com experiência em <strong>Python</strong> e uma forte paixão por <strong>Rust</strong>. \
+			<strong>Frontend Development</strong>: Experiência com frameworks e bibliotecas como <strong>React, Preact, Angular, AngularJS</strong> e <strong>Vue</strong>. \
+			Estou sempre em busca de oportunidades para aprender, crescer e contribuir para projetos inovadores e equipes dinâmicas.',
 			contacts: {
 				...mixin.contact(
 					'linkedin',
@@ -110,6 +123,16 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			currently: 'Atualmente',
 			monthsOfYear,
 			articlesAndPostsList: [
+				{
+					image: ['/images/articles/dev-to-2024-3-what-is-a-good-message-and-size-for-a-commit', 'jpg', 'image/jpg'],
+					link: 'https://dev.to/codermarcos/what-is-a-good-message-and-size-for-a-commit-2edd',
+					title: 'What is a good message and size for a commit?',
+					platform: 'Dev.to',
+					date: {
+						year: 2024,
+						month: 3,
+					},
+				},
 				{
 					image: ['/images/articles/linkedin-2020-7-outras-realidades-nos-navegadores', 'png', 'image/png'],
 					link: 'https://www.linkedin.com/pulse/outras-realidades-nos-navegadores-marcos-gon%C3%A7alves-de-carvalho-junior/',
@@ -267,11 +290,18 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			],
 			academicList: [
 				mixin.academicItem(
+					'Ananhaguera',
+					'Ciência de dados',
+					2024,
+					2,
+					'Em andamento'
+				),
+				mixin.academicItem(
 					'Metodista',
 					'Analise desenvolvimento de sistemas',
 					2021,
 					2,
-					'Trancado'
+					'Incompleto'
 				),
 				mixin.academicItem(
 					'Udacity',

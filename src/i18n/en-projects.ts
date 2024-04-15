@@ -3,6 +3,137 @@ import { Mixins } from '.';
 
 const projects = (mixin: Mixins): Array<any> => [
 	mixin.projectItem(
+		'gulpjs/interpret',
+		'A little contribution for a package that is used by webpack it is to make webpack suport the new version of SWC.',
+		'',
+		2024,
+		4,
+		{
+			[TagType.categoria]: [
+				TagCategory.comunidade,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.javascript
+			],
+		},
+	),
+	mixin.projectItem(
+		'node-pg-migrate',
+		'A little contribuition for a node package that is used to make database migrations.',
+		'',
+		2024,
+		4,
+		{
+			[TagType.categoria]: [
+				TagCategory.comunidade,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.javascript
+			],
+		},
+	),
+	mixin.projectItem(
+		'git-ai',
+		'A package that generates commit messages and pull requests based on their diff and related tasks.',
+		'',
+		2024,
+		3,
+		{
+			[TagType.categoria]: [
+				TagCategory.comunidade,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.rust
+			],
+		},
+	),
+	mixin.projectItem(
+		'rust-key-logger',
+		'A project to study more about the low levels api of each OS.',
+		'',
+		2024,
+		2,
+		{
+			[TagType.categoria]: [
+				TagCategory.estudo,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.rust
+			],
+		},
+	),
+	mixin.projectItem(
+		'arena-commerce-ai',
+		'A chat that uses the open AI to anwser questions about products in that page.',
+		'',
+		2023,
+		12,
+		{
+			[TagType.empresa]: [
+				TagCompany.arena,
+			],
+			[TagType.categoria]: [
+				TagCategory.trabalho,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.typescript,
+				TagTecnology.websockets,
+				TagTecnology.vite,
+				TagTecnology.preact,
+			],
+		},
+	),
+	mixin.projectItem(
+		'arena-dashboard',
+		'Migration of a dashboard which is used to create blogs and chats from a old version of React to Next.JS',
+		'',
+		2023,
+		3,
+		{
+			[TagType.empresa]: [
+				TagCompany.arena,
+			],
+			[TagType.categoria]: [
+				TagCategory.trabalho,
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.typescript,
+				TagTecnology.react,
+				TagTecnology.redux,
+				TagTecnology.next,
+				TagTecnology.react_query,
+				TagTecnology.css,
+				TagTecnology.jest,
+			],
+		},
+	),
+	mixin.projectItem(
+		'model-book-backend',
+		'Serveless backend application low cost to store photos of models with photo upload from client-side.',
+		'',
+		2023,
+		6,
+		{
+			[TagType.categoria]: [
+				TagCategory.freela,
+			],
+			[TagType.nuvem]: [
+				TagCloud.aws
+			],
+			[TagType.tecnologia]: [
+				TagTecnology.typescript,
+				TagTecnology.cdk,
+  			TagTecnology.lambda,
+  			TagTecnology.api_gateway,
+  			TagTecnology.cloudfront,
+  			TagTecnology.cognito,
+  			TagTecnology.sqs,
+  			TagTecnology.sns,
+  			TagTecnology.s3,
+			],
+		},
+	),
+	mixin.projectItem(
 		'backend-vende-mais',
 		'A BFF (Backend for Frontend) for the seller\'s app that consumed the Salesforce API.',
 		'',
