@@ -14,7 +14,7 @@ async function main(lang = 'pt') {
 	const path = resolve(pkg.bundle, langPath);
 
 	const browser = await puppeteer.launch({
-		headless: 'chrome',
+		headless: true,
 		args: [
 			'--no-first-run',
 			'--disable-extensions',
