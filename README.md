@@ -5,18 +5,18 @@ This is my **personal website**.
 **This project** uses typescript, pug and webpack to bundle a static page and deploying to AWS S3.
 
 > **Table of contents**
-> - [🔍 Requirements](#requirements)
-> - [🔨 Project setup](#project-setup)
-> - [📑 Available Scripts](#️available-scripts)
+>
+> - [🔍 Requirements](#-requirements)
+> - [🔨 Project setup](#-project-setup)
+> - [📑 Available Scripts](#️-available-scripts)
 >   - [Server for development](#️server-for-development)
 >   - [Build](#️build)
->   - [Check linter](#check-linter)
-> - [⬆️ Deploy environment locally](#deploy-locally)
-> - [🔥 Destroy environment locally](#destroy-locally)
+> - [⬆️ Deploy environment locally](#-deploy-environment-locally)
+> - [🔥 Destroy environment locally](#-destroy-environment-locally)
 > - [📚 Learn more](#learn-more)
-> - [💪 Dev Team](#dev-team)
+> - [💪 Dev Team](#-dev-team)
 
-## <a name="requirements"></a> 🔍 Requirements
+## 🔍 Requirements
 
 | Dependencies                                 | Description               |
 | -------------------------------------------- | ------------------------- |
@@ -24,7 +24,7 @@ This is my **personal website**.
 | [![terraform-version]][terraform-download]   | Terraform                 |
 | [![terragrunt-version]][terragrunt-download] | Wrapper for Terraform     |
 
-## <a name="project-setup"></a> 🔨 Project setup
+## 🔨 Project setup
 
 1. To **clone repository** you need to have [git](https://git-scm.com/downloads) installed:
 
@@ -44,11 +44,11 @@ cd personal
 npm install
 ```
 
-## <a name="available-scripts"></a> 📑 Available Scripts
+## 📝 Available scripts
 
 In the project directory, you can run:
 
-### <a name="server-for-development"></a> Server for development
+### Server for development
 
 Runs the app in the development mode this server compiles and hot-reloads with linter locally:
 
@@ -60,7 +60,7 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 > You can use on mobile if uses the same network to this replace `localhost` by your ip.
 
-### <a name="build"></a> Build
+### Build
 
 Builds the app for production to the `dist` folder.
 
@@ -68,13 +68,7 @@ Builds the app for production to the `dist` folder.
 npm run build
 ```
 
-### <a name="check-linter"></a> Check linter
-
-```bash
-npm run lint
-```
-
-## <a name="deploy-locally"></a> ⬆️ Deploy environment locally
+## ⬆ Deploy environment locally
 
 To deploy locally you need run [build](#️build) before proceed.
 
@@ -86,7 +80,7 @@ terragrunt apply --terragrunt-working-dir iac --terragrunt-source . -target="aws
 
 > To learn more [Terragrunt](https://terragrunt.gruntwork.io/docs/).
 
-## <a name="destroy-locally"></a> 🔥 Destroy environment locally
+## 🔥 Destroy environment locally
 
 1. Now destroy s3 bucket with terraform
 
@@ -94,13 +88,13 @@ terragrunt apply --terragrunt-working-dir iac --terragrunt-source . -target="aws
 terragrunt destroy --terragrunt-working-dir iac --terragrunt-source .
 ```
 
-## <a name="learn-more"></a> Learn More
+## Learn More
 
-* [Pug.js](https://pugjs.org/api/getting-started.html)
-* [Terraform](https://learn.hashicorp.com/terraform?utm_source=terraform_io&utm_content=terraform_io_hero)
-* [AWS](https://docs.aws.amazon.com/s3/?id=docs_gateway)
+- [Pug.js](https://pugjs.org/api/getting-started.html)
+- [Terraform](https://learn.hashicorp.com/terraform?utm_source=terraform_io&utm_content=terraform_io_hero)
+- [AWS](https://docs.aws.amazon.com/s3/?id=docs_gateway)
 
-## <a name="dev-team"></a> 💪 Dev Team
+## 💪 Dev Team
 
 This project exists thanks to all these people.
 
