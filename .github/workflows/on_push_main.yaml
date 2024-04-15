@@ -49,9 +49,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: Deploy
-        uses: gruntwork-io/terragrunt-action@v1
+      - name: Download terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-          tf_version: ${{ env.TF_VERSION }}
-          tg_version: ${{ env.TG_VERSION }}
-          tg_command: apply --terragrunt-non-interactive --terragrunt-working-dir iac --terragrunt-source .
+          terraform_version: "1.8.0"
+
+      - name: Init terraform
+        run: terraform init
+
+      - name: Plan terraform
+        run: terraform apply -auto-approve
