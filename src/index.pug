@@ -31,7 +31,7 @@ html(lang=args.language)
 								figure
 									| !{require(`./images/icons/${t}.pug`)({ styles })}
 									figcaption #{args.contacts[t].text}
-			p(class=`${styles.headerAbout} p-summary`) #{args.aboutMe}
+			p(class=`${styles.headerAbout} p-summary`) !{args.aboutMe}
 
 		main(class=styles.contentWrapper)
 			section(class=styles.contentSkills)
