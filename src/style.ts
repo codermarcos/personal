@@ -279,6 +279,7 @@ const contentProjects = style({
 }));
 
 const fullList: NestedCSSProperties = {
+	scrollSnapType: 'y mandatory',
 	maxHeight: em(size(125)),
 	flexDirection: 'column',
 	width: percent(100),
@@ -388,6 +389,8 @@ const listItem: NestedCSSProperties = {
 	display: 'flex',
 	flexWrap: 'wrap',
 	border: borderShare,
+	scrollMarginTop: px(2),
+	scrollSnapAlign: 'start',
 	marginBottom: em(litsItemSpaceBottom),
 	borderRadius: borderRadius,
 	padding: padding(em(size(4))),
@@ -559,6 +562,7 @@ const contentArticles = style();
 const articlesList = style({
 	display: 'flex',
 	overflowX: 'auto',
+	scrollSnapType: 'x mandatory',
 	justifyContent: 'space-between',
 	$nest: {
 		...scrollStyle(),
@@ -574,6 +578,7 @@ const articleImageSize = em(size(65));
 const articlesItem = style({
 	width: articleImageSize,
 	marginRight: em(size(4)),
+	scrollSnapAlign: 'start',
 	$nest: {
 		'& > a': {
 			textDecoration: 'none',

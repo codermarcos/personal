@@ -1,4 +1,4 @@
-function categoriesShowTitle(categories: NodeListOf<HTMLDListElement>) {
+function categoriesShowTitle(categories: NodeListOf<HTMLElement>) {
 	categories
 		.forEach(
 			dd => {
@@ -21,24 +21,12 @@ function categoriesShowTitle(categories: NodeListOf<HTMLDListElement>) {
 function readMore(buttons: NodeListOf<HTMLButtonElement>) {
 	buttons
 		.forEach(
-			(button, idx) => {
+			(button) => {
 				const { listItems, goTo } = button.dataset;
 
 				if (listItems === undefined || goTo === undefined) return;
 
 				const items = button.parentElement?.querySelector<HTMLUListElement>(listItems);
-
-				if (idx % 2 !== 0)
-					items
-						?.addEventListener(
-							'wheel',
-							(e) => {
-								e.preventDefault();
-
-								items?.scrollTo({ top: items.scrollTop + (e.deltaY > 0 ? 150 : -200), behavior: 'smooth' });
-							},
-							{ passive: false },
-						);
 
 				button
 					.addEventListener(
@@ -74,7 +62,7 @@ function openExperiences(experiences: NodeListOf<HTMLLIElement>) {
 		);
 }
 
-function setupPrint(allDetails: NodeListOf<HTMLDetailsElement>,) {
+function setupPrint(allDetails: NodeListOf<HTMLDetailsElement>) {
 
 	window.addEventListener('beforeprint', () => {
 		document.body.classList.add('print');
@@ -91,15 +79,44 @@ function setupPrint(allDetails: NodeListOf<HTMLDetailsElement>,) {
 	});
 }
 
+function setupHorizontalScroll() {
+	const articles = document.querySelector('[aria-label="Articles and posts"]');
+	document.addEventListener('wheel', (e) => {
+		let target = e.target as HTMLElement;
+
+		if (!['DL','DT','DD'].includes(target.tagName) && !articles?.contains(target)) return;
+
+		e.stopPropagation();
+		e.preventDefault();
+
+		let move = e.deltaY > 0 ? 50 : -50;
+
+		if (['DT','DD'].includes(target.tagName))
+			target = target.parentElement!;
+
+		if (articles?.contains(target)) {
+			target = articles as HTMLElement;
+			move += move > 0 ? 150 : -150;
+		}
+
+		if (target.tagName === 'DL' || target.tagName === 'OL')
+			target.scrollTo({
+				left: target.scrollLeft + (move),
+				behavior: 'smooth',
+			});
+	}, { passive: false });
+}
+
 function onloaded() {
 	const readMoreButtons = document.querySelectorAll<HTMLButtonElement>('button[data-list-items]');
 	const experiences = document.querySelectorAll<HTMLLIElement>('.p-experience');
-	const categoriesValue = document.querySelectorAll<HTMLDListElement>('dd');
 	const allDetails = document.body.querySelectorAll('details');
+	const categoriesValue = document.querySelectorAll('dd');
 
 	categoriesShowTitle(categoriesValue);
 	readMore(readMoreButtons);
 	openExperiences(experiences);
+	setupHorizontalScroll();
 	setupPrint(allDetails);
 }
 
