@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { rmSync, writeFileSync } from 'fs';
 
 import puppeteer from 'puppeteer';
 
@@ -34,6 +34,7 @@ async function main(lang = 'pt') {
 	await browser.close();
 
 	writeFileSync(path, value.replace('<script defer="defer" src="style.js"></script>', ''));
+	rmSync(resolve(pkg.bundle, lang === 'pt' ? '' : lang, 'style.js'));
 
 	console.log(`END css extraction to ${lang}!`);
 }
