@@ -30,14 +30,16 @@
     "webpack-watch-files-plugin": "^1.2.1"
   },
   "description": "My personal website",
-  "name": "codermarcos",
+  "name": "cv-codermarcos-zone",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "lint": "pug-lint \"./src/index.pug\"",
     "postbuild": "ts-node ./extract-css.ts",
     "prebuild": "rimraf ./dist",
     "start": "cross-env NODE_ENV=development webpack serve",
     "watch": "nodemon -e ts --watch webpack.config.ts --ignore src/ --exec \"npm run start\""
   },
-  "version": "0.0.0"
+  "version": "0.0.0",
+	"engines": {
+		"node": ">=21"
+	}
 }
