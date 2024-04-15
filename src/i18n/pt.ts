@@ -72,7 +72,7 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			language: 'pt-BR',
 			seeRecent: 'ver recentes',
 			seePrevious: 'ver anteriores',
-			articlesAndPosts: 'Artigos e posts',
+			articlesAndPosts: 'Artigos e postagens',
 			projects: 'Projetos',
 			academic: 'Formação academica',
 			experiences: 'Experiências profissionais',

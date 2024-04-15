@@ -80,7 +80,7 @@ function setupPrint(allDetails: NodeListOf<HTMLDetailsElement>) {
 }
 
 function setupHorizontalScroll() {
-	const articles = document.querySelector('[aria-label="Articles and posts"]');
+	const articles = document.querySelector('[aria-label="Articles and posts"]') ?? document.querySelector('Artigos e postagens');
 	document.addEventListener('wheel', (e) => {
 		let target = e.target as HTMLElement;
 
