@@ -54,8 +54,11 @@ jobs:
         with:
           terraform_version: "1.8.0"
 
+      - name: Enter on IaC repository
+        run: cd ./iac
+
       - name: Init terraform
         run: terraform init
 
-      - name: Plan terraform
+      - name: Deploy
         run: terraform apply -auto-approve

@@ -75,7 +75,7 @@ To deploy locally you need run [build](#️build) before proceed.
 1. To create the s3 bucket use this, you need terragrunt [terragrunt][terragrunt-download] installed:
 
 ```bash
-terragrunt apply --terragrunt-working-dir iac --terragrunt-source . -target="aws_acm_certificate.issued"
+terraform apply
 ```
 
 > To learn more [Terragrunt](https://terragrunt.gruntwork.io/docs/).
@@ -85,7 +85,7 @@ terragrunt apply --terragrunt-working-dir iac --terragrunt-source . -target="aws
 1. Now destroy s3 bucket with terraform
 
 ```bash
-terragrunt destroy --terragrunt-working-dir iac --terragrunt-source .
+terraform destroy
 ```
 
 ## Learn More
