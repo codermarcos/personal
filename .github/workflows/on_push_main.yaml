@@ -7,7 +7,6 @@ on:
       - main
     paths-ignore:
       - README.md
-      - .github/workflows/on_push_main.yaml
 
 env:
   AWS_REGION: us-east-1
@@ -54,11 +53,8 @@ jobs:
         with:
           terraform_version: "1.8.0"
 
-      - name: Enter on IaC repository
-        run: cd ./iac
-
       - name: Init terraform
-        run: terraform init
-
-      - name: Deploy
-        run: terraform apply -auto-approve
+        working-directory: ./iac
+        run: |
+          terraform init
+          terraform apply -auto-approve
