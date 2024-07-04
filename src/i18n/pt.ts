@@ -70,6 +70,8 @@ export const pt = (inf: Informations, mixin: Mixins): any => {
 			contacts_raw,
 			address,
 			language: 'pt-BR',
+			from: 'De',
+			to: 'Até',
 			seeRecent: 'ver recentes',
 			seePrevious: 'ver anteriores',
 			articlesAndPosts: 'Artigos e postagens',

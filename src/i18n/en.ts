@@ -58,34 +58,35 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 			},
 			keywords: {
 				name: 'keywords',
-				content: 'codermarcos, Marcos Gonçalves De Carvalho, Frontend, Backend, Devops, Programmer, Developer, Engnieer'
+				content: 'codermarcos, Marcos Gonçalves De Carvalho, Frontend, Backend, Devops, Programmer, Developer, Engineer'
 			},
 		},
 		args: {
 			...inf.args,
 			...durations,
 			title: 'codermarcos - Site oficial de Marcos Gonçalves De Carvalho',
-			job: 'Software engnieer',
+			job: 'Software engineer',
 			nick: 'codermarcos',
 			contacts_raw,
 			address,
 			language: 'en-US',
-			seeRecent: 'see recents',
+			from: 'From',
+			to: 'To',
 			seePrevious: 'see previous',
 			articlesAndPosts: 'Articles and posts',
 			projects: 'Projects',
 			academic: 'Education',
-			experiences: 'Experiences',
+			experiences: 'Experience',
 			photoAlt: 'Photo Marcos Gonçalves (codermarcos)',
-			aboutMe: 'I am a <strong>software engineer</strong> passionate about technology, always seeking new knowledge and challenges. \
-			With extensive experience in software development, I am driven by the desire to learn and share knowledge. These are my main motivations: \
-			Knowledge Sharing 🔀 I value collaboration and sharing insights with colleagues and industry professionals. \
-			Passion for Technology ❤️ Motivated by innovation and the positive impact technology can bring to people and organizations. \
-			Professional Connections 🔗 I aim to build lasting and meaningful relationships that go beyond the workplace. \
-			Some of my areas of expertise are <strong>Cloud Computing</strong>: Specialized in <strong>AWS</strong>, with experience in <strong>Infrastructure as Code (IaC)</strong> tools such as <strong>Terraform, Pulumi, AWS CloudFormation,</strong> and <strong>AWS CDK</strong>. \
+			aboutMe: 'I am a <strong>software engineer</strong> passionate about technology, always seeking knowledge and challenges. \
+			With extensive experience in software development, I am driven by the desire to learn and share knowledge. These have been my main motivations: \
+			🔀 Knowledge Sharing and collaboration. I value sharing insights with colleagues and industry professionals. \
+			❤️ Passion for Technology I am motivated by innovation and the positive impact that technology can have on people and organizations. \
+			🔗 Professional Connections I aim to build lasting and meaningful relationships that go beyond the workplace. \
+			Some of my expertise areas are <strong>Cloud Computing</strong>: Specialized in <strong>AWS</strong>, with experience in <strong>Infrastructure as Code (IaC)</strong> tools such as <strong>Terraform, Pulumi, AWS CloudFormation,</strong> and <strong>AWS CDK</strong>. \
 			<strong>Backend Development</strong>: Deep knowledge of <strong>Node.js</strong>, with experience in <strong>Python</strong> and a strong passion for <strong>Rust</strong>. \
 			<strong>Frontend Development</strong>: Experienced with frameworks and libraries like <strong>React, Preact, Angular, AngularJS</strong>, and <strong>Vue</strong>. \
-			I am always looking for opportunities to learn, grow, and contribute to innovative projects and dynamic teams.',
+			I have always been looking for opportunities to learn, grow, and contribute to innovative projects and dynamic teams.',
 			contacts: {
 				...mixin.contact(
 					'linkedin',
@@ -169,7 +170,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 				'Arena',
 					new Map([
-						['Software engnieer', [[2023, 3]]]
+						['Software engineer', [[2023, 3]]]
 					]),
 					'',
 					['/images/companies/arena', 'gif', 'image/gif'],
@@ -177,7 +178,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Loft',
 					new Map([
-						['Software engnieer', [[2022, 4], [2023, 3]]]
+						['Software engineer', [[2022, 4], [2023, 3]]]
 					]),
 					'',
 					['/images/companies/loft', 'gif', 'image/gif'],
@@ -194,7 +195,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'Infracommerce',
 					new Map([
-						['DevOps engnieer', [[2021, 11], [2022, 2]]],
+						['DevOps engineer', [[2021, 11], [2022, 2]]],
 					]),
 					'',
 					['/images/companies/infracommerce', 'gif', 'image/gif'],
@@ -202,7 +203,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'NEOJETS',
 					new Map([
-						['Software engnieer', [[2021, 6], [2021, 10]]],
+						['Software engineer', [[2021, 6], [2021, 10]]],
 					]),
 					'',
 					['/images/companies/neojets', 'gif', 'image/gif'],
@@ -210,7 +211,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 				mixin.jobItem(
 					'B2W Digital',
 					new Map([
-						['Software engnieer', [[2021, 5], [2021, 9]]],
+						['Software engineer', [[2021, 5], [2021, 9]]],
 					]),
 					'',
 					['/images/companies/b2w', 'gif', 'image/gif'],
@@ -229,7 +230,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
 					'Dasa',
 					new Map([
 						['Technical leader', [[2020, 5], [2021, 2]]],
-						['Software engnieer', [[2019, 11], [2020, 5]]],
+						['Software engineer', [[2019, 11], [2020, 5]]],
 						['Front end developer', [[2019, 2], [2019, 11]]],
 					]),
 					'',

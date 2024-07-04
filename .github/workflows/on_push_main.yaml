@@ -53,7 +53,7 @@ jobs:
         with:
           terraform_version: "1.8.0"
 
-      - name: Init terraform
+      - name: Deploy
         working-directory: ./iac
         run: |
           terraform init

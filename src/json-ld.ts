@@ -8,6 +8,10 @@ module.exports = (args: any) => JSON.stringify({
     "postalCode": args.address.cep,
     "streetAddress": args.address.street
   },
+	"sameAs": [
+    args.contacts.linkedin.href,
+    args.contacts.github.href,
+  ],
   "colleague": [],
   "disambiguatingDescription": args.aboutMe,
   "email": `mailto:${args.contacts_raw.email}`,

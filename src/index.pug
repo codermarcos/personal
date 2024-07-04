@@ -106,14 +106,14 @@ html(lang=args.language)
 										li
 											b #{role}
 
-											span De
+											span #{args.from}
 												= ' '
 												- const [year, month] = start;
 												time(datetime=`${year}-${month}`)
 													| #{args.monthsOfYear[month - 1]} #{year}
 											span
 												if end
-													| Até
+													| #{args.to}
 													= ' '
 													- const [year, month] = end;
 													time(datetime=`${year}-${month}`)
@@ -152,14 +152,14 @@ html(lang=args.language)
 								| #{academic.summary.school}
 							- const { start, end } = academic;
 							- const { year, month } = start;
-							span De
+							span #{args.from}
 								= ' '
 								time(datetime=`${year}-${month}`)
 									| #{args.monthsOfYear[month - 1]} #{year}
 
 							span
 								if typeof end !== 'string'
-									| Até
+									| #{args.to}
 									= ' '
 									- const { year, month } = end;
 									time(datetime=`${year}-${month}`)
