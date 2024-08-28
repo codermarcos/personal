@@ -4,13 +4,13 @@ type TupleDate = [year: number, month: number];
 const ONE_DAY_IN_MILIS = 1_000 * 60 * 60 * 24;
 
 function calculateDays(startDate: TupleDate, endDate: TupleDate): number {
-  const end = new Date(...endDate);
-  const start = new Date(...startDate);
-  const diff = Math.abs(end.getTime() - start.getTime());
+	const end = new Date(...endDate);
+	const start = new Date(...startDate);
+	const diff = Math.abs(end.getTime() - start.getTime());
 
-  const days = Math.ceil(diff / ONE_DAY_IN_MILIS);
+	const days = Math.ceil(diff / ONE_DAY_IN_MILIS);
 
-  return days;
+	return days;
 }
 
 const pieChart = {

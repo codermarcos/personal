@@ -27,28 +27,28 @@ export enum TagCompany {
   serasa = 'serasa',
   locaweb = 'locaweb',
   softclass = 'softclass',
-	infracommerce = 'infracommerce'
+  infracommerce = 'infracommerce'
 }
 
 export enum TagCloudTool {
-	cloudstorage = 'cloud storage',
-	cloudcdn = 'cloud cdn',
-	cloudfront = 'cloudfront',
-	s3 = 's3',
-	aks = 'aks',
-	lambda = 'lambda',
-	api_gateway = 'api gateway',
-	rds = 'rds',
-	dynamodb = 'dynamodb',
-	acm = 'acm',
-	vpc = 'vpc',
-	iam = 'iam',
+  cloudstorage = 'cloud storage',
+  cloudcdn = 'cloud cdn',
+  cloudfront = 'cloudfront',
+  s3 = 's3',
+  aks = 'aks',
+  lambda = 'lambda',
+  api_gateway = 'api gateway',
+  rds = 'rds',
+  dynamodb = 'dynamodb',
+  acm = 'acm',
+  vpc = 'vpc',
+  iam = 'iam',
 }
 
 export enum TagTecnology {
   python = 'python',
   datadog = 'datadog',
-	apollo = 'apollo',
+  apollo = 'apollo',
   mocha = 'mocha',
   jest = 'jest',
   chai = 'chai',

@@ -43,18 +43,18 @@ const informations = {
       property: 'og:image',
       content: 'https://avatars.githubusercontent.com/u/12430365?s=460&u=12d4a3464b5a736061dbd0ccca8f57f6d08902d7&v=4'
     },
-		author: {
-			name: 'author',
-			content: 'codermarcos, coder.marcos@gmail.com'
-		},
-		robots: {
-			name: 'robots',
-			content: 'index, follow',
-		},
-		'theme-color': {
-			name: 'theme-color',
-			content: '#666666'
-		}
+    author: {
+      name: 'author',
+      content: 'codermarcos, coder.marcos@gmail.com'
+    },
+    robots: {
+      name: 'robots',
+      content: 'index, follow',
+    },
+    'theme-color': {
+      name: 'theme-color',
+      content: '#666666'
+    }
   },
   args: {
     photo: {
@@ -63,7 +63,7 @@ const informations = {
       ext: 'jpg',
     },
     name: 'Marcos Gonçalves De Carvalho',
-		nick: 'codermarcos',
+    nick: 'codermarcos',
     site: 'http://codermarcos.zone/',
   },
 };

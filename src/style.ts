@@ -1,8 +1,20 @@
 import { style, cssRule, media } from 'typestyle';
 import { NestedCSSProperties } from 'typestyle/lib/types';
-import { border, calc, color, em, margin, padding, percent, px, translateY, viewWidth } from 'csx';
+import {
+	border,
+	calc,
+	color,
+	em,
+	margin,
+	padding,
+	percent,
+	px,
+	translateY,
+	viewWidth,
+} from 'csx';
 
-const size = (n: number): number => parseFloat(Number(parseInt(n.toFixed(0)) * 0.22).toFixed(2));
+const size = (n: number): number =>
+	parseFloat(Number(parseInt(n.toFixed(0)) * 0.22).toFixed(2));
 
 const scrollStyle = () => ({
 	'&::-webkit-scrollbar': {
@@ -21,14 +33,14 @@ const scrollStyle = () => ({
 		outline: '1px solid slategrey',
 		borderRadius: borderRadius,
 	},
-})
+});
 
 cssRule('*, *::after, *::before', {
 	boxSizing: 'border-box',
 	fontSize: percent(100),
 	fontFamily: 'Arial',
 	padding: 0,
-	margin: 0
+	margin: 0,
 });
 
 cssRule('html, body', {
@@ -38,151 +50,176 @@ cssRule('html, body', {
 
 cssRule('body', {
 	$nest: { ...scrollStyle() },
-})
+});
 
 cssRule('ul, ol', {
 	listStyle: 'none',
 });
 
-const mobileSM = (properties: NestedCSSProperties) => media({ maxWidth: px(320) }, properties);
+const mobileSM = (properties: NestedCSSProperties) =>
+	media({ maxWidth: px(320) }, properties);
 
-const mobileMD = (properties: NestedCSSProperties) => media({ maxWidth: px(480) }, properties);
+const mobileMD = (properties: NestedCSSProperties) =>
+	media({ maxWidth: px(480) }, properties);
 
-const print = (properties: NestedCSSProperties) => media({ type: 'print' }, properties);
+const print = (properties: NestedCSSProperties) =>
+	media({ type: 'print' }, properties);
 
 const headerPhotoSizeDesktop = em(size(48));
 const headerPhotoSizeMobile = em(size(24));
 
 const borderRadius = em(size(2));
 
-const headerWrapper = style({
-	display: 'grid',
-	columnGap: em(size(8)),
-	gridRow: '2 / 3',
-	gridColumn: '2 / 3',
-	gridTemplateColumns: `${headerPhotoSizeDesktop} auto`,
-	gridTemplateRows: `${em(size(16))} ${em(size(32))} ${em(size(5))} auto`,
-}, mobileMD({
-	columnGap: em(size(2)),
-	gridTemplateColumns: `${headerPhotoSizeMobile} auto`,
-	gridTemplateRows: `${em(size(5))} ${em(size(5))} ${em(size(2))} ${em(size(32))} ${em(size(2))} auto`,
-}), mobileSM({
-	display: 'flex',
-	alignItems: 'center',
-	flexDirection: 'column',
-	$nest: {
-		'& > figure': {
-			margin: margin(em(size(10)), 0, 0),
-		},
-		'& > hgroup': {
-			margin: margin(em(size(5)), 0),
-		},
-		'& > nav': {
-			margin: margin(0, 0, em(size(10))),
-		},
+const headerWrapper = style(
+	{
+		display: 'grid',
+		columnGap: em(size(8)),
+		gridRow: '2 / 3',
+		gridColumn: '2 / 3',
+		gridTemplateColumns: `${headerPhotoSizeDesktop} auto`,
+		gridTemplateRows: `${em(size(16))} ${em(size(32))} ${em(size(5))} auto`,
 	},
-}));
+	mobileMD({
+		columnGap: em(size(2)),
+		gridTemplateColumns: `${headerPhotoSizeMobile} auto`,
+		gridTemplateRows: `${em(size(5))} ${em(size(5))} ${em(size(2))} ${em(
+			size(32)
+		)} ${em(size(2))} auto`,
+	}),
+	mobileSM({
+		display: 'flex',
+		alignItems: 'center',
+		flexDirection: 'column',
+		$nest: {
+			'& > figure': {
+				margin: margin(em(size(10)), 0, 0),
+			},
+			'& > hgroup': {
+				margin: margin(em(size(5)), 0),
+			},
+			'& > nav': {
+				margin: margin(0, 0, em(size(10))),
+			},
+		},
+	})
+);
 
-const headerPhoto = style({
-	borderRadius: percent(100),
-	overflow: 'hidden',
-	gridRow: '1 / 3',
-	$nest: {
-		'& img': {
-			width: percent(100),
-			height: percent(100),
+const headerPhoto = style(
+	{
+		borderRadius: percent(100),
+		overflow: 'hidden',
+		gridRow: '1 / 3',
+		$nest: {
+			'& img': {
+				width: percent(100),
+				height: percent(100),
+			},
 		},
 	},
-}, mobileMD({
-	gridRow: '1 / 5',
-	alignSelf: 'center',
-	$nest: {
-		'& figure': {
-			marginBottom: px(10),
+	mobileMD({
+		gridRow: '1 / 5',
+		alignSelf: 'center',
+		$nest: {
+			'& figure': {
+				marginBottom: px(10),
+			},
 		},
-	},
-}), mobileSM({
-	$nest: {
-		'& img': {
-			width: calc(`${viewWidth(100)} - ${em(size(24))}`),
+	}),
+	mobileSM({
+		$nest: {
+			'& img': {
+				width: calc(`${viewWidth(100)} - ${em(size(24))}`),
+			},
 		},
-	},
-}));
+	})
+);
 
-const headerAbout = style({
-	textAlign: 'justify',
-	gridColumn: '1 / 3',
-	gridRow: '4 / 4',
-}, mobileMD({
-	gridRow: '6 / 6',
-}));
+const headerAbout = style(
+	{
+		textAlign: 'justify',
+		gridColumn: '1 / 3',
+		gridRow: '4 / 4',
+	},
+	mobileMD({
+		gridRow: '6 / 6',
+	})
+);
 
-const headerNameAndJob = style({
-	$nest: {
-		'& h1': {
-			fontSize: em(size(9)),
+const headerNameAndJob = style(
+	{
+		$nest: {
+			'& h1': {
+				fontSize: em(size(9)),
+			},
+			'& h2': {
+				fontSize: em(size(6)),
+			},
 		},
-		'& h2': {
-			fontSize: em(size(6)),
+	},
+	mobileMD({
+		alignSelf: 'center',
+		gridRow: '1 / 3',
+		$nest: {
+			'& h1': {
+				fontSize: em(size(5)),
+			},
+			'& h2': {
+				fontSize: em(size(5)),
+			},
 		},
-	}
-}, mobileMD({
-	alignSelf: 'center',
-	gridRow: '1 / 3',
-	$nest: {
-		'& h1': {
-			fontSize: em(size(5)),
-		},
-		'& h2': {
-			fontSize: em(size(5)),
-		},
-	}
-}));
+	})
+);
 
 const headerContactsSize = em(size(6));
 
-const headerContacts = style({
-	display: 'grid',
-	gridGap: em(size(2)),
-	height: percent(100),
-	gridTemplateColumns: '1fr 1fr',
-	$nest: {
-		'& a': {
-			display: 'block',
-			textDecoration: 'none',
-			padding: padding(em(size(2)), 0),
-		},
-		'& a:hover': {
-			textDecoration: 'underline',
-		},
-		'& svg': {
-			width: headerContactsSize,
-			fill: color('#000000').toHexString(),
-			marginRight: em(size(2)),
+const headerContacts = style(
+	{
+		display: 'grid',
+		gridGap: em(size(2)),
+		height: percent(100),
+		gridTemplateColumns: '1fr 1fr',
+		$nest: {
+			'& a': {
+				display: 'block',
+				textDecoration: 'none',
+				padding: padding(em(size(2)), 0),
+			},
+			'& a:hover': {
+				textDecoration: 'underline',
+			},
+			'& svg': {
+				width: headerContactsSize,
+				fill: color('#000000').toHexString(),
+				marginRight: em(size(2)),
+			},
 		},
 	},
-}, mobileMD({
-	gridTemplateColumns: '1fr',
-	gridGap: 0,
-}));
+	mobileMD({
+		gridTemplateColumns: '1fr',
+		gridGap: 0,
+	})
+);
 
-const headerContactsWrapper = style({
-	display: 'flex',
-	alignItems: 'center',
-	fontSize: em(size(4)),
-	textTransform: 'uppercase',
-	$nest: {
-		'& figure': {
-			display: 'flex',
-			alignItems: 'center',
+const headerContactsWrapper = style(
+	{
+		display: 'flex',
+		alignItems: 'center',
+		fontSize: em(size(4)),
+		textTransform: 'uppercase',
+		$nest: {
+			'& figure': {
+				display: 'flex',
+				alignItems: 'center',
+			},
 		},
 	},
-}, mobileMD({
-	gridRow: '4 / 4',
-	gridColumn: '2 / 3',
-	fontSize: em(size(3)),
-	justifyContent: 'space-between',
-}));
+	mobileMD({
+		gridRow: '4 / 4',
+		gridColumn: '2 / 3',
+		fontSize: em(size(3)),
+		justifyContent: 'space-between',
+	})
+);
 
 const listTitleSpace = size(12);
 const litsItemHeight = size(32);
@@ -198,23 +235,29 @@ const halfContent: NestedCSSProperties = {
 	gridTemplateRows: `${em(size(4))} auto ${em(size(4))}`,
 };
 
-const contentExperiences = style(halfContent, mobileMD({ gridColumn: '1 / 3' }));
+const contentExperiences = style(
+	halfContent,
+	mobileMD({ gridColumn: '1 / 3' })
+);
 const contentAcademic = style(halfContent, mobileMD({ gridColumn: '1 / 3' }));
 
-const contentWrapper = style({
-	display: 'grid',
-	gridRow: '4 / 4',
-	gridColumn: '2 / 3',
-	gridColumnGap: em(size(8)),
-	gridTemplateColumns: '1fr 1fr',
-	$nest: {
-		[`& > section:not(.${contentExperiences}, .${contentAcademic})`]: {
-			gridColumn: '1 / 3',
-		}
-	}
-}, mobileMD({
-	gridTemplateColumns: '1fr',
-}));
+const contentWrapper = style(
+	{
+		display: 'grid',
+		gridRow: '4 / 4',
+		gridColumn: '2 / 3',
+		gridColumnGap: em(size(8)),
+		gridTemplateColumns: '1fr 1fr',
+		$nest: {
+			[`& > section:not(.${contentExperiences}, .${contentAcademic})`]: {
+				gridColumn: '1 / 3',
+			},
+		},
+	},
+	mobileMD({
+		gridTemplateColumns: '1fr',
+	})
+);
 
 const graphPeace = style({
 	fill: 'transparent',
@@ -224,59 +267,68 @@ const graphPeaceStroke = style({
 	stroke: '#000000',
 });
 
-const skillsZone = style({
-	justifyContent: 'space-between',
-	flexDirection: 'column',
-	fontWeight: 600,
-	display: 'flex',
-	$nest: {
-		'&::before': {
-			transform: translateY(percent(-50)),
-			content: 'attr(aria-label)',
-			position: 'absolute',
-			fontSize: em(size(6)),
-			top: percent(50),
-			left: 0,
+const skillsZone = style(
+	{
+		justifyContent: 'space-between',
+		flexDirection: 'column',
+		fontWeight: 600,
+		display: 'flex',
+		$nest: {
+			'&::before': {
+				transform: translateY(percent(-50)),
+				content: 'attr(aria-label)',
+				position: 'absolute',
+				fontSize: em(size(6)),
+				top: percent(50),
+				left: 0,
+			},
 		},
 	},
-}, mobileMD({
-	$nest: {
-		'&::before': {
-			transform: translateY(0),
-			fontSize: em(size(5)),
-			top: percent(0),
+	mobileMD({
+		$nest: {
+			'&::before': {
+				transform: translateY(0),
+				fontSize: em(size(5)),
+				top: percent(0),
+			},
 		},
-	},
-}));
+	})
+);
 
 const contentSkillsGraphSize = em(size(85));
 
-const contentSkills = style({
-	justifyContent: 'flex-end',
-	marginBottom: em(size(8)),
-	marginTop: em(size(8)),
-	position: 'relative',
-	display: 'flex',
-	$nest: {
-		'& > svg': {
-			width: contentSkillsGraphSize,
+const contentSkills = style(
+	{
+		justifyContent: 'flex-end',
+		marginBottom: em(size(8)),
+		marginTop: em(size(8)),
+		position: 'relative',
+		display: 'flex',
+		$nest: {
+			'& > svg': {
+				width: contentSkillsGraphSize,
+			},
 		},
 	},
-}, mobileMD({
-	paddingTop: em(size(10)),
-}));
+	mobileMD({
+		paddingTop: em(size(10)),
+	})
+);
 
-const contentProjects = style({
-	display: 'grid',
-	position: 'relative',
-	marginBottom: em(size(8)),
-	marginTop: em(size(8)),
-	gridRowGap: em(litsItemSpaceBottom),
-	paddingTop: em(listTitleSpace),
-	gridTemplateRows: `${em(size(4))} auto ${em(size(4))}`,
-}, print({
-	gridTemplateRows: 'auto',
-}));
+const contentProjects = style(
+	{
+		display: 'grid',
+		position: 'relative',
+		marginBottom: em(size(8)),
+		marginTop: em(size(8)),
+		gridRowGap: em(litsItemSpaceBottom),
+		paddingTop: em(listTitleSpace),
+		gridTemplateRows: `${em(size(4))} auto ${em(size(4))}`,
+	},
+	print({
+		gridTemplateRows: 'auto',
+	})
+);
 
 const fullList: NestedCSSProperties = {
 	scrollSnapType: 'y mandatory',
@@ -307,11 +359,14 @@ const printLists: NestedCSSProperties = {
 	padding: padding(em(size(4)), 0),
 };
 
-const projectsList = style({
-	...fullList,
-	gridRowStart: 2,
-	maxHeight: em(litsItemHeight * 5),
-}, print(printLists));
+const projectsList = style(
+	{
+		...fullList,
+		gridRowStart: 2,
+		maxHeight: em(litsItemHeight * 5),
+	},
+	print(printLists)
+);
 
 const paddingTopDown = size(2);
 const paddingSides = size(3);
@@ -323,67 +378,70 @@ const sharedCategory: NestedCSSProperties = {
 	border: borderShare,
 };
 
-const projectCategories = style({
-	display: 'flex',
-	marginTop: em(0.8),
-	overflow: 'auto',
-	paddingBottom: em(size(2)),
-	$nest: {
-		...scrollStyle(),
-		'& dt': {
-			...sharedCategory,
-			maxWidth: 0,
-			overflow: 'hidden',
-			transitionTimingFunction: 'ease-in-out, ease-in-out',
-			transitionProperty: 'max-width, padding-right',
-			transitionDuration: '.5s, .6s',
-			paddingRight: 0,
-			paddingLeft: em(paddingSides),
-			borderTopLeftRadius: borderRadius,
-			borderBottomLeftRadius: borderRadius,
-			borderTopRightRadius: 0,
-			borderBottomRightRadius: 0,
-			borderRight: 'none',
-			$nest: {
-				'&.active': {
-					maxWidth: percent(100),
-					paddingRight: em(paddingSides),
-					overflow: 'initial',
+const projectCategories = style(
+	{
+		display: 'flex',
+		marginTop: em(0.8),
+		overflow: 'auto',
+		paddingBottom: em(size(2)),
+		$nest: {
+			...scrollStyle(),
+			'& dt': {
+				...sharedCategory,
+				maxWidth: 0,
+				overflow: 'hidden',
+				transitionTimingFunction: 'ease-in-out, ease-in-out',
+				transitionProperty: 'max-width, padding-right',
+				transitionDuration: '.5s, .6s',
+				paddingRight: 0,
+				paddingLeft: em(paddingSides),
+				borderTopLeftRadius: borderRadius,
+				borderBottomLeftRadius: borderRadius,
+				borderTopRightRadius: 0,
+				borderBottomRightRadius: 0,
+				borderRight: 'none',
+				$nest: {
+					'&.active': {
+						maxWidth: percent(100),
+						paddingRight: em(paddingSides),
+						overflow: 'initial',
+					},
 				},
 			},
-		},
-		'& dd': {
-			...sharedCategory,
-			marginRight: em(size(3)),
-			paddingRight: em(paddingSides),
-			borderTopLeftRadius: 0,
-			borderBottomLeftRadius: 0,
-			borderTopRightRadius: borderRadius,
-			borderBottomRightRadius: borderRadius,
-			borderLeft: 'none',
-			whiteSpace: 'nowrap',
-		},
-	},
-}, print({
-	flexWrap: 'wrap',
-	$nest: {
-		'& dt': {
-			display: 'none',
-		},
-		'& dd': {
-			border: borderShare,
-			maxWidth: percent(100),
-			padding: em(paddingSides),
-			borderRadius: borderRadius,
-			marginBottom: em(size(4)),
-			$nest: {
-				'&:last-child': {
-					marginBottom: 0,
-				},
+			'& dd': {
+				...sharedCategory,
+				marginRight: em(size(3)),
+				paddingRight: em(paddingSides),
+				borderTopLeftRadius: 0,
+				borderBottomLeftRadius: 0,
+				borderTopRightRadius: borderRadius,
+				borderBottomRightRadius: borderRadius,
+				borderLeft: 'none',
+				whiteSpace: 'nowrap',
 			},
 		},
 	},
-}));
+	print({
+		flexWrap: 'wrap',
+		$nest: {
+			'& dt': {
+				display: 'none',
+			},
+			'& dd': {
+				border: borderShare,
+				maxWidth: percent(100),
+				padding: em(paddingSides),
+				borderRadius: borderRadius,
+				marginBottom: em(size(4)),
+				$nest: {
+					'&:last-child': {
+						marginBottom: 0,
+					},
+				},
+			},
+		},
+	})
+);
 
 const listItem: NestedCSSProperties = {
 	display: 'flex',
@@ -409,59 +467,65 @@ const listItem: NestedCSSProperties = {
 	},
 };
 
-const projectItem = style({
-	...listItem,
-	pageBreakInside: 'avoid',
-	$nest: {
-		...listItem.$nest,
-		'& summary': {
-			display: 'flex',
-			alignItems: 'center',
-			listStyle: 'none',
-			justifyContent: 'space-between',
-			height: em(size(10)),
-		},
-		'& > details': {
-			width: percent(100),
-		},
-		'& > details[open] b::before': {
-			content: '" ▼"',
-		},
-		'& > details:not([open]) b::before': {
-			content: '" ►"',
-		},
-		[`& > details > time, & > .${projectCategories}`]: {
-			fontSize: em(size(4)),
-			alignSelf: 'flex-end',
-		},
-		'& b': {
-			fontSize: em(1.6),
-			marginRight: em(1.2),
-		},
-	},
-}, mobileMD({
-	$nest: {
-		'& summary': {
-			display: 'flex',
-			flexWrap: 'wrap',
-		},
-		'& b': {
-			marginBottom: em(size(1)),
-			display: 'list-item',
-			marginRight: 0,
-		},
-		'&:not(.open)': {
-			minHeight: em(size(50)),
+const projectItem = style(
+	{
+		...listItem,
+		pageBreakInside: 'avoid',
+		$nest: {
+			...listItem.$nest,
+			'& summary': {
+				display: 'flex',
+				alignItems: 'center',
+				listStyle: 'none',
+				justifyContent: 'space-between',
+				height: em(size(10)),
+			},
+			'& > details': {
+				width: percent(100),
+			},
+			'& > details[open] b::before': {
+				content: '" ▼"',
+			},
+			'& > details:not([open]) b::before': {
+				content: '" ►"',
+			},
+			[`& > details > time, & > .${projectCategories}`]: {
+				fontSize: em(size(4)),
+				alignSelf: 'flex-end',
+			},
+			'& b': {
+				fontSize: em(1.6),
+				marginRight: em(1.2),
+			},
 		},
 	},
-}));
+	mobileMD({
+		$nest: {
+			'& summary': {
+				display: 'flex',
+				flexWrap: 'wrap',
+			},
+			'& b': {
+				marginBottom: em(size(1)),
+				display: 'list-item',
+				marginRight: 0,
+			},
+			'&:not(.open)': {
+				minHeight: em(size(50)),
+			},
+		},
+	})
+);
 
 const experienceImageSize = em(size(21));
 
-const experiencesList = style({
-	...fullList,
-	gridRowStart: 2,
-}, print(printLists));
+const experiencesList = style(
+	{
+		...fullList,
+		gridRowStart: 2,
+	},
+	print(printLists)
+);
 
 const experiencesItem = style({
 	...listItem,
@@ -521,10 +585,13 @@ const experiencesItem = style({
 	},
 });
 
-const academicList = style({
-	...fullList,
-	gridRowStart: 2,
-}, print(printLists));
+const academicList = style(
+	{
+		...fullList,
+		gridRowStart: 2,
+	},
+	print(printLists)
+);
 
 const academicItem = style({
 	...listItem,
@@ -545,33 +612,39 @@ const academicItem = style({
 			color: color('#000').toHexString(),
 			fontSize: em(size(6)),
 		},
-	}
+	},
 });
 
-const seeMoreButton = style({
-	backgroundColor: 'transparent',
-	width: percent(100),
-	cursor: 'pointer',
-	border: 'none',
-}, print({
-	display: 'none',
-}));
+const seeMoreButton = style(
+	{
+		backgroundColor: 'transparent',
+		width: percent(100),
+		cursor: 'pointer',
+		border: 'none',
+	},
+	print({
+		display: 'none',
+	})
+);
 
 const contentArticles = style();
 
-const articlesList = style({
-	display: 'flex',
-	overflowX: 'auto',
-	scrollSnapType: 'x mandatory',
-	justifyContent: 'space-between',
-	$nest: {
-		...scrollStyle(),
+const articlesList = style(
+	{
+		display: 'flex',
+		overflowX: 'auto',
+		scrollSnapType: 'x mandatory',
+		justifyContent: 'space-between',
+		$nest: {
+			...scrollStyle(),
+		},
 	},
-}, mobileMD({
-	flexWrap: 'wrap',
-	justifyContent: 'center',
-	marginBottom: em(size(12)),
-}));
+	mobileMD({
+		flexWrap: 'wrap',
+		justifyContent: 'center',
+		marginBottom: em(size(12)),
+	})
+);
 
 const articleImageSize = em(size(65));
 
@@ -602,13 +675,16 @@ const articlesItem = style({
 });
 
 const styles = {
-	body: style({
-		display: 'grid',
-		gridTemplateRows: '25px min-content 20px auto',
-		gridTemplateColumns: 'auto minmax(680px, 720px) auto',
-	}, mobileMD({
-		gridTemplateColumns: 'auto 360px auto',
-	})),
+	body: style(
+		{
+			display: 'grid',
+			gridTemplateRows: '25px min-content 20px auto',
+			gridTemplateColumns: 'auto minmax(680px, 720px) auto',
+		},
+		mobileMD({
+			gridTemplateColumns: 'auto 360px auto',
+		})
+	),
 	headerWrapper,
 	headerPhoto,
 	headerAbout,

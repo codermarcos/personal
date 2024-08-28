@@ -24,9 +24,9 @@ const getByLanguage = (l?: Language): webpack.Configuration => {
   return {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     entry: {
-			main: './src/index.ts',
-			style: './src/style.ts',
-		},
+      main: './src/index.ts',
+      style: './src/style.ts',
+    },
     output: {
       path: outDir,
       filename: '[name].js',
