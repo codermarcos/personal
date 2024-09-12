@@ -72,6 +72,7 @@ export const en = (inf: Informations, mixin: Mixins): any => {
       language: 'en-US',
       from: 'From',
       to: 'To',
+      seeRecent: 'see recent',
       seePrevious: 'see previous',
       articlesAndPosts: 'Articles and posts',
       projects: 'Projects',
