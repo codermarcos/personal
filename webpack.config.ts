@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import * as webpack from 'webpack';
 
 import { resolve } from 'path';

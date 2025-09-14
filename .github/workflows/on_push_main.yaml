@@ -7,12 +7,12 @@ on:
       - main
     paths-ignore:
       - README.md
+      - .editorconfig
 
 env:
   AWS_REGION: us-east-1
   NODE_ENV: production
   TF_VERSION: latest
-  TG_VERSION: 0.31.8
 
 jobs:
   default:
@@ -25,12 +25,31 @@ jobs:
       url: https://mr.codermarcos.zone/
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+
+      - uses: actions/cache@v4
+        id: npm-cache
         with:
-          fetch-depth: 1
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - uses: actions/cache@v4
+        id: terraform-cache
+        with:
+          path: ./iac/.terraform
+          key: ${{ runner.os }}-terraform-${{ hashFiles('./iac/terraform.lock.hcl') }}
+          restore-keys: |
+            ${{ runner.os }}-terraform-
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -51,7 +70,7 @@ jobs:
       - name: Download terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.8.0"
+          terraform_version: "1.13.2"
 
       - name: Deploy
         working-directory: ./iac

@@ -1,5 +1,5 @@
 terraform {
-	required_version = ">= 1.8.0"
+	required_version = ">= 1.13.2"
 
 	backend "s3" {
 		bucket = "codermarcos-zone-state"
@@ -10,7 +10,7 @@ terraform {
 	required_providers {
 		aws = {
 			source  = "hashicorp/aws"
-			version = "~> 5.45.0"
+			version = "~> 6.0"
 		}
 		null  = {}
 		local = {}

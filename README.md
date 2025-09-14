@@ -22,7 +22,6 @@ This is my **personal website**.
 | -------------------------------------------- | ------------------------- |
 | [![node-version]][node-download]             | Javascript Runtime        |
 | [![terraform-version]][terraform-download]   | Terraform                 |
-| [![terragrunt-version]][terragrunt-download] | Wrapper for Terraform     |
 
 ## 🔨 Project setup
 
@@ -68,30 +67,74 @@ Builds the app for production to the `dist` folder.
 npm run build
 ```
 
-## ⬆ Deploy environment locally
+## ⬆ Deploy it manually
 
-To deploy locally you need run [build](#️build) before proceed.
+To deploy manually you need run [build](#️build) before proceed.
 
-1. To create the s3 bucket use this, you need terragrunt [terragrunt][terragrunt-download] installed:
+1. Declare the necessary environment variables:
 
-```bash
-terraform apply
+```dotenv
+AWS_SECRET_ACCESS_KEY="asecretkey"
+AWS_ACCESS_KEY_ID="anaccesskey"
+AWS_REGION="us-east-1"
 ```
 
-> To learn more [Terragrunt](https://terragrunt.gruntwork.io/docs/).
+To Unix:
+
+```bash
+export AWS_SECRET_ACCESS_KEY="<YOU CAN GET SECRET ACCESS KEY FOLLOWING THE LINK BELLOW>"
+export AWS_ACCESS_KEY_ID="<YOU CAN GET ACCESS KEY FOLLOWING THE LINK BELLOW>"
+export AWS_REGION="<WHERE YOU WILL DEPLOY IT>"
+```
+
+To windows:
+
+```bash
+$Env:AWS_SECRET_ACCESS_KEY="<YOU CAN GET SECRET ACCESS KEY FOLLOWING THE LINK BELLOW>"
+$Env:AWS_ACCESS_KEY_ID="<YOU CAN GET ACCESS KEY FOLLOWING THE LINK BELLOW>"
+$Env:AWS_REGION="<WHERE YOU WILL DEPLOY IT>"
+```
+
+> To get figma token read [this documentaion](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user_manage_add-key.html)
+
+2. Install necessary dependencies, you need [terraform][terraform-download] installed:
+
+```bash
+terraform -chdir=iac get
+```
+
+3. Initialize the terraform:
+
+```bash
+terraform -chdir=iac init
+```
+
+4. Check the current state _(optional)_:
+
+```bash
+terraform -chdir=iac state pull
+```
+
+5. Create the insfrastructure and upload all assets:
+
+```bash
+terraform -chdir=iac apply
+```
+
+> To learn more [Terrafom](https://learn.hashicorp.com/terraform).
 
 ## 🔥 Destroy environment locally
 
-1. Now destroy s3 bucket with terraform
+1. Destroy the whole infrastructure with terraform
 
 ```bash
-terraform destroy
+terraform -chdir=iac destroy
 ```
 
 ## Learn More
 
 - [Pug.js](https://pugjs.org/api/getting-started.html)
-- [Terraform](https://learn.hashicorp.com/terraform?utm_source=terraform_io&utm_content=terraform_io_hero)
+- [Terraform](https://learn.hashicorp.com/terraform)
 - [AWS](https://docs.aws.amazon.com/s3/?id=docs_gateway)
 
 ## 💪 Dev Team
@@ -101,8 +144,6 @@ This project exists thanks to all these people.
 [![Marcos](https://avatars3.githubusercontent.com/u/12430365?s=100)](https://github.com/codermarcos)
 
 [terraform-download]: https://learn.hashicorp.com/tutorials/terraform/install-cli
-[terragrunt-download]: https://terragrunt.gruntwork.io/docs/getting-started/install/
 [node-download]: https://nodejs.org/download/release/v14.14.0/
 [terraform-version]: https://img.shields.io/badge/terraform-latest-blue
-[terragrunt-version]: https://img.shields.io/badge/terragrunt-latest-blue
 [node-version]: https://img.shields.io/badge/node-latest-blue
