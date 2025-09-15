@@ -16,6 +16,7 @@ async function main(lang = 'pt') {
   const browser = await puppeteer.launch({
     headless: true,
     args: [
+			'--no-sandbox',
       '--no-first-run',
       '--disable-extensions',
       '--disable-default-apps',
