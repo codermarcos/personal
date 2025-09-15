@@ -52,13 +52,13 @@ data "aws_cloudfront_cache_policy" "cache_default" {
 # 	stage = "LIVE"
 # }
 
-resource "aws_cloudfront_function" "redirects" {
-	name    = "redirects-to-index"
-	runtime = "cloudfront-js-2.0"
-	comment = "Redirect to index when omit index html"
-	publish = true
-	code    = file("${path.module}/functions.js")
-}
+#resource "aws_cloudfront_function" "redirects" {
+#	name    = "redirects-to-index"
+#	runtime = "cloudfront-js-2.0"
+#	comment = "Redirect to index when omit index html"
+#	publish = true
+#	code    = file("${path.module}/functions.js")
+#}
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
 	origin {
