@@ -142,6 +142,7 @@ const headerAbout = style(
 	},
 	mobileMD({
 		gridRow: '6 / 6',
+		padding: padding(0, em(size(4)))
 	})
 );
 
