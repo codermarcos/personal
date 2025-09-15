@@ -92,11 +92,23 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
 		viewer_protocol_policy = "redirect-to-https"
 
-		function_association {
-			event_type = "viewer-request"
-			function_arn = aws_cloudfront_function.redirects.arn
-		}
+#		function_association {
+#			event_type = "viewer-request"
+#			function_arn = aws_cloudfront_function.redirects.arn
+#		}
 	}
+
+	custom_error_response {
+		error_code         = 404
+		response_code      = 200
+		response_page_path = "/index.html"
+	}
+
+  custom_error_response {
+    error_code         = 403
+    response_code      = 200
+    response_page_path = "/index.html"
+  }
 
 	restrictions {
 		geo_restriction {
@@ -104,7 +116,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 			locations        = []
 		}
 	}
-
 
 	viewer_certificate {
 		acm_certificate_arn            = data.aws_acm_certificate.issued.arn
