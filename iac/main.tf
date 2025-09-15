@@ -170,18 +170,6 @@ resource "aws_s3_bucket_ownership_controls" "frontend_bucket_controls" {
 	}
 }
 
-resource "aws_s3_bucket_website_configuration" "website" {
-	bucket = aws_s3_bucket.frontend_bucket.bucket
-
-	index_document {
-		suffix = "index.html"
-	}
-
-	error_document {
-		key = "index.html"
-	}
-}
-
 resource "aws_s3_object" "frontend_object" {
 	for_each = fileset(local.dist_dir, "**")
 	key      = each.value
@@ -199,12 +187,4 @@ output "static_files_folder" {
 
 output "cloudfront_endpoint" {
 	value = aws_cloudfront_distribution.s3_distribution.domain_name
-}
-
-output "website_domain" {
-	value = aws_s3_bucket_website_configuration.website.website_domain
-}
-
-output "website_endpoint" {
-	value = aws_s3_bucket_website_configuration.website.website_endpoint
 }
