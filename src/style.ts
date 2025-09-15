@@ -174,6 +174,7 @@ const headerContactsSize = em(size(6));
 
 const headerContacts = style(
 	{
+		alignItems: 'end',
 		display: 'grid',
 		gridGap: em(size(2)),
 		height: percent(100),
